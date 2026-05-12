@@ -171,7 +171,7 @@ export const NewHome = () => {
           className="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-in-out opacity-100 group-hover:opacity-0 p-4" 
         />
         <img 
-          src="/favela-hover.svg" 
+          src="/favela.svg" 
           alt="Favela Hover" 
           className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-out opacity-0 group-hover:opacity-100 p-4 scale-95 group-hover:scale-100" 
         />

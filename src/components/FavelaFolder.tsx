@@ -15,7 +15,7 @@ export const FavelaFolder = () => {
 
       {/* Hover State: Revealed Shirt (Last Favela) */}
       <img
-        src="/favela-hover.svg"
+        src="/favela.svg"
         alt="Favela Revealed"
         className="absolute inset-0 w-full h-full object-contain p-4 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-105 z-20"
       />
