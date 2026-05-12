@@ -35,17 +35,17 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
       </div>
 
       {/* Product Image Container */}
-      <div className="absolute inset-0 flex items-end justify-center p-6 pb-[40%] z-0">
-        <motion.img
-          src={image}
-          alt={name}
-          className="w-full h-full max-h-[85%] object-contain origin-bottom transition-all duration-[600ms] ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-8 group-hover:-rotate-[6deg]"
+      <div className="absolute inset-0 flex items-center justify-center p-6 z-0">
+        <img
+          src="/favela-folder.svg"
+          alt="Favela Folder"
+          className="absolute inset-0 w-full h-full object-contain p-4 transition-opacity duration-700 ease-in-out opacity-100 group-hover:opacity-0"
         />
-      </div>
-
-      {/* Folder SVG overlay */}
-      <div className="absolute inset-x-0 bottom-0 z-10 pointer-events-none">
-        <img src="/folder.svg" alt="folder cover" className="w-full h-auto translate-y-1 drop-shadow-xl" />
+        <img
+          src="/favela.svg"
+          alt="Favela Hover"
+          className="absolute inset-0 w-full h-full object-contain p-4 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-105"
+        />
       </div>
 
       {/* Product Name (Hover) */}
