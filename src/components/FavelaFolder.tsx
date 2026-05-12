@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 export const FavelaFolder = () => {
   return (
     <div className="relative w-full h-full min-h-[300px] flex items-center justify-center group overflow-hidden cursor-pointer">
-      {/* Background / Base layer (Optional) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#192030] via-[#0d1525] to-[#131825] opacity-50" />
+      {/* Background removed as requested */}
 
       {/* Default State: Folder */}
       <img

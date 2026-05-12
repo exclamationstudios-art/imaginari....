@@ -67,7 +67,7 @@ export const BrandDirectory = () => {
   {/*  FAVELA  */}
   <div className="brand-card group">
     <div className="bc-img-wrap">
-      <div className="bc-img-inner bg-favela relative">
+      <div className="bc-img-inner relative">
         <img 
           src="/favela-folder.svg" 
           alt="Favela Folder" 

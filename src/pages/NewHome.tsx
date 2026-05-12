@@ -163,7 +163,7 @@ export const NewHome = () => {
   <div className="brand-grid">
 
     <div className="brand-card group">
-      <div className="brand-card-img bc-favela relative">
+      <div className="brand-card-img relative">
         <div className="brand-card-studio-badge z-10 relative">Exclamation Studios</div>
         <img 
           src="/favela-folder.svg" 

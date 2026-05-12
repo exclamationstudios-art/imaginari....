@@ -16,7 +16,7 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="group relative aspect-[3/4.5] w-full overflow-hidden bg-bg-card rounded-md transition-all duration-700 hover:bg-bg-card-hover"
+        className="group relative aspect-[3/4.5] w-full overflow-hidden bg-transparent rounded-md transition-all duration-700"
       >
       {/* Heart Icon */}
       <div className="absolute top-6 right-6 z-20 text-white/20 transition-colors duration-300 group-hover:text-olive-400">
