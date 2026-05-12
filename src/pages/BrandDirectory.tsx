@@ -65,12 +65,19 @@ export const BrandDirectory = () => {
 <div className="card-grid" id="grid-view">
 
   {/*  FAVELA  */}
-  <div className="brand-card">
+  <div className="brand-card group">
     <div className="bc-img-wrap">
-      <div className="bc-img-inner bg-favela">
-        <div className="bc-product-visual">
-          <span className="bc-product-name">FAVELA</span>
-        </div>
+      <div className="bc-img-inner bg-favela relative">
+        <img 
+          src="/favela-folder.svg" 
+          alt="Favela Folder" 
+          className="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 ease-in-out opacity-100 group-hover:opacity-0 p-4" 
+        />
+        <img 
+          src="/favela-hover.svg" 
+          alt="Favela Hover" 
+          className="absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-out opacity-0 group-hover:opacity-100 p-4 scale-95 group-hover:scale-100" 
+        />
       </div>
       <div className="bc-studio-badge">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
