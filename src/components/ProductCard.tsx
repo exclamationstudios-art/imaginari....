@@ -16,6 +16,7 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        style={{ scale: 1.25 }}
         className="group relative aspect-[3/4.5] w-full overflow-hidden bg-transparent rounded-md transition-all duration-700"
       >
       {/* Heart Icon */}
@@ -36,15 +37,40 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
 
       {/* Product Image Container */}
       <div className="absolute inset-0 flex items-center justify-center p-6 z-0">
-        <img
-          src="/favela-folder.svg"
-          alt="Favela Folder"
-          className="absolute inset-0 w-full h-full object-contain p-4 transition-opacity duration-700 ease-in-out opacity-100 group-hover:opacity-0"
+        {/* Default Folder */}
+        <motion.img
+          src="/8ternity-folder.svg"
+          alt="Default Folder"
+          className="absolute inset-0 w-full h-full object-contain p-4"
+          initial={{ opacity: 1 }}
+          whileHover={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
         />
-        <img
-          src="/favela.svg"
-          alt="Favela Hover"
-          className="absolute inset-0 w-full h-full object-contain p-4 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-105"
+        
+        {/* Intermediate State */}
+        <motion.img
+          src="/8ternity-intermediate.svg"
+          alt="Intermediate Transition"
+          className="absolute inset-0 w-full h-full object-contain p-4"
+          initial={{ opacity: 0 }}
+          whileHover={{ 
+            opacity: [0, 1, 0],
+          }}
+          transition={{ 
+            duration: 0.4,
+            times: [0, 0.5, 1],
+            ease: "easeInOut"
+          }}
+        />
+
+        {/* Final Asset State */}
+        <motion.img
+          src="/8ternity-asset.svg"
+          alt="Final Asset"
+          className="absolute inset-0 w-full h-full object-contain p-4"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.3 }}
         />
       </div>
 
