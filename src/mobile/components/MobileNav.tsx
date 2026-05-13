@@ -7,7 +7,7 @@ export const MobileNav = () => {
   return (
     <>
       <nav className="fixed top-0 z-[100] flex w-full items-center justify-between px-6 py-6 mix-blend-difference">
-        <div className="text-[11px] tracking-[0.3em] uppercase text-brand-white font-medium">Imaginary</div>
+        <img src="/logo.svg" alt="MAGINARI" className="h-4 w-auto" />
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="text-[10px] tracking-[0.2em] uppercase text-brand-white focus:outline-none"

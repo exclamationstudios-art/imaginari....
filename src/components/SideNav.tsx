@@ -41,9 +41,9 @@ export const SideNav = () => {
           <Link
             to="/"
             aria-label="MAGINARI home"
-            className="font-display text-[22px] tracking-[0.08em] text-olive-400 select-none transition-colors duration-300"
+            className="flex items-center select-none"
           >
-            MAGINARI.
+            <img src="/logo.svg" alt="MAGINARI" className="h-6 w-auto" />
           </Link>
 
           {/* ─── Spacer ─── */}

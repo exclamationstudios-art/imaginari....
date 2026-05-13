@@ -44,14 +44,14 @@ export const FooterMobile = () => {
         </div>
 
         <div className="relative pt-20 pb-10 overflow-hidden">
-          <motion.h2 
+          <motion.img 
             initial={{ y: "100%" }}
             whileInView={{ y: 0 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[18vw] font-display leading-none text-text-ghost select-none pointer-events-none text-center whitespace-nowrap"
-          >
-            MAGINARI
-          </motion.h2>
+            src="/wordmark.svg"
+            alt="MAGINARI"
+            className="w-full h-auto object-contain select-none pointer-events-none opacity-20"
+          />
           
           <div className="mt-10 flex flex-col items-center gap-2 t-micro text-text-dim">
             <div>© 2026 MAGINARI</div>

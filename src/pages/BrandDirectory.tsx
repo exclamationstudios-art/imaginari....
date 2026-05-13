@@ -8,7 +8,7 @@ export const BrandDirectory = () => {
 
 {/*  NAV — exact from uploads  */}
 <nav>
-  <a href="#" className="nav-logo">MAGINARI.</a>
+  <img src="/logo.svg" alt="MAGINARI" className="h-6 w-auto" />
   <div className="nav-search">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5a5850" strokeWidth="2">
       <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -324,7 +324,7 @@ export const BrandDirectory = () => {
 {/*  FOOTER  */}
 <footer>
   <div>
-    <div className="footer-logo">MAGINARI.</div>
+    <img src="/wordmark.svg" alt="MAGINARI" className="h-6 w-auto opacity-80" />
     <div className="footer-sub">Exclamation Studios © 2025</div>
   </div>
   <div style={{"fontSize":"11px","color":"var(--text-dim)","letterSpacing":"0.1em","textAlign":"right"}}>
