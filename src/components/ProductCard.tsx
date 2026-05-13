@@ -16,7 +16,6 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        style={{ scale: 1.25 }}
         className="group relative aspect-[3/4.5] w-full overflow-hidden bg-transparent rounded-md transition-all duration-700"
       >
       {/* Heart Icon */}

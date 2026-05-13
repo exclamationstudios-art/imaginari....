@@ -16,7 +16,7 @@ export const CatalogueRow = ({ products, className = "" }: CatalogueRowProps) =>
   return (
     <div className={`w-full py-12 md:py-20 ${className}`}>
       <div className="w-full px-0">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-[8px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {products.slice(0, 4).map((product, i) => {
             const productId = product.id || product.name.toLowerCase().replace(/\s+/g, '-');
             return (

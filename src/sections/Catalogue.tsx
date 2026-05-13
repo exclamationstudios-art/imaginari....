@@ -103,7 +103,7 @@ export const Catalogue = () => {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product, i) => (
             <motion.div
               key={product.name}
