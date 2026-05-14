@@ -13,8 +13,14 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
   return (
     <Link to={`/product/${id}`} className="block">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        variants={{
+          initial: { opacity: 0, y: 20 },
+          animate: { opacity: 1, y: 0 },
+          hover: {}
+        }}
+        initial="initial"
+        whileHover="hover"
+        whileInView="animate"
         viewport={{ once: true }}
         className="group relative aspect-[3/4.5] w-full overflow-hidden bg-transparent rounded-md transition-all duration-700"
       >
@@ -39,11 +45,13 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
         {/* Default Folder */}
         <motion.img
           src="/8ternity-folder.svg"
-          alt="Default Folder"
+          alt="Default State"
           className="absolute inset-0 w-full h-full object-contain p-4"
-          initial={{ opacity: 1 }}
-          whileHover={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          variants={{
+            initial: { opacity: 1 },
+            hover: { opacity: 0 }
+          }}
+          transition={{ duration: 0.3 }}
         />
         
         {/* Intermediate State */}
@@ -51,12 +59,14 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
           src="/8ternity-intermediate.svg"
           alt="Intermediate Transition"
           className="absolute inset-0 w-full h-full object-contain p-4"
-          initial={{ opacity: 0 }}
-          whileHover={{ 
-            opacity: [0, 1, 0],
+          variants={{
+            initial: { opacity: 0 },
+            hover: { 
+              opacity: [0, 1, 0],
+            }
           }}
           transition={{ 
-            duration: 0.4,
+            duration: 0.5,
             times: [0, 0.5, 1],
             ease: "easeInOut"
           }}
@@ -67,9 +77,11 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
           src="/8ternity-asset.svg"
           alt="Final Asset"
           className="absolute inset-0 w-full h-full object-contain p-4"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.3 }}
+          variants={{
+            initial: { opacity: 0 },
+            hover: { opacity: 1 }
+          }}
+          transition={{ delay: 0.35, duration: 0.4 }}
         />
       </div>
 
