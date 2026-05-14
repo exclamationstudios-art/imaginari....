@@ -41,47 +41,30 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
       </div>
 
       {/* Product Image Container */}
-      <div className="absolute inset-0 flex items-center justify-center p-6 z-0">
+      <div className="absolute inset-0 flex items-end justify-center p-6 z-0">
         {/* Default Folder */}
         <motion.img
           src="/8ternity-folder.svg"
           alt="Default State"
-          className="absolute inset-0 w-full h-full object-contain p-4"
+          className="absolute inset-0 w-full h-full object-contain object-bottom p-6"
           variants={{
             initial: { opacity: 1 },
             hover: { opacity: 0 }
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4 }}
         />
         
-        {/* Intermediate State */}
-        <motion.img
-          src="/8ternity-intermediate.svg"
-          alt="Intermediate Transition"
-          className="absolute inset-0 w-full h-full object-contain p-4"
-          variants={{
-            initial: { opacity: 0 },
-            hover: { 
-              opacity: [0, 1, 0],
-            }
-          }}
-          transition={{ 
-            duration: 0.5,
-            times: [0, 0.5, 1],
-            ease: "easeInOut"
-          }}
-        />
-
         {/* Final Asset State */}
         <motion.img
           src="/8ternity-asset.svg"
           alt="Final Asset"
-          className="absolute inset-0 w-full h-full object-contain p-4"
+          className="absolute inset-0 w-full h-full object-contain object-bottom p-6"
           variants={{
-            initial: { opacity: 0 },
-            hover: { opacity: 1 }
+            initial: { opacity: 0, scale: 1 },
+            hover: { opacity: 1, scale: 1.25 }
           }}
-          transition={{ delay: 0.35, duration: 0.4 }}
+          transition={{ duration: 0.4 }}
+          style={{ transformOrigin: "bottom" }}
         />
       </div>
 
