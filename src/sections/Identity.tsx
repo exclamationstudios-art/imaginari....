@@ -7,7 +7,6 @@ const products = [
   { id: "nomad-linen-top", name: "Nomad Linen Top", image: "https://images.unsplash.com/photo-1594932224828-b4b059b6ffc0?q=80&w=800" },
   { id: "bridge-knit-shirt", name: "Bridge Knit Shirt", image: "https://images.unsplash.com/photo-1621072156002-e2fcced0b170?q=80&w=800" },
   { id: "urban-cotton-shirt", name: "Urban Cotton Shirt", image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=800" },
-  { id: "lagos-night-top", name: "Lagos Night Top", image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=800" },
 ];
 
 export const Identity = () => {
