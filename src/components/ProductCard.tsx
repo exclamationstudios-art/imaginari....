@@ -44,8 +44,8 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
       <div className="absolute inset-0 flex items-end justify-center p-6 z-0">
         {/* Default Folder */}
         <motion.img
-          src="/8ternity-folder.svg"
-          alt="Default State"
+          src={`/${id}-folder.svg`}
+          alt={`${name} Folder`}
           className="absolute inset-0 w-full h-full object-contain object-bottom p-6"
           variants={{
             initial: { opacity: 1 },
@@ -56,8 +56,8 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
         
         {/* Final Asset State */}
         <motion.img
-          src="/8ternity-asset.svg"
-          alt="Final Asset"
+          src={id === 'favela' ? '/favela.svg' : `/${id}-asset.svg`}
+          alt={`${name} Asset`}
           className="absolute inset-0 w-full h-full object-contain object-bottom p-6"
           variants={{
             initial: { opacity: 0, scale: 1 },
