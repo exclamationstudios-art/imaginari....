@@ -3,72 +3,84 @@ import { ProductCard } from "../components/ProductCard";
 
 const products = [
   {
+    id: "favela",
     name: "The Lagos Anchor",
     category: "Knitwear",
     price: "£145",
     image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "8ternity",
     name: "Recall Trousers",
     category: "Tailoring",
     price: "£180",
     image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "coc",
     name: "Bridge Overshirt",
     category: "Outerwear",
     price: "£210",
     image: "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "favela",
     name: "Origin Scarf",
     category: "Accessories",
     price: "£65",
     image: "https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "8ternity",
     name: "Meridian Coat",
     category: "Outerwear",
     price: "£295",
     image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "coc",
     name: "Abuja Silk Set",
     category: "Tailoring",
     price: "£240",
     image: "https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "favela",
     name: "Passage Hoodie",
     category: "Knitwear",
     price: "£130",
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "8ternity",
     name: "Return Cap",
     category: "Accessories",
     price: "£55",
     image: "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "coc",
     name: "Drift Linen Shirt",
     category: "Shirts",
     price: "£115",
     image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "favela",
     name: "Homeward Blazer",
     category: "Tailoring",
     price: "£320",
     image: "https://images.unsplash.com/photo-1519058082700-08a0b56da9b4?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "8ternity",
     name: "Kora Knit Vest",
     category: "Knitwear",
     price: "£95",
     image: "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&q=80&w=800",
   },
   {
+    id: "coc",
     name: "Roots Canvas Tote",
     category: "Accessories",
     price: "£45",
@@ -112,7 +124,7 @@ export const Catalogue = () => {
               viewport={{ once: true }}
               transition={{ delay: (i % 4) * 0.08, duration: 0.8 }}
             >
-              <ProductCard {...product} id={product.name.toLowerCase().replace(/\s+/g, '-')} />
+              <ProductCard {...product} id={product.id || product.name.toLowerCase().replace(/\s+/g, '-')} />
             </motion.div>
           ))}
         </div>

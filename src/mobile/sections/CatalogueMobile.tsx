@@ -3,28 +3,28 @@ import { ProductCard } from "../../components/ProductCard";
 
 const products = [
   {
-    id: "lagos-anchor",
+    id: "favela",
     name: "The Lagos Anchor",
     category: "Knitwear",
     price: "£145",
     image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=800",
   },
   {
-    id: "recall-trousers",
+    id: "8ternity",
     name: "Recall Trousers",
     category: "Tailoring",
     price: "£180",
     image: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&q=80&w=800",
   },
   {
-    id: "bridge-overshirt",
+    id: "coc",
     name: "Bridge Overshirt",
     category: "Outerwear",
     price: "£210",
     image: "https://images.unsplash.com/photo-1516762689617-e1cffcef479d?auto=format&fit=crop&q=80&w=800",
   },
   {
-    id: "origin-scarf",
+    id: "favela",
     name: "Origin Scarf",
     category: "Accessories",
     price: "£65",
