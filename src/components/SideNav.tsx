@@ -10,12 +10,7 @@ export const SideNav = () => {
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY;
-      const goingUp = y < lastY.current;
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
       setScrolled(y > 40);
-      // Always visible on mobile, otherwise scroll-triggered
-      setVisible(isMobile || y < 40 || goingUp);
       lastY.current = y;
     };
 
