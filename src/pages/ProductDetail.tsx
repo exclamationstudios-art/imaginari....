@@ -7,9 +7,15 @@ import { FooterMobile } from "../mobile/sections/FooterMobile";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useEffect, useState } from "react";
 import { TryOnModal } from "../components/TryOnModal";
+import { CociViewer } from "../components/CociViewer";
 
 export const ProductDetail = () => {
   const { id } = useParams();
+  
+  if (id === "coc") {
+    return <CociViewer />;
+  }
+
   const product = products.find((p) => p.id === id);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
