@@ -10,6 +10,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ id, name, image }: ProductCardProps) {
+  const isSpecialFolder = ["favela", "8ternity", "coc"].includes(id);
+
   return (
     <Link to={`/product/${id}`} className="block">
       <motion.div
@@ -41,31 +43,41 @@ export function ProductCard({ id, name, image }: ProductCardProps) {
       </div>
 
       {/* Product Image Container */}
-      <div className="absolute inset-0 flex items-end justify-center p-6 z-0">
-        {/* Default Folder */}
-        <motion.img
-          src={`/${id}-folder.svg`}
-          alt={`${name} Folder`}
-          className="absolute inset-0 w-full h-full object-contain object-bottom p-6"
-          variants={{
-            initial: { opacity: 1 },
-            hover: { opacity: 0 }
-          }}
-          transition={{ duration: 0.4 }}
-        />
-        
-        {/* Final Asset State */}
-        <motion.img
-          src={id === 'favela' ? '/favela.svg' : `/${id}-asset.svg`}
-          alt={`${name} Asset`}
-          className="absolute inset-0 w-full h-full object-contain object-bottom p-6"
-          variants={{
-            initial: { opacity: 0, scale: 1 },
-            hover: { opacity: 1, scale: 1.25 }
-          }}
-          transition={{ duration: 0.4 }}
-          style={{ transformOrigin: "bottom" }}
-        />
+      <div className="absolute inset-0 flex items-end justify-center p-6 z-0 bg-bg-card group-hover:bg-bg-card-hover transition-colors duration-500 rounded-md">
+        {isSpecialFolder ? (
+          <>
+            {/* Default Folder */}
+            <motion.img
+              src={`/${id}-folder.svg`}
+              alt={`${name} Folder`}
+              className="absolute inset-0 w-full h-full object-contain object-bottom p-6"
+              variants={{
+                initial: { opacity: 1 },
+                hover: { opacity: 0 }
+              }}
+              transition={{ duration: 0.4 }}
+            />
+            
+            {/* Final Asset State */}
+            <motion.img
+              src={id === 'favela' ? '/favela.svg' : `/${id}-asset.svg`}
+              alt={`${name} Asset`}
+              className="absolute inset-0 w-full h-full object-contain object-bottom p-6"
+              variants={{
+                initial: { opacity: 0, scale: 1 },
+                hover: { opacity: 1, scale: 1.25 }
+              }}
+              transition={{ duration: 0.4 }}
+              style={{ transformOrigin: "bottom" }}
+            />
+          </>
+        ) : (
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-110 rounded-md"
+          />
+        )}
       </div>
 
       {/* Product Name (Hover) */}
