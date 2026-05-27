@@ -1,3 +1,5 @@
+import { MapPin, Facebook, Instagram, Youtube, HelpCircle } from 'lucide-react';
+
 interface FooterProps {
   onBrandClick: () => void;
   onNavigate: (view: 'home' | 'shop' | 'journal') => void;
@@ -5,158 +7,138 @@ interface FooterProps {
 
 export default function Footer({ onNavigate }: FooterProps) {
   return (
-    <footer id="maginari-suitsupply-footer" className="bg-stone-100 text-neutral-950 pt-16 pb-24 px-6 md:px-12 border-t border-stone-200 select-none">
-      <div className="w-full max-w-7xl mx-auto font-sans">
+    <footer id="maginari-suitsupply-footer" className="bg-black text-white pt-16 pb-10 px-6 md:px-12 select-none font-sans">
+      <div className="w-full max-w-[1400px] mx-auto">
         
-        {/* SuitSupply Style Four Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 pb-16">
+        {/* Newsletter Section */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between pb-12 gap-8">
+          <h2 className="text-2xl md:text-[28px] font-bold text-white tracking-tight">
+            Get the latest on products and styling
+          </h2>
+          <div className="w-full md:w-[450px] relative">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              className="w-full bg-[#1a1a1a] text-white placeholder-gray-400 text-[13px] py-4 px-6 rounded-sm outline-none border border-transparent focus:border-gray-600 transition-colors"
+            />
+            <button className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-[13px] font-semibold hover:text-gray-300 transition-colors">
+              Subscribe
+            </button>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="w-full border-t border-[#1a1a1a] mb-12"></div>
+
+        {/* 5 Column Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4 pb-16">
           
-          {/* Column 1: Customer Service */}
-          <div className="space-y-4">
-            <h4 className="text-[12px] uppercase font-bold text-neutral-900 tracking-wide">
-              CUSTOMER SERVICE
-            </h4>
-            <ul className="space-y-3 text-[13px] text-neutral-700 font-normal">
-              <li>
-                <button onClick={() => onNavigate('shop')} className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Help & FAQs
-                </button>
+          {/* Column 1: Contact */}
+          <div className="space-y-6">
+            <h4 className="text-[13px] font-bold text-white tracking-wide">Contact</h4>
+            <ul className="space-y-3 text-[13px] text-gray-300">
+              <li className="flex gap-4">
+                <span className="w-16">WhatsApp:</span>
+                <span className="hover:text-white cursor-pointer">+44 7700 900077</span>
               </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Track Order
-                </span>
+              <li className="flex gap-4">
+                <span className="w-16">Call:</span>
+                <span className="hover:text-white cursor-pointer">0800 020 6227 <sup className="text-[9px]">FREE</sup></span>
               </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Returns & Exchanges
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Shipping
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Contact Us
-                </span>
+              <li className="flex gap-4">
+                <span className="w-16">Email:</span>
+                <span className="hover:text-white cursor-pointer">service@maginari.com</span>
               </li>
             </ul>
           </div>
 
-          {/* Column 2: About Us */}
-          <div className="space-y-4">
-            <h4 className="text-[12px] uppercase font-bold text-neutral-900 tracking-wide">
-              ABOUT US
-            </h4>
-            <ul className="space-y-3 text-[13px] text-neutral-700 font-normal">
-              <li>
-                <button onClick={() => onNavigate('journal')} className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Our Story
-                </button>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Careers
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Sustainability
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Store Locator
-                </span>
-              </li>
+          {/* Column 2: Shop By */}
+          <div className="space-y-6">
+            <h4 className="text-[13px] font-bold text-white tracking-wide">Shop By</h4>
+            <ul className="space-y-3 text-[13px] text-gray-300">
+              <li><button onClick={() => onNavigate('shop')} className="hover:text-white cursor-pointer transition-colors">Suits</button></li>
+              <li><button onClick={() => onNavigate('shop')} className="hover:text-white cursor-pointer transition-colors">Jackets & Blazers</button></li>
+              <li><button onClick={() => onNavigate('shop')} className="hover:text-white cursor-pointer transition-colors">Trousers</button></li>
+              <li><button onClick={() => onNavigate('shop')} className="hover:text-white cursor-pointer transition-colors">Shirts</button></li>
+              <li><button onClick={() => onNavigate('shop')} className="hover:text-white cursor-pointer transition-colors">Coats</button></li>
             </ul>
           </div>
 
-          {/* Column 3: Explore */}
-          <div className="space-y-4">
-            <h4 className="text-[12px] uppercase font-bold text-neutral-900 tracking-wide">
-              EXPLORE
-            </h4>
-            <ul className="space-y-3 text-[13px] text-neutral-700 font-normal">
-              <li>
-                <button onClick={() => onNavigate('shop')} className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Custom Made
-                </button>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Weddings
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Lookbook
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Gift Cards
-                </span>
-              </li>
+          {/* Column 3: Support */}
+          <div className="space-y-6">
+            <h4 className="text-[13px] font-bold text-white tracking-wide">Support</h4>
+            <ul className="space-y-3 text-[13px] text-gray-300">
+              <li><span className="hover:text-white cursor-pointer transition-colors">Shipping & Delivery</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Returns & Exchanges</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Perfect Fit Guides</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">FAQ</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Terms & Conditions</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Accessibility</span></li>
             </ul>
           </div>
 
-          {/* Column 4: Legal & Policies */}
-          <div className="space-y-4">
-            <h4 className="text-[12px] uppercase font-bold text-neutral-900 tracking-wide">
-              LEGAL
-            </h4>
-            <ul className="space-y-3 text-[13px] text-neutral-700 font-normal">
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Privacy Policy
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Terms & Conditions
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Accessibility
-                </span>
-              </li>
-              <li>
-                <span className="hover:underline hover:text-black cursor-pointer transition-colors duration-200">
-                  Cookie Settings
-                </span>
-              </li>
+          {/* Column 4: Services */}
+          <div className="space-y-6">
+            <h4 className="text-[13px] font-bold text-white tracking-wide">Services</h4>
+            <ul className="space-y-3 text-[13px] text-gray-300">
+              <li><span className="hover:text-white cursor-pointer transition-colors">Plan Your Visit</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Custom Suits</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Alterations</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Size Passport</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Gift Cards</span></li>
+            </ul>
+          </div>
+
+          {/* Column 5: About */}
+          <div className="space-y-6">
+            <h4 className="text-[13px] font-bold text-white tracking-wide">About</h4>
+            <ul className="space-y-3 text-[13px] text-gray-300">
+              <li><button onClick={() => onNavigate('journal')} className="hover:text-white cursor-pointer transition-colors">Store Experience</button></li>
+              <li><button onClick={() => onNavigate('journal')} className="hover:text-white cursor-pointer transition-colors">Our Story</button></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Press</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Sustainability</span></li>
+              <li><span className="hover:text-white cursor-pointer transition-colors">Careers</span></li>
             </ul>
           </div>
 
         </div>
 
-        {/* Minimal Bottom Location & Copyright Bar with classic SuitSupply styling */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between pt-8 border-t border-stone-200 text-neutral-500 text-[11px] gap-6">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 w-full md:w-auto">
-            <span className="text-black font-bold uppercase flex items-center gap-2 cursor-pointer hover:underline">
-              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="16" height="12" fill="#00247D"/>
-                <path d="M0 0L16 12ZM16 0L0 12Z" stroke="white" strokeWidth="1.5"/>
-                <path d="M0 0L16 12ZM16 0L0 12Z" stroke="#CF142B" strokeWidth="0.8"/>
-                <path d="M8 0V12ZM0 6H16Z" stroke="white" strokeWidth="2.5"/>
-                <path d="M8 0V12ZM0 6H16Z" stroke="#CF142B" strokeWidth="1.5"/>
-              </svg>
-              United Kingdom - £ / EN
-            </span>
+        {/* Sustainability Leader Badge */}
+        <div className="flex items-center gap-3 pb-8">
+          <div className="w-8 h-4 bg-red-600 flex items-center justify-center text-[8px] font-bold uppercase rounded-sm overflow-hidden">
+            <span className="bg-white text-red-600 px-1 py-0.5">WEAR</span>
+            <span className="px-1 py-0.5">FAIR</span>
           </div>
+          <span className="text-[12px] text-gray-300">Sustainability Leader</span>
+        </div>
+
+        {/* Bottom Divider */}
+        <div className="w-full border-t border-[#1a1a1a] mb-6"></div>
+
+        {/* Bottom Footer Bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between text-[11px] text-gray-400 gap-6">
           
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <span className="hover:text-black cursor-pointer hover:underline">Instagram</span>
-            <span className="hover:text-black cursor-pointer hover:underline">Facebook</span>
-            <span className="hover:text-black cursor-pointer hover:underline">YouTube</span>
-            <span className="hover:text-black cursor-pointer hover:underline">Pinterest</span>
-            <span className="hover:text-black cursor-pointer hover:underline">WeChat</span>
-            <span className="ml-4">&copy; {new Date().getFullYear()} MAGINARI</span>
+          {/* Location */}
+          <div className="flex items-center gap-2 hover:text-white cursor-pointer transition-colors">
+            <MapPin className="w-3.5 h-3.5" />
+            <span>United Kingdom | English</span>
           </div>
+
+          {/* Socials */}
+          <div className="flex items-center gap-6 text-white">
+            <Facebook className="w-4 h-4 cursor-pointer hover:opacity-75 transition-opacity" />
+            <Instagram className="w-4 h-4 cursor-pointer hover:opacity-75 transition-opacity" />
+            <svg className="w-4 h-4 cursor-pointer hover:opacity-75 transition-opacity" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 15.68l.06.32a6.32 6.32 0 0 0 11.4-3.52V9.32a8.23 8.23 0 0 0 5.43 2.05v-3.4a4.7 4.7 0 0 1-2.3-.28z"/></svg> {/* TikTok Custom SVG */}
+            <Youtube className="w-4.5 h-4.5 cursor-pointer hover:opacity-75 transition-opacity" />
+          </div>
+
+          {/* Legal */}
+          <div className="flex items-center gap-2">
+            <span className="hover:text-white cursor-pointer transition-colors">Privacy Statement</span>
+            <span className="text-gray-600">|</span>
+            <span className="hover:text-white cursor-pointer transition-colors">Terms & Conditions</span>
+          </div>
+
         </div>
 
       </div>
