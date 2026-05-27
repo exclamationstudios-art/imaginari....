@@ -7,8 +7,18 @@ interface FooterProps {
 
 export default function Footer({ onNavigate }: FooterProps) {
   return (
-    <footer id="maginari-suitsupply-footer" className="bg-black text-white pt-20 pb-10 px-6 md:px-12 select-none font-sans">
-      <div className="w-full">
+    <footer id="maginari-suitsupply-footer" className="relative overflow-hidden bg-black text-white pt-20 pb-10 px-6 md:px-12 select-none font-sans">
+      {/* Model backdrop image cropped from bottom by 30px */}
+      <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[380px] md:h-[480px] pointer-events-none select-none z-0 opacity-40">
+        <img 
+          src="/footer-model.png" 
+          alt="Footer Model Backdrop" 
+          className="w-full h-full object-contain object-bottom"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+
+      <div className="w-full relative z-10">
         
         {/* Newsletter Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between pb-12 gap-8">
@@ -30,11 +40,11 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Divider */}
         <div className="w-full border-t border-[#1a1a1a] mb-12"></div>
 
-        {/* 5 Column Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4 pb-16">
+        {/* 5 Column Grid - Staggered along the model's body */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4 pb-28 pt-10">
           
           {/* Column 1: Contact */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:translate-y-[45px] transition-transform duration-500">
             <h4 className="text-[13px] font-bold text-white tracking-wide">Contact</h4>
             <ul className="space-y-3 text-[13px] text-gray-300">
               <li className="flex gap-4">
@@ -53,7 +63,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           {/* Column 2: Shop By */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:translate-y-[15px] transition-transform duration-500">
             <h4 className="text-[13px] font-bold text-white tracking-wide">Shop By</h4>
             <ul className="space-y-3 text-[13px] text-gray-300">
               <li><button onClick={() => onNavigate('shop')} className="hover:text-white cursor-pointer transition-colors">Suits</button></li>
@@ -65,7 +75,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           {/* Column 3: Support */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:translate-y-[-15px] transition-transform duration-500">
             <h4 className="text-[13px] font-bold text-white tracking-wide">Support</h4>
             <ul className="space-y-3 text-[13px] text-gray-300">
               <li><span className="hover:text-white cursor-pointer transition-colors">Shipping & Delivery</span></li>
@@ -78,7 +88,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           {/* Column 4: Services */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:translate-y-[15px] transition-transform duration-500">
             <h4 className="text-[13px] font-bold text-white tracking-wide">Services</h4>
             <ul className="space-y-3 text-[13px] text-gray-300">
               <li><span className="hover:text-white cursor-pointer transition-colors">Plan Your Visit</span></li>
@@ -90,7 +100,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           {/* Column 5: About */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:translate-y-[50px] transition-transform duration-500">
             <h4 className="text-[13px] font-bold text-white tracking-wide">About</h4>
             <ul className="space-y-3 text-[13px] text-gray-300">
               <li><button onClick={() => onNavigate('journal')} className="hover:text-white cursor-pointer transition-colors">Store Experience</button></li>
