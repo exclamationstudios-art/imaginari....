@@ -8,7 +8,7 @@ interface FooterProps {
 export default function Footer({ onNavigate }: FooterProps) {
   return (
     <footer id="maginari-suitsupply-footer" className="bg-black text-white pt-20 pb-10 px-6 md:px-12 select-none font-sans">
-      <div className="w-full max-w-[1400px] mx-auto">
+      <div className="w-full">
         
         {/* Newsletter Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between pb-12 gap-8">
