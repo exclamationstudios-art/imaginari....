@@ -21,7 +21,7 @@ export default function Hero({ onShopClick }: { onShopClick: () => void }) {
       </div>
 
       {/* Hero Content - Bottom Left */}
-      <div className="relative h-full w-full flex flex-col justify-end items-start pb-8 text-white z-10 px-6 md:px-8">
+      <div className="relative h-full w-full flex flex-col justify-end items-start pb-4 text-white z-10 px-6 md:px-8">
         <div className="space-y-6 text-left">
           <h1 className="text-6xl sm:text-7xl md:text-[8.5rem] font-sans font-black tracking-tighter uppercase leading-[0.8] text-white">
             CT Uniform

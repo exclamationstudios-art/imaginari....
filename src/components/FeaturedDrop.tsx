@@ -43,18 +43,18 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
   const stream2Single = products.find(p => p.id === 'storm-cargo-pants') || products[0];
 
   return (
-    <section id="featured-drop" className="w-full bg-stone-100 select-none pb-12 pt-2">
-      <div className="w-full space-y-2">
+    <section id="featured-drop" className="w-full bg-stone-100 select-none pb-0 pt-0">
+      <div className="w-full">
         
         {/* ==================== STREAM 1: [ 3 - 5 - 1 ] ==================== */}
         <div className="w-full">
           {/* 3 Layout : Large Columns (Zero Gaps, Adjoining) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-y border-stone-200 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 w-full">
             {stream1Big.map((item) => (
               <div
                 key={item.id}
                 onClick={() => onProductClick(item.id)}
-                className="relative aspect-[2/3] overflow-hidden bg-stone-200 group cursor-pointer border-r last:border-r-0 border-stone-200"
+                className="relative aspect-[2/3] overflow-hidden bg-stone-200 group cursor-pointer"
               >
                 <img
                   src={item.images[0]}
@@ -79,14 +79,14 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
 
           {/* 5 Layout : Horizontal Scrolling row immediately after with zero vertical gap */}
           <div 
-            className="flex overflow-x-auto scrollbar-none snap-x snap-mandatory gap-0 w-full border-b border-stone-200"
+            className="flex overflow-x-auto scrollbar-none snap-x snap-mandatory gap-0 w-full"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {stream1Small.map((item) => (
               <div
                 key={item.id}
                 onClick={() => onProductClick(item.id)}
-                className="snap-start flex-none w-[70vw] sm:w-[45vw] md:w-[32vw] lg:w-[20vw] relative aspect-[3/4.2] overflow-hidden bg-stone-150 group cursor-pointer border-r last:border-r-0 border-stone-200"
+                className="snap-start flex-none w-[70vw] sm:w-[45vw] md:w-[32vw] lg:w-[20vw] relative aspect-[3/4.2] overflow-hidden bg-stone-150 group cursor-pointer"
               >
                 <img
                   src={item.images[0]}
@@ -113,7 +113,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           {stream1Single && (
             <div
               onClick={() => onProductClick(stream1Single.id)}
-              className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-stone-200 group cursor-pointer border-b border-stone-200"
+              className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-stone-200 group cursor-pointer"
             >
               <img
                 src={stream1Single.images[0]}
@@ -136,18 +136,15 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           )}
         </div>
 
-        {/* ==================== 8px VERTICAL SPACER FOR STREAMS (Matches Hero) ==================== */}
-        <div className="h-2 w-full bg-stone-100" />
-
         {/* ==================== STREAM 2: [ 2 - 4 - 1 ] ==================== */}
-        <div className="w-full">
+        <div className="w-full mt-4">
           {/* 2 Layout : Large Columns (Zero Gaps, Adjoining) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border-y border-stone-200 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 w-full">
             {stream2Big.map((item) => (
               <div
                 key={item.id}
                 onClick={() => onProductClick(item.id)}
-                className="relative aspect-[2/3] overflow-hidden bg-stone-200 group cursor-pointer border-r last:border-r-0 border-stone-200"
+                className="relative aspect-[2/3] overflow-hidden bg-stone-200 group cursor-pointer"
               >
                 <img
                   src={item.images[0]}
@@ -172,14 +169,14 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
 
           {/* 4 Layout : Horizontal Scrolling row immediately after with zero vertical gap */}
           <div 
-            className="flex overflow-x-auto scrollbar-none snap-x snap-mandatory gap-0 w-full border-b border-stone-200"
+            className="flex overflow-x-auto scrollbar-none snap-x snap-mandatory gap-0 w-full"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {stream2Small.map((item) => (
               <div
                 key={item.id}
                 onClick={() => onProductClick(item.id)}
-                className="snap-start flex-none w-[75vw] sm:w-[50vw] md:w-[33vw] lg:w-[25vw] relative aspect-[3/4.2] overflow-hidden bg-stone-150 group cursor-pointer border-r last:border-r-0 border-stone-200"
+                className="snap-start flex-none w-[75vw] sm:w-[50vw] md:w-[33vw] lg:w-[25vw] relative aspect-[3/4.2] overflow-hidden bg-stone-150 group cursor-pointer"
               >
                 <img
                   src={item.images[0]}
@@ -206,7 +203,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           {stream2Single && (
             <div
               onClick={() => onProductClick(stream2Single.id)}
-              className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-stone-200 group cursor-pointer border-b border-stone-200"
+              className="relative w-full aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-stone-200 group cursor-pointer"
             >
               <img
                 src={stream2Single.images[0]}
