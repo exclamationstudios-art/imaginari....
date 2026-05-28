@@ -7,7 +7,7 @@ interface FooterProps {
 
 export default function Footer({ onNavigate }: FooterProps) {
   return (
-    <footer id="maginari-suitsupply-footer" className="relative overflow-hidden bg-black text-white pt-20 pb-10 px-6 md:px-12 select-none font-sans">
+    <footer id="maginari-suitsupply-footer" className="relative overflow-hidden bg-black text-white pt-14 pb-10 px-[20px] select-none font-sans">
       {/* Model backdrop image cropped from bottom by 30px */}
       <div className="absolute bottom-[-30px] left-1/2 -translate-x-1/2 w-full max-w-[1400px] h-[380px] md:h-[480px] pointer-events-none select-none z-0 opacity-40">
         <img 
