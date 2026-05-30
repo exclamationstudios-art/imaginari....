@@ -65,8 +65,8 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
 
       <div className="w-full flex flex-col gap-[1px] px-[1px] bg-stone-300">
         
-        {/* BRAND BANNER 1: COC (66px height) */}
-        <div className="w-full h-[66px] bg-stone-900 relative overflow-hidden select-none">
+        {/* BRAND BANNER 1: COC (120px height) */}
+        <div className="w-full h-[120px] bg-stone-900 relative overflow-hidden select-none">
           {/* Background Model Campaign Image (spanning full width, sharp on right) */}
           <div className="absolute inset-0 w-full h-full bg-neutral-900">
             <img
@@ -78,12 +78,12 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
 
           {/* Left 1/3: Glassmorphic blur overlay with brand logo */}
-          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/45 backdrop-blur-md flex items-center justify-center border-r border-white/5">
+          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
             {/* Soft backdrop glow behind logo */}
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[38px] h-[38px] text-[#c7bb8b]">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[56px] h-[56px] text-[#c7bb8b]">
                 <circle cx="50" cy="50" r="35" strokeWidth="2.5" />
                 <path d="M50 15a35 35 0 0 0-35 35 35 35 0 0 0 35 35M50 27a23 23 0 0 0-23 23 23 23 0 0 0 23 23" strokeWidth="1.8" />
                 <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none" />
@@ -95,7 +95,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
 
           {/* Blur Transition Fade Gradient */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/45 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
           {/* Right Text */}
           <div className="absolute bottom-1/2 translate-y-1/2 right-6 text-white text-right z-10 font-sans tracking-[0.2em] pointer-events-none select-none">
@@ -130,8 +130,8 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           ))}
         </div>
 
-        {/* BRAND BANNER 2: FAVELA (66px height - before the 5 frames) */}
-        <div className="w-full h-[66px] bg-stone-900 relative overflow-hidden select-none">
+        {/* BRAND BANNER 2: FAVELA (120px height - before the 5 frames) */}
+        <div className="w-full h-[120px] bg-stone-900 relative overflow-hidden select-none">
           {/* Background Model Campaign Image */}
           <div className="absolute inset-0 w-full h-full bg-neutral-900">
             <img
@@ -143,11 +143,11 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
 
           {/* Left 1/3: Glassmorphic blur overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/45 backdrop-blur-md flex items-center justify-center border-r border-white/5">
+          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[38px] h-[38px] text-[#c7bb8b]">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[56px] h-[56px] text-[#c7bb8b]">
                 <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" strokeWidth="2.5" />
                 <path d="M40 35h20M40 50h12M40 35v30" strokeWidth="3" strokeLinecap="round" />
               </svg>
@@ -158,7 +158,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
 
           {/* Blur Transition Fade Gradient */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/45 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
           {/* Right Text */}
           <div className="absolute bottom-1/2 translate-y-1/2 right-6 text-white text-right z-10 font-sans tracking-[0.2em] pointer-events-none select-none">
@@ -271,8 +271,8 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           ))}
         </div>
 
-        {/* BRAND BANNER 3: 8TERNITY (66px height - before the 4 frames) */}
-        <div className="w-full h-[66px] bg-stone-900 relative overflow-hidden select-none">
+        {/* BRAND BANNER 3: 8TERNITY (120px height - before the 4 frames) */}
+        <div className="w-full h-[120px] bg-stone-900 relative overflow-hidden select-none">
           {/* Background Model Campaign Image */}
           <div className="absolute inset-0 w-full h-full bg-neutral-900">
             <img
@@ -284,11 +284,11 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
 
           {/* Left 1/3: Glassmorphic blur overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/45 backdrop-blur-md flex items-center justify-center border-r border-white/5">
+          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[38px] h-[38px] text-[#c7bb8b]">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[56px] h-[56px] text-[#c7bb8b]">
                 <path d="M28 38c-6.6 0-12 5.4-12 12s5.4 12 12 12c6.2 0 11.3-4.2 11.9-10h20.2c.6 5.8 5.7 10 11.9 10 6.6 0 12-5.4 12-12s-5.4-12-12-12c-6.2 0-11.3 4.2-11.9 10H39.9c-.6-5.8-5.7-10-11.9-10z" />
               </svg>
               <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-stone-300 font-bold hidden sm:inline">
@@ -298,7 +298,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
 
           {/* Blur Transition Fade Gradient */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/45 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
           {/* Right Text */}
           <div className="absolute bottom-1/2 translate-y-1/2 right-6 text-white text-right z-10 font-sans tracking-[0.2em] pointer-events-none select-none">
