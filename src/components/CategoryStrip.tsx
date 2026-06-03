@@ -7,46 +7,16 @@ interface CategoryStripProps {
 
 const CATEGORY_ITEMS = [
   {
-    name: 'Outerwear',
-    image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=400',
-    count: '3 items',
-    desc: 'Weatherproof heavy shells'
+    name: 'Crop Tees',
+    image: '/shirts/GREEN OFFICIAL COC CROP T SHIRT.jpg',
+    count: '4 items',
+    desc: 'Cropped raw hem silhouettes'
   },
   {
-    name: 'Hoodies',
-    image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=400',
-    count: '1 item',
-    desc: 'Dense carded loungewear'
-  },
-  {
-    name: 'Tees',
-    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=400',
-    count: '1 item',
-    desc: 'Heavy boxy mocknecks'
-  },
-  {
-    name: 'Trousers',
-    image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=400',
-    count: '1 item',
-    desc: 'Architectural cargo rips'
-  },
-  {
-    name: 'Bags',
-    image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=400',
-    count: '1 item',
-    desc: 'Water-sealed commuter gear'
-  },
-  {
-    name: 'Accessories',
-    image: 'https://images.unsplash.com/photo-1576871337622-98d48d4aa53e?auto=format&fit=crop&q=80&w=400',
-    count: '1 item',
-    desc: 'Merino watchbeanies'
-  },
-  {
-    name: 'Footwear',
-    image: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=80&w=400',
-    count: '1 item',
-    desc: 'Vibram-lugged combat build'
+    name: 'Regular Tees',
+    image: '/shirts/coc ash reg 2.jpg',
+    count: '4 items',
+    desc: 'Heavy boxy relaxed classics'
   }
 ];
 

@@ -37,288 +37,208 @@ export const BRANDS: Brand[] = [
 
 export const PRODUCTS: Product[] = [
   {
-    id: 'hydro-tech-parka',
-    brand: 'RAINS',
-    name: 'Hydro-Tech Modular Parka',
-    price: 175,
-    originalPrice: 210,
+    id: 'green-coc-crop-tee',
+    brand: 'NUDE PROJECT',
+    name: 'Green COC Crop T-Shirt',
+    price: 65,
     images: [
-      'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&q=80&w=1000'
+      '/shirts/GREEN OFFICIAL COC CROP T SHIRT.jpg',
+      '/shirts/ICNOS OFFICIAL BACK CROP T SHIRT GREEN.jpg'
     ],
     colours: [
-      { name: 'Charcoal Black', hex: '#1E2022' },
-      { name: 'Silt Grey', hex: '#8b8c89' },
-      { name: 'Olive Green', hex: '#444A3D' }
+      { name: 'Sage Green', hex: '#7a8a78' }
+    ],
+    sizes: ['XS', 'S', 'M', 'L'],
+    category: 'Crop Tees',
+    gender: 'Unisex',
+    isNew: true,
+    isDrop: true,
+    details: [
+      '100% heavyweight cotton fabrication',
+      'Cropped raw-hem relaxed silhouette',
+      'Chest official COC screenprint typography',
+      'Contrast rib crewneck collar'
+    ],
+    fit: 'Boxy cropped silhouette. Sits at the waist. We recommend taking your standard size.',
+    delivery: 'Standard priority delivery within 3-5 business days. Packed in 100% compostable mailers.',
+    returns: '30-day standard return window. Item must remain unworn with original tags attached.'
+  },
+  {
+    id: 'white-coc-crop-tee',
+    brand: 'NUDE PROJECT',
+    name: 'White COC Crop T-Shirt',
+    price: 65,
+    images: [
+      '/shirts/white coc crop t shirt.jpg'
+    ],
+    colours: [
+      { name: 'Chalk White', hex: '#FAFAFA' }
+    ],
+    sizes: ['XS', 'S', 'M', 'L'],
+    category: 'Crop Tees',
+    gender: 'Unisex',
+    isNew: true,
+    details: [
+      'Premium organic cotton weave',
+      'Cropped boxy fit with raw edge detail',
+      'Minimalist contrast chest branding print',
+      'Reinforced neckband detailing'
+    ],
+    fit: 'Relaxed crop cut. Designed for high-waisted styling.',
+    delivery: 'Complimentary shipping inside EU. Dispatched same day.',
+    returns: 'Easy 14-day exchange policy.'
+  },
+  {
+    id: 'black-coc-crop-tee',
+    brand: 'NUDE PROJECT',
+    name: 'Black COC Crop T-Shirt',
+    price: 65,
+    images: [
+      '/shirts/black coc cropt shirt back.jpg'
+    ],
+    colours: [
+      { name: 'Charcoal Black', hex: '#1E2022' }
+    ],
+    sizes: ['XS', 'S', 'M', 'L'],
+    category: 'Crop Tees',
+    gender: 'Unisex',
+    details: [
+      'Structured heavy-weight knit cotton',
+      'Signature back graphic official COC branding',
+      'Relaxed boxy body with crop finish',
+      'Ribbed high mockneck detail'
+    ],
+    fit: 'Slightly oversized cropped build. Take one size down for a snug fit.',
+    delivery: 'Express carbon-neutral shipping available on checkout.',
+    returns: '30-day trials. Return label inside the package.'
+  },
+  {
+    id: 'icons-crop-tee',
+    brand: 'HELIOT EMIL',
+    name: 'Icons Crop T-Shirt',
+    price: 75,
+    images: [
+      '/shirts/icons srop t shirt.jpg',
+      '/shirts/ICONS 1.jpg'
+    ],
+    colours: [
+      { name: 'Off-White', hex: '#EBE6DF' }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
-    category: 'Outerwear',
+    category: 'Crop Tees',
     gender: 'Unisex',
-    isNew: true,
     isDrop: true,
     details: [
-      'Water column pressure: 4000mm',
-      'Windproof rating: 0.02mm air permeability',
-      'Ultrasonically double-welded seams',
-      'Engineered multi-functional storm hood with peak',
-      'Coated storm-flap zipper with storm guard'
+      'High-grade technical cotton blend',
+      'Signature distressed asymmetric graphic prints',
+      'Boxy short torso cut with detailed double stitching',
+      'Heliot Emil structural metal carabiner attachment on hem'
     ],
-    fit: 'Relaxed utilitarian. Intended for styling over winter sweaters and mid-layers. Draft cord hem allows custom crop adjustment.',
-    delivery: 'Complimentary standard delivery over £100. Dispatched in 100% recyclable, flat-pack envelopes to minimize transit space.',
-    returns: '30-day trial window. Return labels included in each delivery box. Fully processed within 5 business days.'
+    fit: 'Short boxy fit with custom side cinches.',
+    delivery: 'Free standard shipping. DHL Express worldwide.',
+    returns: '14-day return window. Protective metal tag must be intact.'
   },
   {
-    id: 'core-lounge-hoodie',
-    brand: 'NUDE PROJECT',
-    name: 'Core Heavy-Weight Hoodie',
-    price: 90,
-    images: [
-      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80&w=1000'
-    ],
-    colours: [
-      { name: 'Stone Beige', hex: '#E1DBD6' },
-      { name: 'Acid-Wash Black', hex: '#313233' },
-      { name: 'Washed Royal Blue', hex: '#233246' }
-    ],
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    category: 'Hoodies',
-    gender: 'Unisex',
-    isNew: true,
-    details: [
-      '100% Portuguese carded organic cotton',
-      'Heavy-weight 480gsm ultra-dense knit fabric',
-      'Loopback interior brushing for structural loft',
-      'Embossed tonal puff-print brand typography on chest',
-      'Double-lined hood without strings'
-    ],
-    fit: 'Drop-shoulder architectural fit. Boxy torso with ribbed waistband and structured sleeve drape.',
-    delivery: 'Dispatched within 24 hours. DHL Express and local collection hub pickup available on checkout.',
-    returns: 'Refund or exchange within 14 days of receipt. Protective retail tags must remain fully intact.'
-  },
-  {
-    id: 'storm-cargo-pants',
-    brand: 'HELIOT EMIL',
-    name: 'Asymmetric Storm Cargo Pants',
-    price: 145,
-    originalPrice: 180,
-    images: [
-      'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&q=80&w=1000'
-    ],
-    colours: [
-      { name: 'Asphalt Slate', hex: '#4A4E51' },
-      { name: 'Matte Black', hex: '#141414' }
-    ],
-    sizes: ['28', '30', '32', '34', '36'],
-    category: 'Trousers',
-    gender: 'Men',
-    isDrop: true,
-    details: [
-      'Reinforced cotton-nylon ripstop blend',
-      'Carbon-zero fluorocarbon-free water-repellent (DWR) coating',
-      'Structured volume cargo pockets with internal compression straps',
-      'Signature Heliot Emil engraved metal carabiner at left hip belt-loop',
-      'Ankle toggle adjusters for convertible taper styling'
-    ],
-    fit: 'Wide, straight leg profile. Sit medium-high on the waist. Fully customizable taper at hem.',
-    delivery: 'Free priority shipping inside continental UK and EU. Duties paid upfront for international destinations.',
-    returns: 'Hassle-free 30 days returns. Re-usable paper mailing bags included.'
-  },
-  {
-    id: 'boxy-heavy-tee',
+    id: 'coc-ash-reg-tee',
     brand: 'TEKLA',
-    name: 'Heavy-Weight Organic Tee',
+    name: 'COC Ash Regular T-Shirt',
     price: 55,
     images: [
-      'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=1000'
+      '/shirts/coc ash reg 2.jpg',
+      '/shirts/ash t shirt coc reg bAck.jpg'
     ],
     colours: [
-      { name: 'Chalk White', hex: '#FAFAFA' },
-      { name: 'Washed Charcoal', hex: '#37383B' },
-      { name: 'Burnt Ochre', hex: '#A86C45' }
-    ],
-    sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    category: 'Tees',
-    gender: 'Unisex',
-    isNew: true,
-    details: [
-      '100% certified organic long-staple cotton yarn',
-      '280gsm dense jersey with a smooth structural handfeel',
-      'Reinforced double-rib high collar',
-      'Seamless split shoulders for active horizontal comfort',
-      'Fabric pre-washed to eliminate post-purchase shrinking'
-    ],
-    fit: 'Modern Scandinavian boxy fit. Wide body, relaxed shoulders, sleeve terminates just above the elbow.',
-    delivery: 'Eco-conscious minimal packaging. Dispatched standard or express under secure tracking.',
-    returns: '100% full money-back guarantee within 30 days. Items must be unwashed.'
-  },
-  {
-    id: 'waterproof-commute-tote',
-    brand: 'RAINS',
-    name: 'Shield Waterproof Tote Bag',
-    price: 85,
-    images: [
-      'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&q=80&w=1000'
-    ],
-    colours: [
-      { name: 'Vapor Sand', hex: '#EBE6DF' },
-      { name: 'Stealth Black', hex: '#161617' }
-    ],
-    sizes: ['One Size'],
-    category: 'Bags',
-    gender: 'Unisex',
-    details: [
-      'Outer fabrication: 100% waterproof polyester with polyurethane finish',
-      '18-litre active volume capacity',
-      'Internal neoprene padded laptop chamber (fits up to 16” Macbook)',
-      'Waterproof seam-sealed laser matte zippers',
-      'Ergonomic webbing shoulder straps with secure neoprene pads'
-    ],
-    fit: 'Clean structural geometric tote. Stays upright when placed on flat surfaces due to heavy structured base paneling.',
-    delivery: 'Free shipping on orders over £100. International shipping with DHL.',
-    returns: '30 days standard return policy.'
-  },
-  {
-    id: 'thermal-gilet-vest',
-    brand: 'HELIOT EMIL',
-    name: 'Modular Thermal Shell Vest',
-    price: 120,
-    images: [
-      'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=1000'
-    ],
-    colours: [
-      { name: 'Slate Matte Grey', hex: '#636D70' },
-      { name: 'Obsidian Black', hex: '#0D0E10' }
+      { name: 'Ash Grey', hex: '#A8AAA9' }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
-    category: 'Outerwear',
-    gender: 'Men',
-    details: [
-      'Primaloft Eco recycled thermal micro-fiber insulation',
-      'Windproof micro-ripstop structural shell framework',
-      'Dual multi-tier diagonal chest pocketing with heavy buckle closure',
-      'Reflective tape trimming along rear shoulder yoke',
-      'Asymmetric dual neck zippers'
-    ],
-    fit: 'Slightly cropped technical outline. Fits close to the torso. Adjustable side cinch-buckles.',
-    delivery: 'Secure courier dispatch. Tracking number supplied automatically upon courier collection.',
-    returns: '30-day returns accepted. Please use our digital ticket portal to download your prepaid labels.'
-  },
-  {
-    id: 'brutal-combat-boot',
-    brand: 'HELIOT EMIL',
-    name: 'Industrial Lugged Combat Boot',
-    price: 210,
-    originalPrice: 280,
-    images: [
-      'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&q=80&w=1000'
-    ],
-    colours: [
-      { name: 'Coal Black', hex: '#161718' },
-      { name: 'Oatmeal Nubuck', hex: '#C2B9A9' }
-    ],
-    sizes: ['40', '41', '42', '43', '44', '45'],
-    category: 'Footwear',
+    category: 'Regular Tees',
     gender: 'Unisex',
     isNew: true,
     details: [
-      'Full-grain waterproof Italian leather hide',
-      'Vibram heavy-lug compound rubber outsole with mud guards',
-      'Speed-lacing stainless steel industrial eyelets',
-      'Removable shock-preventing leather footbed',
-      'Embossed technical specifications label on lateral heel'
+      '100% organic cotton long-staple yarn',
+      'Classic midweight 240gsm jersey weave',
+      'Chest logo and large back official brand print',
+      'Pre-shrunk fabric treatment'
     ],
-    fit: 'Narrow military box. We recommend sizing down one full size if in-between standard dimensions.',
-    delivery: 'Packed inside structural branded cardboard case. Shipping fully insured.',
-    returns: '30-day return policy. Outer sole must display absolutely zero street markings or friction wear.'
+    fit: 'Scandinavian relaxed standard fit. Fits true to size.',
+    delivery: 'Delivered in minimal custom paper packaging.',
+    returns: 'Full refund guarantee within 30 days.'
   },
   {
-    id: 'merino-rib-beanie',
-    brand: 'TEKLA',
-    name: 'Fine-Rib Merino Beanie',
-    price: 40,
+    id: 'coc-green-reg-tee',
+    brand: 'RAINS',
+    name: 'COC Green Regular T-Shirt',
+    price: 55,
     images: [
-      'https://images.unsplash.com/photo-1576871337622-98d48d4aa53e?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=1000'
+      '/shirts/coc reg green .jpg',
+      '/shirts/green reg back coc.psd.jpg'
     ],
     colours: [
-      { name: 'Charcoal Grey', hex: '#3E4145' },
-      { name: 'Desert Sand', hex: '#EBE1D3' },
-      { name: 'Oxblood Red', hex: '#631B1E' }
+      { name: 'Forest Green', hex: '#444A3D' }
     ],
-    sizes: ['One Size'],
-    category: 'Accessories',
+    sizes: ['S', 'M', 'L', 'XL'],
+    category: 'Regular Tees',
     gender: 'Unisex',
     details: [
-      '100% fine-spun merino thermal wool',
-      'Heavy dual-ply flat rib knit construction',
-      'Wide adjustable cuff fold with minimal raw stitched label',
-      'Excellent breathability and moisture extraction',
-      'Odor resistant fibers'
+      'Premium breathable cotton fabric',
+      'Dual-faced print with bold back typography',
+      'Perfect layering weight for transitional climates',
+      'Split double-needle reinforced side seams'
     ],
-    fit: 'Standard urban watch-cap. Offers adaptable fit ranging from slouchy to cropped snug over the ears.',
-    delivery: 'Sent in flat envelopes. Dispatched same day if ordered before 3:00 PM GMT.',
-    returns: 'Accessories can be returned within 14 days if completely unworn with sanitary seal attached.'
+    fit: 'Regular straight-cut profile. Clean drape.',
+    delivery: 'Tracked standard delivery. Duties paid upfront.',
+    returns: '30-day easy return service.'
   },
   {
-    id: 'industrial-steel-watch',
+    id: 'coc-black-reg-tee',
     brand: 'HELIOT EMIL',
-    name: 'Industrial Monolith Steel Watch',
-    price: 245,
+    name: 'COC Black Regular T-Shirt',
+    price: 60,
     images: [
-      'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&q=80&w=1000'
+      '/shirts/coc regula t shirt black frint.jpg',
+      '/shirts/greenblack reg back coc.psd.jpg'
     ],
     colours: [
-      { name: 'Brushed Chrome', hex: '#D2D2D2' },
-      { name: 'Matte Stealth Black', hex: '#1C1C1C' }
+      { name: 'Matte Black', hex: '#141414' }
     ],
-    sizes: ['One Size'],
-    category: 'Accessories',
+    sizes: ['S', 'M', 'L', 'XL', '2XL'],
+    category: 'Regular Tees',
     gender: 'Unisex',
+    isDrop: true,
     details: [
-      'Surgical-grade 316L sandblasted stainless steel casing',
-      'Minimal dial face without brand credentials or indexing markers',
-      'Miyota precision Japanese quartz movement',
-      'Double-domed sapphire crystal dial window',
-      'Integrated heavy mesh architectural strap'
+      'Heavyweight 280gsm dense cotton knit',
+      'Tonal front graphics and high-contrast back prints',
+      'Ribbed high crewneck collar',
+      'Architectural shoulder seams'
     ],
-    fit: 'Unisex dimensioning. Toolless modular strap adjustment matches wrists from 145mm to 215mm.',
-    delivery: 'Complimentary tracked courier delivery. Heavy presentation display case included.',
-    returns: '30-day window. Protective plastic overlays must remain untouched.'
+    fit: 'Oversized boxy fit. Drop shoulders.',
+    delivery: 'Express next-day shipping available in UK and EU.',
+    returns: 'Prepaid labels included. 30 days.'
   },
   {
-    id: 'heavy-rib-socks',
+    id: 'coc-white-reg-tee',
     brand: 'TEKLA',
-    name: 'Heavy-Knit Ribbed Uniform Socks',
-    price: 22,
+    name: 'COC White Regular T-Shirt',
+    price: 55,
     images: [
-      'https://images.unsplash.com/photo-1582966772680-860e372bb558?auto=format&fit=crop&q=80&w=1000',
-      'https://images.unsplash.com/photo-1619086303291-0ef7b4142db5?auto=format&fit=crop&q=80&w=1000'
+      '/shirts/coc regula t shirt hite frint.jpg',
+      '/shirts/white reg back coc.psd.jpg'
     ],
     colours: [
-      { name: 'Chalk White', hex: '#FDFDFD' },
-      { name: 'Muted Taupe', hex: '#948D85' },
-      { name: 'Charcoal Blend', hex: '#313233' }
+      { name: 'Pure White', hex: '#FAFAFA' }
     ],
-    sizes: ['S/M', 'M/L'],
-    category: 'Accessories',
+    sizes: ['S', 'M', 'L', 'XL'],
+    category: 'Regular Tees',
     gender: 'Unisex',
     details: [
-      '92% organic long-staple cotton yarn, 8% elastic weave',
-      'Heavy flat-rib visual texture reminiscent of athletic vintage',
-      'Terrycloth-cushioned shock barrier footbed',
-      'Seamless flat-toe loop detailing',
-      'High rise calf length with compression elastic'
+      'Sustainably sourced certified organic cotton',
+      'Clean white canvas with classic typography details',
+      'Ultra-soft combed finish',
+      'Reinforced double-stitch hem'
     ],
-    fit: 'Standard tube sock sizing. Durable elastic stays up on calf without skin constriction.',
-    delivery: 'Delivered in custom paper sleeves. Fully recyclable.',
-    returns: 'For sanity reasons returns are restricted unless sealed in origin plastic wrapping.'
+    fit: 'Standard comfort fit. Perfect everyday classic.',
+    delivery: 'Sent in flat envelopes. Dispatched same day.',
+    returns: '30 days standard policy.'
   }
 ];
 
@@ -369,13 +289,8 @@ The modern "city uniform" is a brilliant collision of these exact schools. A tec
 
 export const CATEGORIES = [
   'All Elements',
-  'Outerwear',
-  'Hoodies',
-  'Tees',
-  'Trousers',
-  'Bags',
-  'Accessories',
-  'Footwear'
+  'Crop Tees',
+  'Regular Tees'
 ];
 
 export const GENDERS = ['All', 'Men', 'Women', 'Unisex'];

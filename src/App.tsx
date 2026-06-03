@@ -350,7 +350,7 @@ export default function App() {
                 <span className="text-[10px] font-mono text-stone-500 tracking-[0.25em] uppercase block">HOT KEYWORDS SEARCH</span>
                 
                 <div className="flex justify-center flex-wrap gap-2 max-w-md mx-auto">
-                  {['Outerwear', 'Hoodies', 'Trousers', 'Bags', 'RAINS', 'NUDE PROJECT', 'HELIOT EMIL'].map((term) => (
+                  {['Crop Tees', 'Regular Tees', 'RAINS', 'NUDE PROJECT', 'HELIOT EMIL', 'TEKLA'].map((term) => (
                     <button
                       key={term}
                       onClick={() => setSearchQuery(term)}

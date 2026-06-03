@@ -8,39 +8,39 @@ interface FeaturedDropProps {
 export default function FeaturedDrop({ products, onProductClick }: FeaturedDropProps) {
   // First stream "3" (shirts and pants)
   const stream1Big = [
-    products.find(p => p.id === 'boxy-heavy-tee'),
-    products.find(p => p.id === 'core-lounge-hoodie'),
-    products.find(p => p.id === 'storm-cargo-pants')
+    products.find(p => p.id === 'green-coc-crop-tee'),
+    products.find(p => p.id === 'coc-ash-reg-tee'),
+    products.find(p => p.id === 'coc-green-reg-tee')
   ].filter((p): p is Product => p !== undefined);
 
   // First stream "5" (small accessories)
   const stream1Small = [
-    products.find(p => p.id === 'industrial-steel-watch'),
-    products.find(p => p.id === 'merino-rib-beanie'),
-    products.find(p => p.id === 'heavy-rib-socks'),
-    products.find(p => p.id === 'waterproof-commute-tote'),
-    products.find(p => p.id === 'brutal-combat-boot')
+    products.find(p => p.id === 'white-coc-crop-tee'),
+    products.find(p => p.id === 'black-coc-crop-tee'),
+    products.find(p => p.id === 'icons-crop-tee'),
+    products.find(p => p.id === 'coc-black-reg-tee'),
+    products.find(p => p.id === 'coc-white-reg-tee')
   ].filter((p): p is Product => p !== undefined);
 
   // First stream "1" (big single banner - best seller jacket)
-  const stream1Single = products.find(p => p.id === 'hydro-tech-parka') || products[0];
+  const stream1Single = products.find(p => p.id === 'icons-crop-tee') || products[0];
 
   // Second stream "2" (two big garments)
   const stream2Big = [
-    products.find(p => p.id === 'thermal-gilet-vest'),
-    products.find(p => p.id === 'boxy-heavy-tee')
+    products.find(p => p.id === 'coc-black-reg-tee'),
+    products.find(p => p.id === 'coc-white-reg-tee')
   ].filter((p): p is Product => p !== undefined);
 
   // Second stream "4" (four small accessories)
   const stream2Small = [
-    products.find(p => p.id === 'heavy-rib-socks'),
-    products.find(p => p.id === 'merino-rib-beanie'),
-    products.find(p => p.id === 'industrial-steel-watch'),
-    products.find(p => p.id === 'waterproof-commute-tote')
+    products.find(p => p.id === 'green-coc-crop-tee'),
+    products.find(p => p.id === 'white-coc-crop-tee'),
+    products.find(p => p.id === 'black-coc-crop-tee'),
+    products.find(p => p.id === 'coc-ash-reg-tee')
   ].filter((p): p is Product => p !== undefined);
 
   // Second stream "1" (big single banner - heavy overshirt/pants)
-  const stream2Single = products.find(p => p.id === 'storm-cargo-pants') || products[0];
+  const stream2Single = products.find(p => p.id === 'green-coc-crop-tee') || products[0];
 
   return (
     <section id="featured-drop" className="w-full bg-white select-none pb-0 pt-0">
