@@ -44,7 +44,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           <img 
             src="/wordmark.svg" 
             alt="MAGINARI" 
-            className="h-3.5 w-auto object-contain invert" 
+            className="h-3.5 w-auto object-contain brightness-0 invert" 
           />
           <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-wider">Premium Streetwear</span>
         </div>

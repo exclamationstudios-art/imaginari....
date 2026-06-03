@@ -50,12 +50,12 @@ export default function Header({
       id="main-navigation" 
       className="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-350 border-none select-none"
     >
-      {/* Top Gold Announcement Bar */}
-      <div className="w-full bg-amber-400 text-neutral-950 text-[10px] font-mono font-bold tracking-[0.25em] py-2 text-center uppercase flex items-center justify-center gap-6">
+      {/* Top White Announcement Bar */}
+      <div className="w-full bg-white text-neutral-950 text-[10px] font-mono font-bold tracking-[0.25em] py-2 text-center uppercase flex items-center justify-center gap-6 border-b border-stone-200">
         <span>£65 — £75</span>
-        <span className="w-1.5 h-1.5 bg-neutral-950 rounded-full" />
+        <span className="w-1.5 h-1.5 bg-stone-300 rounded-full" />
         <span>XS – XL</span>
-        <span className="w-1.5 h-1.5 bg-neutral-950 rounded-full" />
+        <span className="w-1.5 h-1.5 bg-stone-300 rounded-full" />
         <span>Free Shipping</span>
       </div>
 
