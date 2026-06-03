@@ -48,8 +48,17 @@ export default function Header({
   return (
     <header 
       id="main-navigation" 
-      className={`fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-350 border-none select-none`}
+      className="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-350 border-none select-none"
     >
+      {/* Top Gold Announcement Bar */}
+      <div className="w-full bg-amber-400 text-neutral-950 text-[10px] font-mono font-bold tracking-[0.25em] py-2 text-center uppercase flex items-center justify-center gap-6">
+        <span>£65 — £75</span>
+        <span className="w-1.5 h-1.5 bg-neutral-950 rounded-full" />
+        <span>XS – XL</span>
+        <span className="w-1.5 h-1.5 bg-neutral-950 rounded-full" />
+        <span>Free Shipping</span>
+      </div>
+
       <div className="w-full px-6 md:px-12 h-24 flex items-center justify-between">
         
         {/* Left - Minimalist Custom Vector Logoicon without any text */}

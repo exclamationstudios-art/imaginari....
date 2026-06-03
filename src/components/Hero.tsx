@@ -1,4 +1,4 @@
-export default function Hero({ onShopClick }: { onShopClick: () => void }) {
+export default function Hero({ onShopClick }: { onShopClick: (category?: string) => void }) {
   return (
     <section id="hero-banner" className="relative w-full overflow-hidden bg-stone-100" style={{ minHeight: '100svh' }}>
 
@@ -14,35 +14,34 @@ export default function Hero({ onShopClick }: { onShopClick: () => void }) {
           style={{ paddingTop: 'calc(7rem - 24px)', paddingBottom: '2.5rem' }}>
 
           <div>
-            {/* Main headline — 1.5× bigger */}
-            <h1 className="font-sans font-black uppercase leading-[0.85] tracking-tight text-neutral-900"
-              style={{ fontSize: 'clamp(5.25rem, 12vw, 11.25rem)' }}>
-              Icons<br />
-              <span className="text-stone-400">Crop</span><br />
-              Tee
-            </h1>
+            {/* Interactive categories — 0.3x of original headline size */}
+            <div className="flex flex-col gap-2.5 font-sans font-black uppercase leading-[0.85] tracking-tight text-neutral-900"
+              style={{ fontSize: 'clamp(1.575rem, 3.6vw, 3.375rem)' }}>
+              {['shirts', 'socks', 'shoes', 'hats'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => onShopClick(item.charAt(0).toUpperCase() + item.slice(1))}
+                  className="text-left cursor-pointer transition-colors duration-300 hover:text-amber-400 focus:outline-none"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
 
             {/* Divider line */}
             <div className="w-12 h-[2px] bg-neutral-900 my-8" />
           </div>
 
-          {/* CTA block */}
-          <div className="space-y-3">
+          {/* CTA block - shifted up by 40px */}
+          <div className="relative -top-10">
             <button
-              onClick={onShopClick}
-              className="group bg-neutral-900 hover:bg-neutral-800 text-stone-100 font-mono text-[11px] tracking-[0.3em] font-bold uppercase py-4 px-10 inline-flex items-center gap-3 cursor-pointer transition-all duration-300"
+              onClick={() => onShopClick()}
+              className="group bg-neutral-900 hover:bg-neutral-800 text-stone-100 font-mono tracking-[0.3em] font-bold uppercase py-4 px-10 inline-flex items-center gap-3 cursor-pointer transition-all duration-300"
+              style={{ fontSize: '16.5px' }}
             >
               SHOP THE DROP
               <span className="w-4 h-[1px] bg-stone-400 group-hover:w-8 transition-all duration-300" />
             </button>
-
-            <div className="flex items-center gap-4 pt-1">
-              <span className="text-[8px] font-mono text-neutral-400 tracking-[0.25em] uppercase">£65 — £75</span>
-              <span className="w-[1px] h-3 bg-stone-300" />
-              <span className="text-[8px] font-mono text-neutral-400 tracking-[0.25em] uppercase">XS – XL</span>
-              <span className="w-[1px] h-3 bg-stone-300" />
-              <span className="text-[8px] font-mono text-neutral-400 tracking-[0.25em] uppercase">Free Shipping</span>
-            </div>
           </div>
         </div>
 
@@ -60,13 +59,6 @@ export default function Hero({ onShopClick }: { onShopClick: () => void }) {
             style={{ objectPosition: 'center top' }}
             draggable={false}
           />
-
-          {/* Bottom product tag */}
-          <div className="absolute bottom-6 right-6 z-20 bg-neutral-900/90 backdrop-blur-sm text-stone-100 px-4 py-3 border border-neutral-800">
-            <div className="text-[8px] font-mono tracking-[0.3em] text-stone-400 uppercase mb-1">WEARING NOW</div>
-            <div className="text-[10px] font-mono font-bold tracking-wider uppercase">Icons Crop T-Shirt</div>
-            <div className="text-[9px] font-mono text-stone-400 mt-0.5">HELIOT EMIL — £75</div>
-          </div>
         </div>
 
       </div>

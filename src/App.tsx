@@ -210,7 +210,7 @@ export default function App() {
               <>
                 {/* Hero section banner */}
                 <Hero
-                  onShopClick={() => handleNavigate('shop', 'All Elements')}
+                  onShopClick={(category) => handleNavigate('shop', category || 'All Elements')}
                 />
 
                 {/* This Week's Featured Drop */}
