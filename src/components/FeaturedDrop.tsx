@@ -53,10 +53,11 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           display: flex;
           gap: 1px;
           animation: marquee 28s linear infinite;
+          animation-play-state: paused;
           width: max-content;
         }
         .animate-marquee:hover {
-          animation-play-state: paused;
+          animation-play-state: running;
         }
       `}</style>
 

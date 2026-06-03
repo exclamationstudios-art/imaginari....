@@ -14,22 +14,19 @@ export default function Hero({ onShopClick }: { onShopClick: (category?: string)
           style={{ paddingTop: 'calc(7rem - 24px)', paddingBottom: '2.5rem' }}>
 
           <div>
-            {/* Interactive categories — 0.3x of original headline size */}
-            <div className="flex flex-col gap-2.5 font-sans font-black uppercase leading-[0.85] tracking-tight text-neutral-900"
-              style={{ fontSize: 'clamp(1.575rem, 3.6vw, 3.375rem)' }}>
+            {/* Interactive categories — 0.3x of original headline size, shifted down 40px, blended color */}
+            <div className="flex flex-col gap-2.5 font-sans font-black uppercase leading-[0.85] tracking-tight"
+              style={{ fontSize: 'clamp(1.575rem, 3.6vw, 3.375rem)', transform: 'translateY(40px)' }}>
               {['shirts', 'socks', 'shoes', 'hats'].map((item) => (
                 <button
                   key={item}
                   onClick={() => onShopClick(item.charAt(0).toUpperCase() + item.slice(1))}
-                  className="text-left cursor-pointer transition-colors duration-300 hover:text-amber-400 focus:outline-none"
+                  className="text-left cursor-pointer transition-colors duration-300 text-stone-200 hover:text-stone-500 focus:outline-none"
                 >
                   {item}
                 </button>
               ))}
             </div>
-
-            {/* Divider line */}
-            <div className="w-12 h-[2px] bg-neutral-900 my-8" />
           </div>
 
           {/* CTA block - shifted up by 40px */}
@@ -56,7 +53,7 @@ export default function Hero({ onShopClick }: { onShopClick: (category?: string)
             src="/hero-model.png"
             alt="Model wearing Icons COC Crop T-Shirt"
             className="w-full h-full object-cover object-top select-none"
-            style={{ objectPosition: 'center top' }}
+            style={{ objectPosition: 'center top', transform: 'translateY(40px)' }}
             draggable={false}
           />
         </div>
