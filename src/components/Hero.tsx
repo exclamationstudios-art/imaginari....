@@ -50,8 +50,8 @@ export default function Hero({ onShopClick }: { onShopClick: (category?: string)
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-stone-100 to-transparent z-10 pointer-events-none hidden lg:block" />
 
           <img
-            src="/hero-model.png"
-            alt="Model wearing Icons COC Crop T-Shirt"
+            src="/mixed-model.png"
+            alt="Mixed Models wearing COC Collection"
             className="w-full h-full object-cover object-top select-none"
             style={{ objectPosition: 'center top', transform: 'translateY(40px)' }}
             draggable={false}
