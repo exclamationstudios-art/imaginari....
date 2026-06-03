@@ -49,13 +49,25 @@ export default function Hero({ onShopClick }: { onShopClick: (category?: string)
           {/* Subtle left-edge fade */}
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-stone-100 to-transparent z-10 pointer-events-none hidden lg:block" />
 
-          <img
-            src="/hero-model.png"
-            alt="Model wearing Icons COC Crop T-Shirt"
-            className="w-full h-full object-cover object-top select-none"
-            style={{ objectPosition: 'center top', transform: 'translateY(40px)' }}
-            draggable={false}
-          />
+          {/* Overlapping double models container */}
+          <div className="relative w-full h-full flex items-end justify-center">
+            <div className="flex items-end justify-center w-full h-full max-w-2xl">
+              <img
+                src="/hero-model.png"
+                alt="Model 1"
+                className="w-[52%] h-full object-cover object-top select-none z-10"
+                style={{ objectPosition: 'center top', transform: 'translateY(40px)' }}
+                draggable={false}
+              />
+              <img
+                src="/model-hero-1.png"
+                alt="Model 2"
+                className="w-[52%] h-full object-cover object-top select-none z-20 -ml-[12%]"
+                style={{ objectPosition: 'center top', transform: 'translateY(40px)' }}
+                draggable={false}
+              />
+            </div>
+          </div>
         </div>
 
       </div>
