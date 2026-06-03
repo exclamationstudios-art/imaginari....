@@ -76,10 +76,10 @@ export default function Header({
             <button
               id="search-button"
               onClick={onOpenSearch}
-              className={`p-1 hover:scale-105 cursor-pointer transition-all duration-200 ${iconColor}`}
+              className="p-1 hover:scale-110 cursor-pointer transition-all duration-200 text-amber-400 hover:text-amber-300"
               aria-label="Search"
             >
-              <Search className="w-4.5 h-4.5 stroke-[2]" />
+              <Search className="w-5 h-5 stroke-[2.5]" />
             </button>
 
             {/* Favorites Count Indicator */}
@@ -100,12 +100,12 @@ export default function Header({
             <button
               id="cart-button"
               onClick={onOpenCart}
-              className={`p-1 hover:scale-105 cursor-pointer relative transition-all duration-205 flex items-center ${iconColor}`}
+              className="p-1 hover:scale-110 cursor-pointer relative transition-all duration-200 text-amber-400 hover:text-amber-300 flex items-center"
               aria-label="Shopping Bag"
             >
-              <ShoppingBag className="w-4.5 h-4.5 stroke-[2]" />
+              <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
               {cartCount > 0 && (
-                <span id="cart-badge" className={`absolute -top-1 -right-1.5 text-[8.5px] font-mono font-black w-4 h-4 rounded-full flex items-center justify-center border-none ${isDarkTheme ? 'bg-white text-neutral-950' : 'bg-neutral-950 text-white'}`}>
+                <span id="cart-badge" className="absolute -top-1 -right-1.5 text-[8.5px] font-mono font-black w-4 h-4 rounded-full flex items-center justify-center border-none bg-amber-400 text-neutral-950">
                   {cartCount}
                 </span>
               )}
