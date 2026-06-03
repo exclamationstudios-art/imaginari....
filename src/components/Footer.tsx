@@ -40,8 +40,12 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
 
         {/* Brand + tagline */}
-        <div className="flex flex-col gap-1">
-          <span className="text-[11px] font-mono font-black tracking-[0.4em] uppercase text-white">MAGINARI</span>
+        <div className="flex flex-col gap-1.5">
+          <img 
+            src="/wordmark.svg" 
+            alt="MAGINARI" 
+            className="h-3.5 w-auto object-contain invert" 
+          />
           <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-wider">Premium Streetwear</span>
         </div>
 
