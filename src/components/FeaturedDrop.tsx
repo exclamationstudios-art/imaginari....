@@ -114,16 +114,16 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
               <img
                 src={item.images[0]}
                 alt={item.name}
-                className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-[1.01] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[750ms] ease-out/in"
+                className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] group-hover:brightness-100 transition-all duration-[600ms] ease-out"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-neutral-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-5 text-white">
-                <div className="font-sans uppercase tracking-[0.25em] text-[7.5px] space-y-1">
-                  <div className="flex justify-between items-center text-stone-300 font-bold border-b border-white/5 pb-1 mb-1">
-                    <span>{item.brand}</span>
-                    <span>£{item.price}</span>
-                  </div>
-                  <div className="text-white font-black">{item.name}</div>
+              {/* Inset frame border on hover */}
+              <div className="absolute inset-0 ring-0 group-hover:ring-[6px] group-hover:ring-inset group-hover:ring-white/80 transition-all duration-300 pointer-events-none" />
+              {/* Label strip — slides up from bottom */}
+              <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 px-4 py-3">
+                <div className="font-mono uppercase tracking-[0.2em] text-[8px] flex justify-between items-center text-neutral-900">
+                  <span className="font-bold truncate">{item.name}</span>
+                  <span className="font-black ml-3 flex-shrink-0">£{item.price}</span>
                 </div>
               </div>
             </div>
@@ -179,16 +179,14 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
                 <img
                   src={item.images[0]}
                   alt={item.name}
-                  className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-[1.01] group-hover:brightness-100 transition-all duration-[750ms] ease-out/in"
+                  className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] group-hover:brightness-100 transition-all duration-[600ms] ease-out"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-neutral-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-4 text-white">
-                  <div className="font-sans uppercase tracking-[0.2em] text-[7.2px] space-y-1">
-                    <div className="flex justify-between items-center text-stone-300 font-bold border-b border-white/5 pb-1 mb-1">
-                      <span>{item.brand}</span>
-                      <span>£{item.price}</span>
-                    </div>
-                    <div className="text-white font-black truncate">{item.name}</div>
+                <div className="absolute inset-0 ring-0 group-hover:ring-[5px] group-hover:ring-inset group-hover:ring-white/80 transition-all duration-300 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 px-3 py-2">
+                  <div className="font-mono uppercase tracking-[0.15em] text-[7px] flex justify-between items-center text-neutral-900">
+                    <span className="font-bold truncate">{item.name}</span>
+                    <span className="font-black ml-2 flex-shrink-0">£{item.price}</span>
                   </div>
                 </div>
               </div>
@@ -203,16 +201,14 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
                 <img
                   src={item.images[0]}
                   alt={item.name}
-                  className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-[1.01] group-hover:brightness-100 transition-all duration-[750ms] ease-out/in"
+                  className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] group-hover:brightness-100 transition-all duration-[600ms] ease-out"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-neutral-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-4 text-white">
-                  <div className="font-sans uppercase tracking-[0.2em] text-[7.2px] space-y-1">
-                    <div className="flex justify-between items-center text-stone-300 font-bold border-b border-white/5 pb-1 mb-1">
-                      <span>{item.brand}</span>
-                      <span>£{item.price}</span>
-                    </div>
-                    <div className="text-white font-black truncate">{item.name}</div>
+                <div className="absolute inset-0 ring-0 group-hover:ring-[5px] group-hover:ring-inset group-hover:ring-white/80 transition-all duration-300 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 px-3 py-2">
+                  <div className="font-mono uppercase tracking-[0.15em] text-[7px] flex justify-between items-center text-neutral-900">
+                    <span className="font-bold truncate">{item.name}</span>
+                    <span className="font-black ml-2 flex-shrink-0">£{item.price}</span>
                   </div>
                 </div>
               </div>
@@ -229,17 +225,15 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             <img
               src={stream1Single.images[0]}
               alt={stream1Single.name}
-              className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-[1.01] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[900ms] ease-out/in"
+              className="w-full h-full object-cover brightness-95 group-hover:scale-[1.01] group-hover:brightness-100 transition-all duration-[900ms] ease-out"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-neutral-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-8 md:p-12 text-white">
-              <div className="max-w-md font-sans uppercase tracking-[0.3em] text-[8px] space-y-2">
-                <div className="text-stone-300 font-bold border-b border-white/5 pb-1 mb-1 flex justify-between">
-                  <span>{stream1Single.brand}</span>
-                  <span>£{stream1Single.price}</span>
-                </div>
-                <h3 className="text-sm tracking-[0.2em] font-black text-white">{stream1Single.name}</h3>
-              </div>
+            {/* Inset frame */}
+            <div className="absolute inset-0 ring-0 group-hover:ring-[8px] group-hover:ring-inset group-hover:ring-white/80 transition-all duration-300 pointer-events-none" />
+            {/* Label strip */}
+            <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 px-8 py-4 flex justify-between items-center">
+              <div className="font-mono uppercase tracking-[0.2em] text-[9px] font-bold text-neutral-900 truncate">{stream1Single.name}</div>
+              <div className="font-mono uppercase tracking-[0.2em] text-[9px] font-black text-neutral-900 ml-6 flex-shrink-0">£{stream1Single.price}</div>
             </div>
           </div>
         )}
@@ -255,17 +249,13 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
               <img
                 src={item.images[0]}
                 alt={item.name}
-                className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-[1.01] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[750ms] ease-out/in"
+                className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] group-hover:brightness-100 transition-all duration-[600ms] ease-out"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-neutral-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-6 text-white">
-                <div className="font-sans uppercase tracking-[0.25em] text-[7.5px] space-y-1">
-                  <div className="flex justify-between items-center text-stone-300 font-bold border-b border-white/5 pb-1 mb-1">
-                    <span>{item.brand}</span>
-                    <span>£{item.price}</span>
-                  </div>
-                  <div className="text-white font-black">{item.name}</div>
-                </div>
+              <div className="absolute inset-0 ring-0 group-hover:ring-[6px] group-hover:ring-inset group-hover:ring-white/80 transition-all duration-300 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 px-5 py-3 flex justify-between items-center">
+                <div className="font-mono uppercase tracking-[0.2em] text-[8px] font-bold text-neutral-900 truncate">{item.name}</div>
+                <div className="font-mono uppercase tracking-[0.2em] text-[8px] font-black text-neutral-900 ml-4 flex-shrink-0">£{item.price}</div>
               </div>
             </div>
           ))}
@@ -319,16 +309,14 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
                 <img
                   src={item.images[0]}
                   alt={item.name}
-                  className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-[1.01] group-hover:brightness-100 transition-all duration-[750ms] ease-out/in"
+                  className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] group-hover:brightness-100 transition-all duration-[600ms] ease-out"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-neutral-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-4 text-white">
-                  <div className="font-sans uppercase tracking-[0.2em] text-[7.2px] space-y-1">
-                    <div className="flex justify-between items-center text-stone-300 font-bold border-b border-white/5 pb-1 mb-1">
-                      <span>{item.brand}</span>
-                      <span>£{item.price}</span>
-                    </div>
-                    <div className="text-white font-black truncate">{item.name}</div>
+                <div className="absolute inset-0 ring-0 group-hover:ring-[5px] group-hover:ring-inset group-hover:ring-white/80 transition-all duration-300 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 px-3 py-2">
+                  <div className="font-mono uppercase tracking-[0.15em] text-[7px] flex justify-between items-center text-neutral-900">
+                    <span className="font-bold truncate">{item.name}</span>
+                    <span className="font-black ml-2 flex-shrink-0">£{item.price}</span>
                   </div>
                 </div>
               </div>
@@ -343,16 +331,14 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
                 <img
                   src={item.images[0]}
                   alt={item.name}
-                  className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-[1.01] group-hover:brightness-100 transition-all duration-[750ms] ease-out/in"
+                  className="w-full h-full object-cover brightness-95 group-hover:scale-[1.02] group-hover:brightness-100 transition-all duration-[600ms] ease-out"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-neutral-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-4 text-white">
-                  <div className="font-sans uppercase tracking-[0.2em] text-[7.2px] space-y-1">
-                    <div className="flex justify-between items-center text-stone-300 font-bold border-b border-white/5 pb-1 mb-1">
-                      <span>{item.brand}</span>
-                      <span>£{item.price}</span>
-                    </div>
-                    <div className="text-white font-black truncate">{item.name}</div>
+                <div className="absolute inset-0 ring-0 group-hover:ring-[5px] group-hover:ring-inset group-hover:ring-white/80 transition-all duration-300 pointer-events-none" />
+                <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 px-3 py-2">
+                  <div className="font-mono uppercase tracking-[0.15em] text-[7px] flex justify-between items-center text-neutral-900">
+                    <span className="font-bold truncate">{item.name}</span>
+                    <span className="font-black ml-2 flex-shrink-0">£{item.price}</span>
                   </div>
                 </div>
               </div>
@@ -369,17 +355,15 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             <img
               src={stream2Single.images[0]}
               alt={stream2Single.name}
-              className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-[1.01] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-[900ms] ease-out/in"
+              className="w-full h-full object-cover brightness-95 group-hover:scale-[1.01] group-hover:brightness-100 transition-all duration-[900ms] ease-out"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-neutral-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-8 md:p-12 text-white">
-              <div className="max-w-md font-sans uppercase tracking-[0.3em] text-[8px] space-y-2">
-                <div className="text-stone-300 font-bold border-b border-white/5 pb-1 mb-1 flex justify-between">
-                  <span>{stream2Single.brand}</span>
-                  <span>£{stream2Single.price}</span>
-                </div>
-                <h3 className="text-sm tracking-[0.2em] font-black text-white">{stream2Single.name}</h3>
-              </div>
+            {/* Inset frame */}
+            <div className="absolute inset-0 ring-0 group-hover:ring-[8px] group-hover:ring-inset group-hover:ring-white/80 transition-all duration-300 pointer-events-none" />
+            {/* Label strip */}
+            <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-white/95 px-8 py-4 flex justify-between items-center">
+              <div className="font-mono uppercase tracking-[0.2em] text-[9px] font-bold text-neutral-900 truncate">{stream2Single.name}</div>
+              <div className="font-mono uppercase tracking-[0.2em] text-[9px] font-black text-neutral-900 ml-6 flex-shrink-0">£{stream2Single.price}</div>
             </div>
           </div>
         )}
