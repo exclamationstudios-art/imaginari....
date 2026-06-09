@@ -78,18 +78,18 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             />
           </div>
 
-          {/* Left 1/3: Glassmorphic blur overlay with brand logo */}
-          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
+          {/* Left 1/2 on mobile, 1/3 on desktop: Glassmorphic blur overlay with brand logo */}
+          <div className="absolute left-0 top-0 bottom-0 w-1/2 md:w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
             {/* Soft backdrop glow behind logo */}
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <img src="/coc-logo.svg" alt="Crown of Clay Logo" className="w-[112px] h-[112px] object-contain" />
+              <img src="/coc-logo.svg" alt="Crown of Clay Logo" className="w-[80px] h-[80px] md:w-[112px] md:h-[112px] object-contain" />
             </div>
           </div>
 
           {/* Blur Transition Fade Gradient */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-1/2 md:left-[33.33%] top-0 bottom-0 w-[15%] md:w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
 
         </div>
@@ -133,17 +133,17 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             />
           </div>
 
-          {/* Left 1/3: Glassmorphic blur overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
+          {/* Left 1/2 on mobile, 1/3 on desktop: Glassmorphic blur overlay */}
+          <div className="absolute left-0 top-0 bottom-0 w-1/2 md:w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <img src="/favela-logo.svg" alt="Favela Logo" className="w-[168px] h-[168px] object-contain" />
+              <img src="/favela-logo.svg" alt="Favela Logo" className="w-[100px] h-[100px] md:w-[168px] md:h-[168px] object-contain" />
             </div>
           </div>
 
           {/* Blur Transition Fade Gradient */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-1/2 md:left-[33.33%] top-0 bottom-0 w-[15%] md:w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
 
         </div>
@@ -255,17 +255,17 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             />
           </div>
 
-          {/* Left 1/3: Glassmorphic blur overlay */}
-          <div className="absolute left-0 top-0 bottom-0 w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
+          {/* Left 1/2 on mobile, 1/3 on desktop: Glassmorphic blur overlay */}
+          <div className="absolute left-0 top-0 bottom-0 w-1/2 md:w-1/3 z-10 bg-black/75 backdrop-blur-md flex items-center justify-center border-r border-white/5">
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <img src="/8ternity-logo.svg" alt="8ternity Logo" className="w-[168px] h-[168px] object-contain invert brightness-0" />
+              <img src="/8ternity-logo.svg" alt="8ternity Logo" className="w-[100px] h-[100px] md:w-[168px] md:h-[168px] object-contain invert brightness-0" />
             </div>
           </div>
 
           {/* Blur Transition Fade Gradient */}
-          <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-1/2 md:left-[33.33%] top-0 bottom-0 w-[15%] md:w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
 
         </div>
