@@ -84,7 +84,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <img src="/coc-logo.svg" alt="Crown of Clay Logo" className="w-[56px] h-[56px] object-contain" />
+              <img src="/coc-logo.svg" alt="Crown of Clay Logo" className="w-[168px] h-[168px] object-contain" />
               <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-stone-300 font-bold hidden sm:inline">
                 COC
               </span>
@@ -144,7 +144,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <img src="/favela-logo.svg" alt="Favela Logo" className="w-[56px] h-[56px] object-contain" />
+              <img src="/favela-logo.svg" alt="Favela Logo" className="w-[168px] h-[168px] object-contain" />
               <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-stone-300 font-bold hidden sm:inline">
                 FAVELA
               </span>
@@ -272,7 +272,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <img src="/8ternity-logo.svg" alt="8ternity Logo" className="w-[56px] h-[56px] object-contain" />
+              <img src="/8ternity-logo.svg" alt="8ternity Logo" className="w-[168px] h-[168px] object-contain invert brightness-0" />
               <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-stone-300 font-bold hidden sm:inline">
                 8TERNITY
               </span>
