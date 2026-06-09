@@ -91,10 +91,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           {/* Blur Transition Fade Gradient */}
           <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
-          {/* Right Text */}
-          <div className="absolute bottom-1/2 translate-y-1/2 right-6 text-white text-right z-10 font-sans tracking-[0.2em] pointer-events-none select-none">
-            <div className="text-[7.5px] font-mono text-stone-300 uppercase">[ CAMPAIGN.01 // COC ]</div>
-          </div>
+
         </div>
 
         {/* ROW 1: 3 Frames */}
@@ -148,10 +145,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           {/* Blur Transition Fade Gradient */}
           <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
-          {/* Right Text */}
-          <div className="absolute bottom-1/2 translate-y-1/2 right-6 text-white text-right z-10 font-sans tracking-[0.2em] pointer-events-none select-none">
-            <div className="text-[7.5px] font-mono text-stone-300 uppercase">[ CAMPAIGN.01 // FAVELA ]</div>
-          </div>
+
         </div>
 
         {/* ROW 2: 5 Horizontal Endlessly Scrolling Frames */}
@@ -273,10 +267,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           {/* Blur Transition Fade Gradient */}
           <div className="absolute left-[33.33%] top-0 bottom-0 w-[8%] bg-gradient-to-r from-black/75 to-transparent z-10 pointer-events-none" />
 
-          {/* Right Text */}
-          <div className="absolute bottom-1/2 translate-y-1/2 right-6 text-white text-right z-10 font-sans tracking-[0.2em] pointer-events-none select-none">
-            <div className="text-[7.5px] font-mono text-stone-300 uppercase">[ CAMPAIGN.01 // 8TERNITY ]</div>
-          </div>
+
         </div>
 
         {/* ROW 5: 4 Horizontal Endlessly Scrolling Frames */}
