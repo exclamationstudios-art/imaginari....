@@ -46,7 +46,9 @@ export const PRODUCTS: Product[] = [
       '/shirts/ICNOS OFFICIAL BACK CROP T SHIRT GREEN.jpg'
     ],
     colours: [
-      { name: 'Sage Green', hex: '#7a8a78' }
+      { name: 'Sage Green', hex: '#7a8a78' },
+      { name: 'Chalk White', hex: '#FAFAFA' },
+      { name: 'Charcoal Black', hex: '#1E2022' }
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     category: 'Crop Tees',
@@ -72,7 +74,9 @@ export const PRODUCTS: Product[] = [
       '/shirts/white coc crop t shirt.jpg'
     ],
     colours: [
-      { name: 'Chalk White', hex: '#FAFAFA' }
+      { name: 'Chalk White', hex: '#FAFAFA' },
+      { name: 'Sage Green', hex: '#7a8a78' },
+      { name: 'Navy Blue', hex: '#1C2841' }
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     category: 'Crop Tees',
@@ -97,7 +101,9 @@ export const PRODUCTS: Product[] = [
       '/shirts/black coc cropt shirt back.jpg'
     ],
     colours: [
-      { name: 'Charcoal Black', hex: '#1E2022' }
+      { name: 'Charcoal Black', hex: '#1E2022' },
+      { name: 'Off-White', hex: '#EBE6DF' },
+      { name: 'Ash Grey', hex: '#A8AAA9' }
     ],
     sizes: ['XS', 'S', 'M', 'L'],
     category: 'Crop Tees',
@@ -122,7 +128,9 @@ export const PRODUCTS: Product[] = [
       '/shirts/ICONS 1.jpg'
     ],
     colours: [
-      { name: 'Off-White', hex: '#EBE6DF' }
+      { name: 'Off-White', hex: '#EBE6DF' },
+      { name: 'Matte Black', hex: '#141414' },
+      { name: 'Forest Green', hex: '#444A3D' }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
     category: 'Crop Tees',
@@ -148,7 +156,9 @@ export const PRODUCTS: Product[] = [
       '/shirts/ash t shirt coc reg bAck.jpg'
     ],
     colours: [
-      { name: 'Ash Grey', hex: '#A8AAA9' }
+      { name: 'Ash Grey', hex: '#A8AAA9' },
+      { name: 'Pure White', hex: '#FAFAFA' },
+      { name: 'Matte Black', hex: '#141414' }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
     category: 'Regular Tees',
@@ -174,7 +184,9 @@ export const PRODUCTS: Product[] = [
       '/shirts/green reg back coc.psd.jpg'
     ],
     colours: [
-      { name: 'Forest Green', hex: '#444A3D' }
+      { name: 'Forest Green', hex: '#444A3D' },
+      { name: 'Ash Grey', hex: '#A8AAA9' },
+      { name: 'Charcoal Black', hex: '#1E2022' }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
     category: 'Regular Tees',
@@ -199,7 +211,9 @@ export const PRODUCTS: Product[] = [
       '/shirts/greenblack reg back coc.psd.jpg'
     ],
     colours: [
-      { name: 'Matte Black', hex: '#141414' }
+      { name: 'Matte Black', hex: '#141414' },
+      { name: 'Pure White', hex: '#FAFAFA' },
+      { name: 'Sage Green', hex: '#7a8a78' }
     ],
     sizes: ['S', 'M', 'L', 'XL', '2XL'],
     category: 'Regular Tees',
@@ -225,7 +239,9 @@ export const PRODUCTS: Product[] = [
       '/shirts/white reg back coc.psd.jpg'
     ],
     colours: [
-      { name: 'Pure White', hex: '#FAFAFA' }
+      { name: 'Pure White', hex: '#FAFAFA' },
+      { name: 'Charcoal Black', hex: '#1E2022' },
+      { name: 'Navy Blue', hex: '#1C2841' }
     ],
     sizes: ['S', 'M', 'L', 'XL'],
     category: 'Regular Tees',

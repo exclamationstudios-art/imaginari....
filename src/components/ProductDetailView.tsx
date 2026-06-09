@@ -84,20 +84,22 @@ export default function ProductDetailView({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-24">
           
           {/* Left panel: Large Image Stack (Scandinavian Editorial format) */}
-          <div className="lg:col-span-7 space-y-6">
-            {product.images.map((img, idx) => (
-              <div
-                key={idx}
-                className="w-full aspect-[4/5] overflow-hidden bg-stone-100 border border-stone-200 hover:brightness-100 transition duration-500"
-              >
-                <img
-                  src={img}
-                  alt={`${product.name} editorial view ${idx + 1}`}
-                  className="w-full h-full object-cover grayscale brightness-95"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            ))}
+          <div className="lg:col-span-7">
+            <div className="flex overflow-x-auto lg:flex-col lg:overflow-x-visible snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 md:-mx-8 lg:mx-0 lg:space-y-6">
+              {product.images.map((img, idx) => (
+                <div
+                  key={idx}
+                  className="min-w-full sm:min-w-[80%] lg:min-w-0 lg:w-full aspect-[4/5] overflow-hidden bg-stone-100 border-y lg:border border-stone-200 hover:brightness-100 transition duration-500 snap-center shrink-0"
+                >
+                  <img
+                    src={img}
+                    alt={`${product.name} editorial view ${idx + 1}`}
+                    className="w-full h-full object-cover grayscale brightness-95"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              ))}
+            </div>
             <div className="flex justify-between items-center text-neutral-400 font-mono text-[9px] tracking-[0.2em] uppercase select-none pointer-events-none p-1 border-t border-stone-200 pt-4">
               <span>MAGINARI IMAGE STACK REF-{product.id.substring(0, 4).toUpperCase()}</span>
               <span>OUTDOOR & STUDIO DEPLOYMENT [01-02]</span>
@@ -213,6 +215,15 @@ export default function ProductDetailView({
                 >
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
+              </button>
+            </div>
+
+            {/* Try On Action */}
+            <div className="pt-3">
+              <button
+                className="w-full border border-neutral-900 bg-transparent hover:bg-stone-200 text-neutral-900 text-[10px] tracking-[0.25em] font-sans font-black uppercase py-5 px-6 flex items-center justify-center gap-2 cursor-pointer transition-all outline-none"
+              >
+                VIRTUAL TRY ON
               </button>
             </div>
 
