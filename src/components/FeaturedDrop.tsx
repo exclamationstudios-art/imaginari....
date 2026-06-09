@@ -84,13 +84,9 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[56px] h-[56px] text-[#c7bb8b]">
-                <circle cx="50" cy="50" r="35" strokeWidth="2.5" />
-                <path d="M50 15a35 35 0 0 0-35 35 35 35 0 0 0 35 35M50 27a23 23 0 0 0-23 23 23 23 0 0 0 23 23" strokeWidth="1.8" />
-                <circle cx="50" cy="50" r="8" fill="currentColor" stroke="none" />
-              </svg>
+              <img src="/coc-logo.svg" alt="Crown of Clay Logo" className="w-[56px] h-[56px] object-contain" />
               <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-stone-300 font-bold hidden sm:inline">
-                COCI
+                COC
               </span>
             </div>
           </div>
@@ -100,7 +96,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
 
           {/* Right Text */}
           <div className="absolute bottom-1/2 translate-y-1/2 right-6 text-white text-right z-10 font-sans tracking-[0.2em] pointer-events-none select-none">
-            <div className="text-[7.5px] font-mono text-stone-300 uppercase">[ CAMPAIGN.01 // COCI ]</div>
+            <div className="text-[7.5px] font-mono text-stone-300 uppercase">[ CAMPAIGN.01 // COC ]</div>
           </div>
         </div>
 
@@ -148,10 +144,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[56px] h-[56px] text-[#c7bb8b]">
-                <polygon points="50,15 80,32 80,68 50,85 20,68 20,32" strokeWidth="2.5" />
-                <path d="M40 35h20M40 50h12M40 35v30" strokeWidth="3" strokeLinecap="round" />
-              </svg>
+              <img src="/favela-logo.svg" alt="Favela Logo" className="w-[56px] h-[56px] object-contain" />
               <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-stone-300 font-bold hidden sm:inline">
                 FAVELA
               </span>
@@ -279,9 +272,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             <div className="absolute w-[60px] h-[60px] rounded-full bg-[#c7bb8b]/15 blur-[20px] pointer-events-none" />
             
             <div className="relative z-10 flex items-center gap-3">
-              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[56px] h-[56px] text-[#c7bb8b]">
-                <path d="M28 38c-6.6 0-12 5.4-12 12s5.4 12 12 12c6.2 0 11.3-4.2 11.9-10h20.2c.6 5.8 5.7 10 11.9 10 6.6 0 12-5.4 12-12s-5.4-12-12-12c-6.2 0-11.3 4.2-11.9 10H39.9c-.6-5.8-5.7-10-11.9-10z" />
-              </svg>
+              <img src="/8ternity-logo.svg" alt="8ternity Logo" className="w-[56px] h-[56px] object-contain" />
               <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-stone-300 font-bold hidden sm:inline">
                 8TERNITY
               </span>
