@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Product } from '../types';
-import { ChevronDown, ChevronUp, ArrowLeft, Heart } from 'lucide-react';
+import { ChevronDown, ChevronUp, ArrowLeft, Heart, Shirt, ShoppingBag, Box } from 'lucide-react';
 
 interface ProductDetailViewProps {
   product: Product;
@@ -187,20 +187,29 @@ export default function ProductDetailView({
               </div>
             </div>
 
-            {/* Actions: Add to Bag + Wishlist toggle */}
+            {/* Actions: Try On, Buy Now, Add to Closet */}
             <div className="flex flex-col gap-3 mb-10">
               <button
-                onClick={handleAddToBagClick}
-                className="w-full bg-black hover:bg-neutral-800 text-white rounded-full text-base font-medium py-4 transition-colors relative"
-              >
-                Add to Bag
-              </button>
-              <button
-                onClick={() => onToggleLike(product.id)}
                 className="w-full bg-white hover:bg-stone-50 border border-stone-200 text-black rounded-full text-base font-medium py-4 flex items-center justify-center gap-2 transition-colors"
               >
-                Favorite <Heart className={`w-5 h-5 ${isLiked ? 'fill-black' : ''}`} />
+                Try On <Shirt className="w-5 h-5" />
               </button>
+              
+              <div className="flex items-center gap-3 w-full">
+                <button
+                  onClick={handleAddToBagClick}
+                  className="flex-1 bg-black hover:bg-neutral-800 text-white rounded-full text-base font-medium py-4 transition-colors relative"
+                >
+                  Buy Now
+                </button>
+                <button
+                  onClick={() => onToggleLike(product.id)}
+                  className="w-14 h-14 flex-shrink-0 bg-white hover:bg-stone-50 border border-stone-200 text-black rounded-full flex items-center justify-center transition-colors"
+                  title="Add to Closet"
+                >
+                  <Heart className={`w-5 h-5 ${isLiked ? 'fill-black' : ''}`} />
+                </button>
+              </div>
             </div>
 
             {/* Added Confirmation Overlay popup snippet */}
