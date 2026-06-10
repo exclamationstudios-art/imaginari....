@@ -48,76 +48,84 @@ export default function Header({
   return (
     <header 
       id="main-navigation" 
-      className="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-350 border-none select-none"
+      className="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-350 border-none select-none h-16 md:h-20"
     >
-      {/* Top White Announcement Bar */}
-      <div className="w-full bg-white text-neutral-950 text-[10px] font-mono font-bold tracking-[0.25em] py-2 text-center uppercase flex items-center justify-center gap-6 border-b border-stone-200">
-        <span>£65 — £75</span>
-        <span className="w-1.5 h-1.5 bg-stone-300 rounded-full" />
-        <span>XS – XL</span>
-        <span className="w-1.5 h-1.5 bg-stone-300 rounded-full" />
-        <span>Free Shipping</span>
-      </div>
-
-      <div className="w-full px-6 md:px-12 h-24 flex items-center justify-between">
+      <div className="w-full px-4 md:px-8 h-full flex items-center justify-between">
         
         {/* Left - Minimalist Custom Vector Logoicon without any text */}
         <button
           id="logo-button"
           onClick={() => onNavigate('home')}
-          className="flex items-center gap-3 cursor-pointer transition-transform duration-300 hover:scale-[1.02] focus:outline-none"
+          className="flex items-center gap-3 cursor-pointer focus:outline-none mix-blend-difference"
           title="MAGINARI"
         >
           <img 
             src="/logo-main.svg" 
             alt="MAGINARI" 
-            className="h-6 md:h-7 w-auto object-contain"
+            className="h-5 md:h-6 w-auto object-contain invert brightness-0"
             referrerPolicy="no-referrer"
           />
         </button>
 
-        {/* Right - All pure action icons combined into a single visual cluster */}
-        <div id="nav-and-actions" className="flex items-center gap-6 md:gap-8">
+        {/* Right - Desktop Links & Action Icons */}
+        <div id="nav-and-actions" className="flex items-center gap-6 md:gap-8 mix-blend-difference text-white">
           
+          {/* Desktop Nav Links */}
+          <nav className="hidden md:flex items-center gap-6 font-sans font-medium text-sm">
+            {navLinks.map((link) => (
+              <button
+                key={link.label}
+                onClick={link.onClick}
+                className="hover:opacity-70 transition-opacity"
+              >
+                {link.label}
+              </button>
+            ))}
+          </nav>
+
           {/* Actions & Utilities */}
-          <div id="nav-actions" className="flex items-center gap-5 md:gap-7">
+          <div id="nav-actions" className="flex items-center gap-4 md:gap-5">
             {/* Search */}
             <button
               id="search-button"
               onClick={onOpenSearch}
-              className="p-1 hover:scale-110 cursor-pointer transition-all duration-200 text-amber-400 hover:text-amber-300"
+              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70"
               aria-label="Search"
             >
-              <Search className="w-5 h-5 stroke-[2.5]" />
+              <Search className="w-5 h-5 stroke-[2]" />
             </button>
 
-            {/* Favorites Count Indicator */}
-            {likedCount > 0 && (
-              <button
-                id="favorites-button"
-                onClick={() => onNavigate('shop')}
-                className={`p-1 hover:scale-105 transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${iconColor}`}
-              >
-                <Heart className="w-4.5 h-4.5 stroke-[2] fill-current" />
-                <span className={`text-[8px] font-mono leading-none font-black px-1.5 py-0.5 rounded-full ${isDarkTheme ? 'bg-white text-neutral-950' : 'bg-neutral-950 text-white'}`}>
-                  {likedCount}
-                </span>
-              </button>
-            )}
+            {/* User Profile */}
+            <button
+              id="user-button"
+              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70 hidden sm:block"
+              aria-label="Profile"
+            >
+              <User className="w-5 h-5 stroke-[2]" />
+            </button>
 
             {/* Cart/Bag */}
             <button
               id="cart-button"
               onClick={onOpenCart}
-              className="p-1 hover:scale-110 cursor-pointer relative transition-all duration-200 text-amber-400 hover:text-amber-300 flex items-center"
+              className="p-1 cursor-pointer relative transition-all duration-200 hover:opacity-70 flex items-center"
               aria-label="Shopping Bag"
             >
-              <ShoppingBag className="w-5 h-5 stroke-[2.5]" />
+              <ShoppingBag className="w-5 h-5 stroke-[2]" />
               {cartCount > 0 && (
-                <span id="cart-badge" className="absolute -top-1 -right-1.5 text-[8.5px] font-mono font-black w-4 h-4 rounded-full flex items-center justify-center border-none bg-amber-400 text-neutral-950">
+                <span id="cart-badge" className="absolute -top-0.5 -right-0.5 text-[9px] font-sans font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white bg-black text-white">
                   {cartCount}
                 </span>
               )}
+            </button>
+
+            {/* Hamburger Menu (Mobile Only) */}
+            <button
+              id="menu-button"
+              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70 ml-1 md:hidden"
+              aria-label="Menu"
+            >
+              <Menu className="w-6 h-6 stroke-[2]" />
             </button>
           </div>
         </div>

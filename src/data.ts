@@ -11,11 +11,11 @@ export const BRANDS: Brand[] = [
   },
   {
     id: 'nude-project',
-    name: 'NUDE PROJECT',
-    logo: 'NUDE PROJECT',
+    name: 'MAGINARI',
+    logo: 'MAGINARI',
     moodImage: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=800',
     shortLine: 'Out of order since day one.',
-    description: 'Combining heavy cotton streetwear, bold graphics, and pop-up culture, Nude Project capture the unstilted energy of youthful European counter-culture.'
+    description: 'Combining heavy cotton streetwear, bold graphics, and pop-up culture, Maginari capture the unstilted energy of youthful European counter-culture.'
   },
   {
     id: 'heliot-emil',
@@ -38,7 +38,7 @@ export const BRANDS: Brand[] = [
 export const PRODUCTS: Product[] = [
   {
     id: 'green-coc-crop-tee',
-    brand: 'NUDE PROJECT',
+    brand: 'MAGINARI',
     name: 'Green COC Crop T-Shirt',
     price: 65,
     images: [
@@ -67,7 +67,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'white-coc-crop-tee',
-    brand: 'NUDE PROJECT',
+    brand: 'MAGINARI',
     name: 'White COC Crop T-Shirt',
     price: 65,
     images: [
@@ -94,7 +94,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'black-coc-crop-tee',
-    brand: 'NUDE PROJECT',
+    brand: 'MAGINARI',
     name: 'Black COC Crop T-Shirt',
     price: 65,
     images: [
@@ -279,11 +279,11 @@ To style the modular thermal shell gilet, focus on contrasting visual weights. C
     category: 'Behind The Drop',
     readTime: '6 min read',
     image: 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&q=80&w=800',
-    summary: 'A raw glimpse inside Nude Project’s popup tour. Queue blocks stretching beyond view, custom soundscapes, and the culture defining streetwear in Europe.',
+    summary: 'A raw glimpse inside Maginari’s popup tour. Queue blocks stretching beyond view, custom soundscapes, and the culture defining streetwear in Europe.',
     date: 'May 12, 2026',
-    content: `Streetwear isn’t purchased; it’s joined. That is the conviction carrying Nude Project’s legendary popup tours across Seville, London, and Berlin. 
+    content: `Streetwear isn’t purchased; it’s joined. That is the conviction carrying Maginari’s legendary popup tours across Seville, London, and Berlin. 
 
-When blocks start styling hours before the sun rises, they aren’t just looking for physical hoodies—they are looking for connection, energy, and subcultural status. The team behind Nude Project creates spaces that operate less like traditional storefronts and more like short-term skate clubs: live DJ booths, free stickers, massive custom steel industrial scaffolds, and extremely limited product drops.
+When blocks start styling hours before the sun rises, they aren’t just looking for physical hoodies—they are looking for connection, energy, and subcultural status. The team behind Maginari creates spaces that operate less like traditional storefronts and more like short-term skate clubs: live DJ booths, free stickers, massive custom steel industrial scaffolds, and extremely limited product drops.
 
 We caught up with the head of drop design during their setup in East London. "We want the space to feel chaotic yet incredibly detailed. The scaffolding is raw, the hangers are heavy brushed nickel, the music rattles. We design the atmosphere first, and then the hoodies hang seamlessly inside it."`
   },
@@ -295,7 +295,7 @@ We caught up with the head of drop design during their setup in East London. "We
     image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=800',
     summary: 'Can the quiet, geometry-driven design of Danish rain utility comfortably co-exist with the loud graphic attitude of Spanish skateboarding?',
     date: 'April 28, 2026',
-    content: `At first glance, Aarhus minimalism and Madrid skateboards share very little surface. RAINS operates with strict, clean lines, muted architectural stone palettes, and uncompromising waterproof performance. Understated, structured, silent. Nude Project operates on the exact opposite: graphic disruption, rich chest puff printing, vintage textures, and high crowd volumes.
+    content: `At first glance, Aarhus minimalism and Madrid skateboards share very little surface. RAINS operates with strict, clean lines, muted architectural stone palettes, and uncompromising waterproof performance. Understated, structured, silent. Maginari operates on the exact opposite: graphic disruption, rich chest puff printing, vintage textures, and high crowd volumes.
 
 Yet, this friction is exactly where contemporary urban fashion thrives.
 

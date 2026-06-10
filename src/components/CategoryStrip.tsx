@@ -21,7 +21,7 @@ export default function CategoryStrip({ onCategorySelect, activeCategory }: Cate
 
         {/* Compact header */}
         <div className="flex items-center justify-between mb-5">
-          <span className="text-[9px] font-mono tracking-[0.35em] text-neutral-400 uppercase">SHOP BY CATEGORY</span>
+          <span className="text-sm font-sans font-medium text-neutral-900">Categories</span>
         </div>
 
         {/* Pill cards row */}
@@ -36,7 +36,7 @@ export default function CategoryStrip({ onCategorySelect, activeCategory }: Cate
                 style={{ '--cat-color': cat.color, '--cat-hover': cat.hover } as React.CSSProperties}
               >
                 <div
-                  className="flex items-center gap-2 px-4 py-2 transition-all duration-300"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-300"
                   style={{
                     backgroundColor: isSelected ? cat.hover : cat.color,
                     border: `1.5px solid ${isSelected ? cat.hover : cat.color}`,
@@ -45,7 +45,7 @@ export default function CategoryStrip({ onCategorySelect, activeCategory }: Cate
                   onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.backgroundColor = isSelected ? cat.hover : cat.color; (e.currentTarget as HTMLDivElement).style.borderColor = isSelected ? cat.hover : cat.color; }}
                 >
                   <span
-                    className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] whitespace-nowrap transition-colors duration-300"
+                    className="text-sm font-sans font-medium whitespace-nowrap transition-colors duration-300"
                     style={{ color: cat.color === '#FAFAFA' || cat.color === '#A8AAA9' || cat.color === '#c7a97a' ? '#121210' : '#f4f4f0' }}
                   >
                     {cat.name}

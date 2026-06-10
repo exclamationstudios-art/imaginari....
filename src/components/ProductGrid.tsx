@@ -38,7 +38,7 @@ export default function ProductGrid({
 
   // Gather unique sizes and brands from catalog
   const allSizes = ['All', 'XS', 'S', 'M', 'L', 'XL', '28', '30', '32', '34', '36', 'One Size'];
-  const allBrands = ['All', 'RAINS', 'NUDE PROJECT', 'HELIOT EMIL', 'TEKLA'];
+  const allBrands = ['All', 'RAINS', 'MAGINARI', 'HELIOT EMIL', 'TEKLA'];
 
   // Apply filters
   let filteredProducts = products.filter((p) => {
