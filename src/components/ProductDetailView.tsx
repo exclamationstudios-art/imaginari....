@@ -107,12 +107,12 @@ export default function ProductDetailView({
               {product.images.map((img, idx) => (
                 <div
                   key={idx}
-                  className="min-w-full sm:min-w-[80%] lg:min-w-0 lg:w-full aspect-[4/5] bg-[#f6f6f6] snap-center shrink-0 flex items-center justify-center"
+                  className="w-full min-w-full lg:min-w-0 aspect-square lg:aspect-[4/5] bg-[#f6f6f6] snap-center shrink-0 flex items-center justify-center overflow-hidden"
                 >
                   <img
                     src={img}
                     alt={`${product.name} editorial view ${idx + 1}`}
-                    className="w-full h-full object-contain mix-blend-multiply"
+                    className="w-full h-full object-cover object-center mix-blend-multiply"
                     referrerPolicy="no-referrer"
                   />
                 </div>
