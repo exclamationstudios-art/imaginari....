@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Product } from '../types';
 import { ChevronDown, ChevronUp, ArrowLeft, Heart, Shirt, ShoppingBag, Box } from 'lucide-react';
+import VirtualTryOnModal from './VirtualTryOnModal';
 
 interface ProductDetailViewProps {
   product: Product;
@@ -25,6 +26,7 @@ export default function ProductDetailView({
   const [selectedColour, setSelectedColour] = useState<string>('');
   const [activeAccordion, setActiveAccordion] = useState<'details' | 'fit' | 'delivery' | 'returns' | null>('details');
   const [addedPopupVisible, setAddedPopupVisible] = useState(false);
+  const [tryOnModalOpen, setTryOnModalOpen] = useState(false);
 
   useEffect(() => {
     if (product) {
@@ -190,6 +192,7 @@ export default function ProductDetailView({
             {/* Actions: Try On, Buy Now, Add to Closet */}
             <div className="flex flex-col gap-3 mb-10">
               <button
+                onClick={() => setTryOnModalOpen(true)}
                 className="w-full bg-white hover:bg-stone-50 border border-stone-200 text-black rounded-full text-base font-medium py-4 flex items-center justify-center gap-2 transition-colors"
               >
                 Try On <Shirt className="w-5 h-5" />
@@ -296,6 +299,13 @@ export default function ProductDetailView({
         </div>
 
       </div>
+
+      {tryOnModalOpen && (
+        <VirtualTryOnModal 
+          product={product} 
+          onClose={() => setTryOnModalOpen(false)} 
+        />
+      )}
     </div>
   );
 }
