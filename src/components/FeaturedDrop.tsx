@@ -1,9 +1,36 @@
+import React from 'react';
 import { Product } from '../types';
 
 interface FeaturedDropProps {
   products: Product[];
   onProductClick: (id: string) => void;
 }
+
+interface ProductCardProps {
+  item: Product;
+  onProductClick: (id: string) => void;
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ item, onProductClick }) => (
+  <div
+    onClick={() => onProductClick(item.id)}
+    className="relative flex-shrink-0 w-[65vw] sm:w-[45vw] md:w-[30vw] lg:w-[22vw] snap-center cursor-pointer group"
+  >
+    <div className="aspect-[4/5] bg-[#f6f6f6] overflow-hidden mb-3">
+      <img
+        src={item.images[0]}
+        alt={item.name}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 mix-blend-multiply"
+        referrerPolicy="no-referrer"
+      />
+    </div>
+    <div className="text-sm font-sans text-neutral-900 px-1">
+      <div className="font-semibold truncate">{item.name}</div>
+      <div className="text-neutral-500 truncate">{item.category}</div>
+      <div className="mt-1.5 font-medium">£{item.price}</div>
+    </div>
+  </div>
+);
 
 export default function FeaturedDrop({ products, onProductClick }: FeaturedDropProps) {
   // First stream (shirts and pants)
@@ -35,27 +62,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
     products.find(p => p.id === 'coc-ash-reg-tee')
   ].filter((p): p is Product => p !== undefined);
 
-  // Product render helper
-  const ProductCard = ({ item }: { item: Product }) => (
-    <div
-      onClick={() => onProductClick(item.id)}
-      className="relative flex-shrink-0 w-[65vw] sm:w-[45vw] md:w-[30vw] lg:w-[22vw] snap-center cursor-pointer group"
-    >
-      <div className="aspect-[4/5] bg-[#f6f6f6] overflow-hidden mb-3">
-        <img
-          src={item.images[0]}
-          alt={item.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 mix-blend-multiply"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-      <div className="text-sm font-sans text-neutral-900 px-1">
-        <div className="font-semibold truncate">{item.name}</div>
-        <div className="text-neutral-500 truncate">{item.category}</div>
-        <div className="mt-1.5 font-medium">£{item.price}</div>
-      </div>
-    </div>
-  );
+
 
   return (
     <section id="featured-drop" className="w-full bg-white select-none">
@@ -64,8 +71,8 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         <div className="w-full bg-white py-4 px-4 md:px-8 mb-6 mt-4">
           <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Shop Our Icons</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
-            {stream1Big.map((item) => <ProductCard key={item.id} item={item} />)}
-            {stream1Small.map((item) => <ProductCard key={item.id} item={item} />)}
+            {stream1Big.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
+            {stream1Small.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
           </div>
         </div>
 
@@ -123,7 +130,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         <div className="w-full bg-white py-4 px-4 md:px-8 mb-12">
           <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Trending Now</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
-            {stream2Big.map((item) => <ProductCard key={item.id} item={item} />)}
+            {stream2Big.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
           </div>
         </div>
 
@@ -154,7 +161,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         <div className="w-full bg-white py-4 px-4 md:px-8 mb-12">
           <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">New Arrivals</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
-            {stream2Small.map((item) => <ProductCard key={item.id} item={item} />)}
+            {stream2Small.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
           </div>
         </div>
 
@@ -184,7 +191,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         <div className="w-full bg-white py-4 px-4 md:px-8 mb-12">
           <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Shop Dreamers</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
-            {stream1Small.map((item) => <ProductCard key={item.id} item={item} />)}
+            {stream1Small.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
           </div>
         </div>
 
