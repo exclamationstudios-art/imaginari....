@@ -28,7 +28,7 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         
         {/* Top Link List */}
-        <div className="flex flex-col gap-4 mb-8">
+        <div className="flex flex-col items-end text-right gap-4 mb-8">
           {topLinks.map((link) => (
             <a key={link} href="#" className="text-sm font-medium hover:text-black transition-colors">
               {link}
