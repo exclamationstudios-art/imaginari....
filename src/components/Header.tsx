@@ -48,7 +48,7 @@ export default function Header({
   return (
     <header 
       id="main-navigation" 
-      className="fixed top-0 left-0 w-full bg-gradient-to-r from-[#B6861B] to-[#503B0C] z-50 transition-all duration-350 border-none select-none h-16 md:h-20"
+      className="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-350 border-none select-none h-16 md:h-20"
     >
       <div className="w-full px-4 md:px-8 h-full flex items-center justify-between">
         
@@ -56,7 +56,7 @@ export default function Header({
         <button
           id="logo-button"
           onClick={() => onNavigate('home')}
-          className="flex items-center gap-3 cursor-pointer focus:outline-none"
+          className="flex items-center gap-3 cursor-pointer focus:outline-none mix-blend-difference"
           title="MAGINARI"
         >
           <img 
@@ -68,7 +68,7 @@ export default function Header({
         </button>
 
         {/* Right - Desktop Links & Action Icons */}
-        <div id="nav-and-actions" className="flex items-center gap-6 md:gap-8 text-white">
+        <div id="nav-and-actions" className="flex items-center gap-6 md:gap-8">
           
           {/* Desktop Nav Links */}
           <nav className="hidden md:flex items-center gap-6 font-sans font-medium text-sm">
@@ -76,7 +76,7 @@ export default function Header({
               <button
                 key={link.label}
                 onClick={link.onClick}
-                className="hover:opacity-70 transition-opacity"
+                className="bg-gradient-to-r from-[#B6861B] to-[#503B0C] bg-clip-text text-transparent hover:opacity-70 transition-opacity"
               >
                 {link.label}
               </button>
@@ -84,7 +84,7 @@ export default function Header({
           </nav>
 
           {/* Actions & Utilities */}
-          <div id="nav-actions" className="flex items-center gap-4 md:gap-5">
+          <div id="nav-actions" className="flex items-center gap-4 md:gap-5 text-[#B6861B]">
             {/* Search */}
             <button
               id="search-button"
@@ -113,7 +113,7 @@ export default function Header({
             >
               <ShoppingBag className="w-5 h-5 stroke-[2]" />
               {cartCount > 0 && (
-                <span id="cart-badge" className="absolute -top-0.5 -right-0.5 text-[9px] font-sans font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white bg-black text-white">
+                <span id="cart-badge" className="absolute -top-0.5 -right-0.5 text-[9px] font-sans font-bold w-4 h-4 rounded-full flex items-center justify-center bg-[#B6861B] text-white">
                   {cartCount}
                 </span>
               )}
