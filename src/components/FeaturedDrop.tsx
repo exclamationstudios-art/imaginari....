@@ -180,6 +180,15 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
             </div>
           </div>
         </div>
+
+        {/* Carousel 4: Dreamers */}
+        <div className="w-full bg-white py-4 px-4 md:px-8 mb-12">
+          <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Shop Dreamers</h3>
+          <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
+            {stream1Big.map((item) => <ProductCard key={item.id} item={item} />)}
+          </div>
+        </div>
+
       </div>
     </section>
   );
