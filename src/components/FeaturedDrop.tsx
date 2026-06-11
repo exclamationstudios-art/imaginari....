@@ -124,7 +124,6 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Trending Now</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
             {stream2Big.map((item) => <ProductCard key={item.id} item={item} />)}
-            {stream1Small.map((item) => <ProductCard key={item.id} item={item} />)}
           </div>
         </div>
 
