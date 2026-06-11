@@ -74,18 +74,8 @@ export default function Footer({ onNavigate }: FooterProps) {
           </details>
         </div>
 
-        {/* Location & Copyright */}
-        <div className="flex items-center gap-2 mt-8 mb-6 text-sm">
-          <Globe className="w-4 h-4" />
-          <span className="font-medium">United Kingdom</span>
-        </div>
-        
-        <div className="text-xs text-neutral-500 mb-6">
-          © 2026 Maginari, Inc. All rights reserved
-        </div>
-
         {/* Bottom Legal Links */}
-        <div className="flex flex-col gap-4 text-xs text-neutral-500">
+        <div className="flex flex-col gap-4 text-xs text-neutral-500 mb-8">
           <details className="group">
             <summary className="flex items-center gap-1 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:text-black">
               Guides
@@ -104,6 +94,17 @@ export default function Footer({ onNavigate }: FooterProps) {
               {link}
             </a>
           ))}
+        </div>
+
+        {/* Location & Copyright */}
+        <div className="flex flex-col gap-4 mt-12 pt-6 border-t border-stone-200">
+          <div className="flex items-center gap-2 text-base">
+            <Globe className="w-5 h-5" />
+            <span className="font-medium">United Kingdom</span>
+          </div>
+          <div className="text-sm text-neutral-500">
+            © 2026 Maginari, Inc. All rights reserved
+          </div>
         </div>
 
       </div>

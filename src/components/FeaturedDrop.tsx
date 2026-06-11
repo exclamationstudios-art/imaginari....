@@ -159,6 +159,27 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
         </div>
 
+        {/* BRAND BANNER 4: DREAMERS */}
+        <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
+          <img
+            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200"
+            alt="Dreamers Campaign"
+            className="w-full h-full object-cover object-center"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
+          
+          <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 pb-10 flex flex-col items-start z-10">
+            <h2 className="text-white text-3xl md:text-5xl font-sans font-bold leading-tight mb-5">
+              Dreamers<br/>Essentials
+            </h2>
+            <div className="flex gap-3">
+              <button className="bg-white hover:bg-stone-200 text-black font-sans font-semibold rounded-full px-6 py-2.5 transition-colors">
+                Shop Dreamers
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

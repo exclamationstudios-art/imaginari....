@@ -48,7 +48,7 @@ export default function Header({
   return (
     <header 
       id="main-navigation" 
-      className="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-350 border-none select-none h-16 md:h-20"
+      className="fixed top-0 left-0 w-full bg-gradient-to-r from-[#B6861B] to-[#503B0C] z-50 transition-all duration-350 border-none select-none h-16 md:h-20"
     >
       <div className="w-full px-4 md:px-8 h-full flex items-center justify-between">
         
@@ -56,7 +56,7 @@ export default function Header({
         <button
           id="logo-button"
           onClick={() => onNavigate('home')}
-          className="flex items-center gap-3 cursor-pointer focus:outline-none mix-blend-difference"
+          className="flex items-center gap-3 cursor-pointer focus:outline-none"
           title="MAGINARI"
         >
           <img 
@@ -68,7 +68,7 @@ export default function Header({
         </button>
 
         {/* Right - Desktop Links & Action Icons */}
-        <div id="nav-and-actions" className="flex items-center gap-6 md:gap-8 mix-blend-difference text-white">
+        <div id="nav-and-actions" className="flex items-center gap-6 md:gap-8 text-white">
           
           {/* Desktop Nav Links */}
           <nav className="hidden md:flex items-center gap-6 font-sans font-medium text-sm">
