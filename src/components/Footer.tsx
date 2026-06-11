@@ -7,13 +7,7 @@ interface FooterProps {
 
 export default function Footer({ onNavigate }: FooterProps) {
   const topLinks = [
-    'Gift Cards',
-    'Corporate Gift Cards',
-    'Find a Store',
-    'Maginari Journal',
-    'Become a Member',
-    'Feedback',
-    'Promo Codes',
+    'Feedback'
   ];
 
   const bottomLinks = [
