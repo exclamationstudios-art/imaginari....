@@ -1,4 +1,5 @@
-import { MapPin, Globe, ChevronDown } from 'lucide-react';
+import React from 'react';
+import { Instagram, Twitter, Youtube } from 'lucide-react';
 
 interface FooterProps {
   onBrandClick: () => void;
@@ -6,101 +7,124 @@ interface FooterProps {
 }
 
 export default function Footer({ onNavigate }: FooterProps) {
-  const topLinks = [
-    'Feedback'
-  ];
-
-  const bottomLinks = [
-    'Terms of Use',
-    'Terms of Sale',
-    'Company Details',
-    'Privacy & Cookie Policy'
-  ];
+  const brandLinks = ['Maginari Journal', 'Our Story', 'Stores', 'Careers'];
+  const supportLinks = ['Returns', 'Order Tracking', 'FAQ', 'Contact Us'];
+  const boringLinks = ['Terms of Use', 'Privacy & Cookie Policy', 'Terms of Sale'];
 
   return (
-    <footer id="maginari-footer" className="bg-white text-[#111] font-sans pt-10 pb-20 md:pb-10 border-t border-stone-200">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
+    <footer id="maginari-footer" className="bg-white text-stone-900 font-sans pt-16 border-t border-stone-200 select-none overflow-hidden flex flex-col">
+      <div className="w-full px-6 md:px-12 flex flex-col">
         
-        {/* Top Link List */}
-        <div className="flex flex-col items-end text-right gap-4 mb-8">
-          {topLinks.map((link) => (
-            <a key={link} href="#" className="text-sm font-medium hover:text-black transition-colors">
-              {link}
-            </a>
-          ))}
-        </div>
-
-        <div className="w-full h-px bg-stone-200 my-6" />
-
-        {/* Native HTML Accordions for Mobile */}
-        <div className="flex flex-col">
-          <details className="group border-b border-stone-200">
-            <summary className="flex justify-between items-center font-medium cursor-pointer list-none py-4 text-sm [&::-webkit-details-marker]:hidden">
-              Help
-              <span className="transition group-open:rotate-180">
-                <ChevronDown className="w-5 h-5" />
-              </span>
-            </summary>
-            <div className="text-neutral-500 text-sm pb-4 flex flex-col gap-3">
-              <a href="#" className="hover:text-black">Get Help</a>
-              <a href="#" className="hover:text-black">Order Status</a>
-              <a href="#" className="hover:text-black">Delivery</a>
-              <a href="#" className="hover:text-black">Returns</a>
-              <a href="#" className="hover:text-black">Payment Options</a>
-              <a href="#" className="hover:text-black">Contact Us</a>
-            </div>
-          </details>
-
-          <details className="group border-b border-stone-200">
-            <summary className="flex justify-between items-center font-medium cursor-pointer list-none py-4 text-sm [&::-webkit-details-marker]:hidden">
-              Company
-              <span className="transition group-open:rotate-180">
-                <ChevronDown className="w-5 h-5" />
-              </span>
-            </summary>
-            <div className="text-neutral-500 text-sm pb-4 flex flex-col gap-3">
-              <a href="#" className="hover:text-black">About Maginari</a>
-              <a href="#" className="hover:text-black">News</a>
-              <a href="#" className="hover:text-black">Careers</a>
-              <a href="#" className="hover:text-black">Investors</a>
-              <a href="#" className="hover:text-black">Sustainability</a>
-            </div>
-          </details>
-        </div>
-
-        {/* Bottom Legal Links */}
-        <div className="flex flex-col gap-4 text-xs text-neutral-500 mb-8">
-          <details className="group">
-            <summary className="flex items-center gap-1 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:text-black">
-              Guides
-              <span className="transition group-open:rotate-180">
-                <ChevronDown className="w-3.5 h-3.5" />
-              </span>
-            </summary>
-            <div className="pl-4 py-2 flex flex-col gap-2 border-l border-stone-200 mt-2">
-              <a href="#" className="hover:text-black">Sizing Guide</a>
-              <a href="#" className="hover:text-black">Care Instructions</a>
-            </div>
-          </details>
+        {/* TOP SECTION: Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 lg:gap-16 mb-24">
           
-          {bottomLinks.map((link) => (
-            <a key={link} href="#" className="hover:text-black transition-colors">
-              {link}
+          {/* COLUMN 1: STAY IN THE LOOP */}
+          <div className="flex flex-col">
+            <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Stay in the loop</h4>
+            <p className="text-sm text-stone-600 mb-8">Sign up to our emails and get 10% off</p>
+            
+            <div className="flex flex-col gap-6">
+              {/* Input */}
+              <div className="flex items-center border-b border-stone-300 pb-2">
+                <input 
+                  type="email" 
+                  placeholder="user@gmail.com" 
+                  className="w-full bg-transparent outline-none text-sm placeholder:text-stone-400"
+                />
+                <button className="text-xs font-bold uppercase tracking-widest hover:text-stone-500 transition-colors ml-4 shrink-0 text-black">
+                  Subscribe
+                </button>
+              </div>
+
+              {/* Preferences */}
+              <div className="flex items-center gap-4 lg:gap-6 text-sm text-stone-600 flex-wrap">
+                <span className="text-xs text-black">Select your preferences:</span>
+                <label className="flex items-center gap-2 cursor-pointer group">
+                  <div className="w-3 h-3 rounded-full border border-stone-400 flex items-center justify-center group-hover:border-stone-800">
+                    <div className="w-1.5 h-1.5 rounded-full bg-black hidden" />
+                  </div>
+                  Man
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer group">
+                  <div className="w-3 h-3 rounded-full border border-stone-400 flex items-center justify-center group-hover:border-stone-800">
+                    <div className="w-1.5 h-1.5 rounded-full bg-black hidden" />
+                  </div>
+                  Woman
+                </label>
+                <label className="flex items-center gap-2 cursor-pointer group">
+                  <div className="w-3 h-3 rounded-full border border-black flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-black" />
+                  </div>
+                  Both
+                </label>
+              </div>
+
+              {/* Checkbox */}
+              <label className="flex items-start gap-3 cursor-pointer mt-2 group">
+                <div className="w-3 h-3 border border-stone-400 mt-1 shrink-0 group-hover:border-stone-800 flex items-center justify-center" />
+                <span className="text-[11px] leading-tight text-stone-500">
+                  I agree to receive content from Maginari via email and have read and accept the <a href="#" className="underline hover:text-black">Privacy Policy</a>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          {/* COLUMN 2: BRAND */}
+          <div className="flex flex-col">
+            <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Brand</h4>
+            <div className="flex flex-col gap-3">
+              {brandLinks.map(link => (
+                <a key={link} href="#" className="text-[13px] text-stone-600 hover:text-black transition-colors">{link}</a>
+              ))}
+            </div>
+          </div>
+
+          {/* COLUMN 3: SUPPORT */}
+          <div className="flex flex-col">
+            <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Support</h4>
+            <div className="flex flex-col gap-3">
+              {supportLinks.map(link => (
+                <a key={link} href="#" className="text-[13px] text-stone-600 hover:text-black transition-colors">{link}</a>
+              ))}
+            </div>
+          </div>
+
+          {/* COLUMN 4: BORING STUFF */}
+          <div className="flex flex-col">
+            <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Boring Stuff</h4>
+            <div className="flex flex-col gap-3">
+              {boringLinks.map(link => (
+                <a key={link} href="#" className="text-[13px] text-stone-600 hover:text-black transition-colors">{link}</a>
+              ))}
+            </div>
+          </div>
+          
+        </div>
+
+        {/* MIDDLE UTILITY BAR */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full pb-8 gap-6 border-b border-stone-200">
+          <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-stone-800">
+            <span>Country & Language</span>
+            <span className="text-stone-400 cursor-pointer hover:text-stone-600">UK | GBP | English ▼</span>
+          </div>
+
+          <div className="flex items-center gap-4 text-stone-600">
+            <a href="#" className="hover:text-black transition-colors"><Instagram className="w-5 h-5" /></a>
+            <a href="#" className="hover:text-black transition-colors">
+              {/* TIKTOK SVG */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
             </a>
-          ))}
-        </div>
-
-        {/* Location & Copyright */}
-        <div className="flex flex-col gap-4 mt-12 pt-6 border-t border-stone-200">
-          <div className="flex items-center gap-2 text-base">
-            <Globe className="w-5 h-5" />
-            <span className="font-medium">United Kingdom</span>
-          </div>
-          <div className="text-sm text-neutral-500">
-            © 2026 Maginari, Inc. All rights reserved
+            <a href="#" className="hover:text-black transition-colors"><Twitter className="w-5 h-5" /></a>
+            <a href="#" className="hover:text-black transition-colors"><Youtube className="w-5 h-5" /></a>
           </div>
         </div>
+      </div>
 
+      {/* GIANT MAGINARI LOGO */}
+      <div className="w-full overflow-hidden flex justify-center items-end mt-4 mb-[-2vw] pointer-events-none">
+        <h1 className="text-[25vw] md:text-[23vw] leading-[0.75] font-sans font-bold tracking-tighter text-[#4a3525] whitespace-nowrap opacity-90 select-none">
+          Maginari®
+        </h1>
       </div>
     </footer>
   );
