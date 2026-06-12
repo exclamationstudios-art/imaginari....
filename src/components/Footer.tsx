@@ -16,10 +16,10 @@ export default function Footer({ onNavigate }: FooterProps) {
       <div className="w-full px-6 md:px-12 flex flex-col">
         
         {/* TOP SECTION: Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 lg:gap-16 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 lg:gap-8 mb-24">
           
           {/* COLUMN 1: STAY IN THE LOOP */}
-          <div className="flex flex-col">
+          <div className="flex flex-col md:col-span-5">
             <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Stay in the loop</h4>
             <p className="text-sm text-stone-600 mb-8">Sign up to our emails and get 10% off</p>
             
@@ -37,7 +37,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </div>
 
               {/* Preferences */}
-              <div className="flex items-center gap-4 lg:gap-6 text-sm text-stone-600 flex-wrap">
+              <div className="flex items-center gap-4 lg:gap-6 text-sm text-stone-600 flex-nowrap whitespace-nowrap overflow-x-auto [scrollbar-width:none]">
                 <span className="text-xs text-black">Select your preferences:</span>
                 <label className="flex items-center gap-2 cursor-pointer group">
                   <div className="w-3 h-3 rounded-full border border-stone-400 flex items-center justify-center group-hover:border-stone-800">
@@ -70,7 +70,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           {/* COLUMN 2: BRAND */}
-          <div className="flex flex-col">
+          <div className="flex flex-col md:col-start-7 md:col-span-2">
             <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Brand</h4>
             <div className="flex flex-col gap-3">
               {brandLinks.map(link => (
@@ -80,7 +80,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           {/* COLUMN 3: SUPPORT */}
-          <div className="flex flex-col">
+          <div className="flex flex-col md:col-span-2">
             <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Support</h4>
             <div className="flex flex-col gap-3">
               {supportLinks.map(link => (
@@ -90,7 +90,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           {/* COLUMN 4: BORING STUFF */}
-          <div className="flex flex-col">
+          <div className="flex flex-col md:col-span-2">
             <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Boring Stuff</h4>
             <div className="flex flex-col gap-3">
               {boringLinks.map(link => (
@@ -121,10 +121,10 @@ export default function Footer({ onNavigate }: FooterProps) {
       </div>
 
       {/* GIANT MAGINARI LOGO */}
-      <div className="w-full overflow-hidden flex justify-center items-end mt-4 mb-[-2vw] pointer-events-none">
-        <h1 className="text-[25vw] md:text-[23vw] leading-[0.75] font-sans font-bold tracking-tighter text-[#4a3525] whitespace-nowrap opacity-90 select-none">
-          Maginari®
-        </h1>
+      <div className="w-full overflow-hidden flex justify-center items-end mt-4 mb-[-2vw] pointer-events-none px-4">
+        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 349 49" className="w-full h-auto max-w-[1200px] opacity-90 mix-blend-multiply">
+          <image width="349" height="49" xlinkHref="data:image/png;base64,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" />
+        </svg>
       </div>
     </footer>
   );
