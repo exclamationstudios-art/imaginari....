@@ -23,7 +23,7 @@ export default function Footer({ onNavigate }: FooterProps) {
             <h4 className="text-xs uppercase font-bold tracking-widest mb-6 text-black">Stay in the loop</h4>
             <p className="text-sm text-stone-600 mb-8">Sign up to our emails and get 10% off</p>
             
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 max-w-sm">
               {/* Input */}
               <div className="flex items-center border-b border-stone-300 pb-2">
                 <input 
