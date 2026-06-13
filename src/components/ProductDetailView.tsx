@@ -103,11 +103,11 @@ export default function ProductDetailView({
           
           {/* Left panel: Large Image Stack */}
           <div className="lg:col-span-7">
-            <div className="flex overflow-x-auto lg:flex-col lg:overflow-x-visible snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 md:mx-0 lg:space-y-4">
+            <div className="flex overflow-x-auto lg:flex-col lg:overflow-x-visible snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden -mx-4 md:mx-0 pl-4 pr-4 lg:pl-0 lg:pr-0 gap-2 lg:gap-0 scroll-pl-4 lg:scroll-pl-0 lg:space-y-4">
               {product.images.map((img, idx) => (
                 <div
                   key={idx}
-                  className="w-full min-w-full lg:min-w-0 aspect-square lg:aspect-[4/5] bg-[#f6f6f6] snap-center shrink-0 flex items-center justify-center overflow-hidden"
+                  className="w-[calc(100%-28px)] min-w-[calc(100%-28px)] lg:w-full lg:min-w-0 aspect-square lg:aspect-[4/5] bg-[#f6f6f6] rounded-2xl snap-start shrink-0 flex items-center justify-center overflow-hidden"
                 >
                   <img
                     src={img}
@@ -131,8 +131,13 @@ export default function ProductDetailView({
               <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-2">
                 {product.name}
               </h1>
-              <div className="text-lg font-medium">
-                £{product.price}
+              <div className="text-lg font-medium flex items-center gap-2">
+                <span>£{product.price}</span>
+                {product.originalPrice && (
+                  <span className="text-sm text-neutral-400 line-through font-normal">
+                    £{product.originalPrice}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -141,25 +146,36 @@ export default function ProductDetailView({
               <div className="text-sm font-medium mb-3">
                 Select Colour: <span className="text-neutral-500">{selectedColour}</span>
               </div>
-              <div className="flex items-center gap-3">
-                {product.colours.map((col) => {
-                  const isSelected = selectedColour === col.name;
-                  return (
-                    <button
-                      key={col.name}
-                      onClick={() => setSelectedColour(col.name)}
-                      className={`w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all ${
-                        isSelected ? 'ring-2 ring-offset-2 ring-black' : 'ring-1 ring-stone-200 hover:ring-stone-400'
-                      }`}
-                      title={col.name}
-                    >
-                      <span
-                        className="w-full h-full rounded-full"
-                        style={{ backgroundColor: col.hex }}
-                      />
-                    </button>
-                  );
-                })}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  {product.colours.map((col) => {
+                    const isSelected = selectedColour === col.name;
+                    return (
+                      <button
+                        key={col.name}
+                        onClick={() => setSelectedColour(col.name)}
+                        className={`w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all ${
+                          isSelected ? 'ring-2 ring-offset-2 ring-black' : 'ring-1 ring-stone-200 hover:ring-stone-400'
+                        }`}
+                        title={col.name}
+                      >
+                        <span
+                          className="w-full h-full rounded-full"
+                          style={{ backgroundColor: col.hex }}
+                        />
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Virtual Try On icon button */}
+                <button
+                  onClick={() => setTryOnModalOpen(true)}
+                  className="w-10 h-10 bg-white hover:bg-stone-50 border border-stone-200 text-black rounded-full flex items-center justify-center transition-colors hover:border-black cursor-pointer"
+                  title="Virtual Try On"
+                >
+                  <Shirt className="w-5 h-5 text-neutral-800 stroke-[1.5]" />
+                </button>
               </div>
             </div>
 
@@ -189,15 +205,8 @@ export default function ProductDetailView({
               </div>
             </div>
 
-            {/* Actions: Try On, Buy Now, Add to Closet */}
+            {/* Actions: Buy Now, Add to Closet */}
             <div className="flex flex-col gap-3 mb-10">
-              <button
-                onClick={() => setTryOnModalOpen(true)}
-                className="w-full bg-white hover:bg-stone-50 border border-stone-200 text-black rounded-full text-base font-medium py-4 flex items-center justify-center gap-2 transition-colors"
-              >
-                Try On <Shirt className="w-5 h-5" />
-              </button>
-              
               <div className="flex items-center gap-3 w-full">
                 <button
                   onClick={handleAddToBagClick}

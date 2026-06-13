@@ -41,6 +41,7 @@ export const PRODUCTS: Product[] = [
     brand: 'MAGINARI',
     name: 'Green COC Crop T-Shirt',
     price: 65,
+    originalPrice: 85,
     images: [
       '/shirts/GREEN OFFICIAL COC CROP T SHIRT.jpg',
       '/shirts/ICNOS OFFICIAL BACK CROP T SHIRT GREEN.jpg'
@@ -70,6 +71,7 @@ export const PRODUCTS: Product[] = [
     brand: 'MAGINARI',
     name: 'White COC Crop T-Shirt',
     price: 65,
+    originalPrice: 85,
     images: [
       '/shirts/white coc crop t shirt.jpg'
     ],
@@ -97,6 +99,7 @@ export const PRODUCTS: Product[] = [
     brand: 'MAGINARI',
     name: 'Black COC Crop T-Shirt',
     price: 65,
+    originalPrice: 85,
     images: [
       '/shirts/black coc cropt shirt back.jpg'
     ],
@@ -123,6 +126,7 @@ export const PRODUCTS: Product[] = [
     brand: 'HELIOT EMIL',
     name: 'Icons Crop T-Shirt',
     price: 75,
+    originalPrice: 98,
     images: [
       '/shirts/icons srop t shirt.jpg',
       '/shirts/ICONS 1.jpg'
@@ -151,6 +155,7 @@ export const PRODUCTS: Product[] = [
     brand: 'TEKLA',
     name: 'COC Ash Regular T-Shirt',
     price: 55,
+    originalPrice: 70,
     images: [
       '/shirts/coc ash reg 2.jpg',
       '/shirts/ash t shirt coc reg bAck.jpg'
@@ -179,6 +184,7 @@ export const PRODUCTS: Product[] = [
     brand: 'RAINS',
     name: 'COC Green Regular T-Shirt',
     price: 55,
+    originalPrice: 70,
     images: [
       '/shirts/coc reg green .jpg',
       '/shirts/green reg back coc.psd.jpg'
@@ -206,6 +212,7 @@ export const PRODUCTS: Product[] = [
     brand: 'HELIOT EMIL',
     name: 'COC Black Regular T-Shirt',
     price: 60,
+    originalPrice: 80,
     images: [
       '/shirts/coc regula t shirt black frint.jpg',
       '/shirts/greenblack reg back coc.psd.jpg'
@@ -234,6 +241,7 @@ export const PRODUCTS: Product[] = [
     brand: 'TEKLA',
     name: 'COC White Regular T-Shirt',
     price: 55,
+    originalPrice: 70,
     images: [
       '/shirts/coc regula t shirt hite frint.jpg',
       '/shirts/white reg back coc.psd.jpg'
