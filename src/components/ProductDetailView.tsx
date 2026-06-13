@@ -131,11 +131,11 @@ export default function ProductDetailView({
               <h1 className="text-3xl lg:text-4xl font-bold tracking-tight mb-2">
                 {product.name}
               </h1>
-              <div className="text-lg font-medium flex items-center gap-2">
-                <span>£{product.price}</span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-xl font-semibold text-neutral-900">£{product.price.toFixed(2)}</span>
                 {product.originalPrice && (
                   <span className="text-sm text-neutral-400 line-through font-normal">
-                    £{product.originalPrice}
+                    £{product.originalPrice.toFixed(2)}
                   </span>
                 )}
               </div>

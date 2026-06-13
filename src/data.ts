@@ -40,8 +40,8 @@ export const PRODUCTS: Product[] = [
     id: 'green-coc-crop-tee',
     brand: 'MAGINARI',
     name: 'Green COC Crop T-Shirt',
-    price: 65,
-    originalPrice: 85,
+    price: 64.99,
+    originalPrice: 84.99,
     images: [
       '/shirts/GREEN OFFICIAL COC CROP T SHIRT.jpg',
       '/shirts/ICNOS OFFICIAL BACK CROP T SHIRT GREEN.jpg'
@@ -70,8 +70,8 @@ export const PRODUCTS: Product[] = [
     id: 'white-coc-crop-tee',
     brand: 'MAGINARI',
     name: 'White COC Crop T-Shirt',
-    price: 65,
-    originalPrice: 85,
+    price: 64.99,
+    originalPrice: 84.99,
     images: [
       '/shirts/white coc crop t shirt.jpg'
     ],
@@ -98,8 +98,8 @@ export const PRODUCTS: Product[] = [
     id: 'black-coc-crop-tee',
     brand: 'MAGINARI',
     name: 'Black COC Crop T-Shirt',
-    price: 65,
-    originalPrice: 85,
+    price: 64.99,
+    originalPrice: 84.99,
     images: [
       '/shirts/black coc cropt shirt back.jpg'
     ],
@@ -125,8 +125,8 @@ export const PRODUCTS: Product[] = [
     id: 'icons-crop-tee',
     brand: 'HELIOT EMIL',
     name: 'Icons Crop T-Shirt',
-    price: 75,
-    originalPrice: 98,
+    price: 74.99,
+    originalPrice: 97.99,
     images: [
       '/shirts/icons srop t shirt.jpg',
       '/shirts/ICONS 1.jpg'
@@ -154,8 +154,8 @@ export const PRODUCTS: Product[] = [
     id: 'coc-ash-reg-tee',
     brand: 'TEKLA',
     name: 'COC Ash Regular T-Shirt',
-    price: 55,
-    originalPrice: 70,
+    price: 54.99,
+    originalPrice: 69.99,
     images: [
       '/shirts/coc ash reg 2.jpg',
       '/shirts/ash t shirt coc reg bAck.jpg'
@@ -183,8 +183,8 @@ export const PRODUCTS: Product[] = [
     id: 'coc-green-reg-tee',
     brand: 'RAINS',
     name: 'COC Green Regular T-Shirt',
-    price: 55,
-    originalPrice: 70,
+    price: 54.99,
+    originalPrice: 69.99,
     images: [
       '/shirts/coc reg green .jpg',
       '/shirts/green reg back coc.psd.jpg'
@@ -211,8 +211,8 @@ export const PRODUCTS: Product[] = [
     id: 'coc-black-reg-tee',
     brand: 'HELIOT EMIL',
     name: 'COC Black Regular T-Shirt',
-    price: 60,
-    originalPrice: 80,
+    price: 59.99,
+    originalPrice: 79.99,
     images: [
       '/shirts/coc regula t shirt black frint.jpg',
       '/shirts/greenblack reg back coc.psd.jpg'
@@ -240,8 +240,8 @@ export const PRODUCTS: Product[] = [
     id: 'coc-white-reg-tee',
     brand: 'TEKLA',
     name: 'COC White Regular T-Shirt',
-    price: 55,
-    originalPrice: 70,
+    price: 54.99,
+    originalPrice: 69.99,
     images: [
       '/shirts/coc regula t shirt hite frint.jpg',
       '/shirts/white reg back coc.psd.jpg'
