@@ -1,5 +1,4 @@
-import React from 'react';
-import { Instagram, Twitter, Youtube } from 'lucide-react';
+import { Instagram, Twitter } from 'lucide-react';
 
 interface FooterProps {
   onBrandClick: () => void;
@@ -109,13 +108,20 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           <div className="flex items-center gap-4 text-stone-600">
-            <a href="#" className="hover:text-black transition-colors"><Instagram className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-black transition-colors">
+            <a href="https://www.instagram.com/maginari.official?igsh=MWN4eHVicncwYXMxeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors" title="Instagram">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="#" className="hover:text-black transition-colors" title="TikTok">
               {/* TIKTOK SVG */}
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
             </a>
-            <a href="#" className="hover:text-black transition-colors"><Twitter className="w-5 h-5" /></a>
-            <a href="#" className="hover:text-black transition-colors"><Youtube className="w-5 h-5" /></a>
+            <a href="#" className="hover:text-black transition-colors" title="Twitter"><Twitter className="w-5 h-5" /></a>
+            <a href="https://pin.it/5dYS4PGaO" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors" title="Pinterest">
+              {/* PINTEREST SVG */}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.966 1.406-5.966s-.359-.72-.359-1.781c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.005-4.882-3.409 0-5.41 2.561-5.41 5.202 0 1.032.397 2.139.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.172.267-.399.161-1.499-.696-2.435-2.887-2.435-4.646 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.621 0 11.988-5.365 11.988-11.987C23.997 5.368 18.631 0 12.017 0z"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
