@@ -234,7 +234,7 @@ export default function ProductDetailView({
 
             {/* Product Details Section */}
             <div className="mt-8 text-base leading-relaxed text-neutral-800 mb-8">
-              <p>Explore the features of the {product.name}. Built for everyday performance and unmatched comfort.</p>
+              <p>Explore the features of the {product.brand} {product.name}. Built for everyday performance and unmatched comfort.</p>
             </div>
 
             {/* Accordions */}
