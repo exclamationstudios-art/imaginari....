@@ -103,20 +103,20 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         </div>
 
 
-        {/* BRAND BANNER 2: FAVELA */}
+        {/* BRAND BANNER 2: EXCLAMATION STUDIO */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
             src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=1200"
-            alt="Favela Campaign"
+            alt="Exclamation Studio Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
           
           <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 pb-10 flex flex-col items-start z-10">
-            <img src="/favela-logo.svg" alt="Favela Logo" className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] object-contain mb-2 drop-shadow-md" />
+            <img src="/exclamation-logo.svg" alt="Exclamation Studio Logo" className="w-[80px] h-[80px] md:w-[120px] md:h-[120px] object-contain mb-2 drop-shadow-md" />
             <h2 className="text-white text-3xl md:text-5xl font-sans font-bold leading-tight mb-5">
-              Favela Drops<br/>Volume 1
+              Exclamation Studio Drops<br/>Volume 1
             </h2>
             <div className="flex gap-3">
               <button className="bg-white hover:bg-stone-200 text-black font-sans font-semibold rounded-full px-6 py-2.5 transition-colors">
