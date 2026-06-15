@@ -5,7 +5,7 @@ export const BRANDS: Brand[] = [
     id: 'rains',
     name: 'RAINS',
     logo: 'RAINS',
-    moodImage: 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&q=80&w=800',
+    moodImage: '/models/photo_2026-06-15_15-25-47.jpg',
     shortLine: 'The architects of wet-weather utility.',
     description: 'Founded in Aarhus, Denmark, RAINS redefines structural rainwear for the urban explorer, combining geometric concepts and technical polyurethane fabrications.'
   },
@@ -13,7 +13,7 @@ export const BRANDS: Brand[] = [
     id: 'nude-project',
     name: 'MAGINARI',
     logo: 'MAGINARI',
-    moodImage: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=800',
+    moodImage: '/models/photo_2026-06-15_15-25-54.jpg',
     shortLine: 'Out of order since day one.',
     description: 'Combining heavy cotton streetwear, bold graphics, and pop-up culture, Maginari capture the unstilted energy of youthful European counter-culture.'
   },
@@ -21,7 +21,7 @@ export const BRANDS: Brand[] = [
     id: 'heliot-emil',
     name: 'HELIOT EMIL',
     logo: 'HELIOT EMIL',
-    moodImage: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=800',
+    moodImage: '/models/photo_2026-06-15_15-26-02.jpg',
     shortLine: 'Industrial elegance and structural friction.',
     description: 'Operating in the intersection of functional street clothing and high-fashion monochrome tech, presenting elite asymmetrical garments and metal hardware.'
   },
@@ -29,7 +29,7 @@ export const BRANDS: Brand[] = [
     id: 'tekla',
     name: 'TEKLA',
     logo: 'TEKLA',
-    moodImage: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800',
+    moodImage: '/models/photo_2026-06-15_15-26-14.jpg',
     shortLine: 'Uncompromising functional fabrics.',
     description: 'Based in Copenhagen, Tekla designs thoughtfully crafted textiles and lounge uniforms in organic cotton, wool, and heavy flannel designed for peaceful intervals.'
   }
@@ -332,10 +332,10 @@ export const PLAYLIST = {
 };
 
 export const INSTAGRAM_POSTS = [
-  { id: 'ugc-1', user: '@nordic_core', image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=600', location: 'Oslo Store' },
-  { id: 'ugc-2', user: '@streetwear_daily', image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600', location: 'London Pop-up' },
-  { id: 'ugc-3', user: '@emil_archive', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600', location: 'Copenhagen' },
-  { id: 'ugc-4', user: '@utility_wear_club', image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&q=80&w=600', location: 'Aarhus Dockyard' },
-  { id: 'ugc-5', user: '@city_uniforms_mag', image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=600', location: 'Berlin Subway' },
-  { id: 'ugc-6', user: '@skate_nudeproject', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=600', location: 'Madrid Plaza' }
+  { id: 'ugc-1', user: '@nordic_core', image: '/models/photo_2026-06-15_15-24-56.jpg', location: 'Oslo Store' },
+  { id: 'ugc-2', user: '@streetwear_daily', image: '/models/photo_2026-06-15_15-25-23.jpg', location: 'London Pop-up' },
+  { id: 'ugc-3', user: '@emil_archive', image: '/models/photo_2026-06-15_15-25-29.jpg', location: 'Copenhagen' },
+  { id: 'ugc-4', user: '@utility_wear_club', image: '/models/photo_2026-06-15_15-25-34.jpg', location: 'Aarhus Dockyard' },
+  { id: 'ugc-5', user: '@city_uniforms_mag', image: '/models/photo_2026-06-15_15-25-38.jpg', location: 'Berlin Subway' },
+  { id: 'ugc-6', user: '@skate_nudeproject', image: '/models/photo_2026-06-15_15-25-43.jpg', location: 'Madrid Plaza' }
 ];

@@ -79,7 +79,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         {/* BRAND BANNER 1: COC */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200"
+            src="/models/photo_2026-06-15_15-26-05.jpg"
             alt="Coci Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -106,7 +106,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         {/* BRAND BANNER 2: EXCLAMATION STUDIO */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=1200"
+            src="/models/photo_2026-06-15_15-26-10.jpg"
             alt="Exclamation Studio Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -137,7 +137,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         {/* BRAND BANNER 3: 8TERNITY */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=1200"
+            src="/models/photo_2026-06-15_15-26-19.jpg"
             alt="8ternity Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -168,7 +168,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         {/* BRAND BANNER 4: DREAMERS */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200"
+            src="/models/photo_2026-06-15_15-26-23.jpg"
             alt="Dreamers Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
