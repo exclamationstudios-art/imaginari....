@@ -92,9 +92,16 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     setPassword('');
   };
 
-  const handleResetToDefaults = () => {
+  const handleResetToDefaults = async () => {
     if (window.confirm('Reset all custom mappings to original theme configurations?')) {
       localStorage.removeItem('maginari_custom_layout');
+      try {
+        await fetch('/api/custom-layout', {
+          method: 'DELETE',
+        });
+      } catch (err) {
+        console.error('Failed to reset layout on server:', err);
+      }
       window.location.reload();
     }
   };

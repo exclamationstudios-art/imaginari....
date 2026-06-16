@@ -47,6 +47,17 @@ export default defineConfig(({mode}) => {
                   res.end(JSON.stringify({ error: 'Failed to write layout file' }));
                 }
               });
+            } else if (req.method === 'DELETE') {
+              try {
+                if (fs.existsSync(filePath)) {
+                  fs.unlinkSync(filePath);
+                }
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ success: true }));
+              } catch (e) {
+                res.statusCode = 500;
+                res.end(JSON.stringify({ error: 'Failed to delete layout file' }));
+              }
             }
           } else {
             next();

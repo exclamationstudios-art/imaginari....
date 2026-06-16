@@ -177,6 +177,11 @@ export default function App() {
           const sanitized = sanitizeLayout(data);
           setCustomLayout(sanitized);
           localStorage.setItem('maginari_custom_layout', JSON.stringify(sanitized));
+        } else {
+          // If server returns empty layout, it means it's clean defaults.
+          // Clear visitor local storage so client is synchronized with server.
+          localStorage.removeItem('maginari_custom_layout');
+          setCustomLayout(getDefaultCustomLayout());
         }
       })
       .catch(err => {
