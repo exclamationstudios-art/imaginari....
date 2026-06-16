@@ -1,8 +1,8 @@
 import React from 'react';
-import { Product } from '../types';
+import { Product, CustomLayout } from '../types';
 
 interface FeaturedDropProps {
-  products: Product[];
+  layout: CustomLayout;
   onProductClick: (id: string) => void;
 }
 
@@ -27,64 +27,30 @@ const ProductCard: React.FC<ProductCardProps> = ({ item, onProductClick }) => (
     <div className="text-sm font-sans text-neutral-900 px-1">
       <div className="font-semibold truncate">{item.name}</div>
       <div className="text-neutral-500 truncate">{item.category}</div>
-      <div className="mt-1.5 font-medium">£{item.price}</div>
+      <div className="mt-1.5 font-medium">£{Number(item.price).toFixed(2)}</div>
     </div>
   </div>
 );
 
-export default function FeaturedDrop({ products, onProductClick }: FeaturedDropProps) {
-  const banner1 = localStorage.getItem('maginari_banner1') || '/models/photo_2026-06-15_15-26-05.jpg';
-  const banner2 = localStorage.getItem('maginari_banner2') || '/models/photo_2026-06-15_15-26-10.jpg';
-  const banner3 = localStorage.getItem('maginari_banner3') || '/models/photo_2026-06-15_15-26-19.jpg';
-  const banner4 = localStorage.getItem('maginari_banner4') || '/models/photo_2026-06-15_15-26-23.jpg';
-
-  // First stream (shirts and pants)
-  const stream1Big = [
-    products.find(p => p.id === 'green-coc-crop-tee'),
-    products.find(p => p.id === 'coc-ash-reg-tee'),
-    products.find(p => p.id === 'coc-green-reg-tee')
-  ].filter((p): p is Product => p !== undefined);
-
-  // First stream (small accessories)
-  const stream1Small = [
-    products.find(p => p.id === 'white-coc-crop-tee'),
-    products.find(p => p.id === 'black-coc-crop-tee'),
-    products.find(p => p.id === 'icons-crop-tee'),
-    products.find(p => p.id === 'coc-black-reg-tee'),
-    products.find(p => p.id === 'coc-white-reg-tee')
-  ].filter((p): p is Product => p !== undefined);
-
-  // Second stream
-  const stream2Big = [
-    products.find(p => p.id === 'coc-black-reg-tee'),
-    products.find(p => p.id === 'coc-white-reg-tee')
-  ].filter((p): p is Product => p !== undefined);
-
-  const stream2Small = [
-    products.find(p => p.id === 'green-coc-crop-tee'),
-    products.find(p => p.id === 'white-coc-crop-tee'),
-    products.find(p => p.id === 'black-coc-crop-tee'),
-    products.find(p => p.id === 'coc-ash-reg-tee')
-  ].filter((p): p is Product => p !== undefined);
-
-
-
+export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropProps) {
   return (
     <section id="featured-drop" className="w-full bg-white select-none">
       <div className="w-full flex flex-col">
-        {/* Carousel 1 */}
+        
+        {/* CAROUSEL 0: HERO COLLECTION */}
         <div className="w-full bg-white py-4 px-4 md:px-8 mb-6 mt-4">
-          <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Shop Our Icons</h3>
+          <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Featured Hero Collection</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
-            {stream1Big.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
-            {stream1Small.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
+            {layout.heroProducts.map((item) => (
+              <ProductCard key={item.id} item={item} onProductClick={onProductClick} />
+            ))}
           </div>
         </div>
 
         {/* BRAND BANNER 1: COC */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src={banner1}
+            src={layout.banner1}
             alt="Coci Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -107,11 +73,20 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
         </div>
 
+        {/* CAROUSEL 1: BANNER 1 PRODUCTS */}
+        <div className="w-full bg-white py-4 px-4 md:px-8 mb-6">
+          <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Shop Our Icons</h3>
+          <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
+            {layout.banner1Products.map((item) => (
+              <ProductCard key={item.id} item={item} onProductClick={onProductClick} />
+            ))}
+          </div>
+        </div>
 
         {/* BRAND BANNER 2: EXCLAMATION STUDIO */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src={banner2}
+            src={layout.banner2}
             alt="Exclamation Studio Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -131,18 +106,20 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
         </div>
 
-        {/* Carousel 2 */}
-        <div className="w-full bg-white py-4 px-4 md:px-8 mb-12">
+        {/* CAROUSEL 2: BANNER 2 PRODUCTS */}
+        <div className="w-full bg-white py-4 px-4 md:px-8 mb-6">
           <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Trending Now</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
-            {stream2Big.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
+            {layout.banner2Products.map((item) => (
+              <ProductCard key={item.id} item={item} onProductClick={onProductClick} />
+            ))}
           </div>
         </div>
 
         {/* BRAND BANNER 3: 8TERNITY */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src={banner3}
+            src={layout.banner3}
             alt="8ternity Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -162,18 +139,20 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
         </div>
 
-        {/* Carousel 3 */}
-        <div className="w-full bg-white py-4 px-4 md:px-8 mb-12">
+        {/* CAROUSEL 3: BANNER 3 PRODUCTS */}
+        <div className="w-full bg-white py-4 px-4 md:px-8 mb-6">
           <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">New Arrivals</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
-            {stream2Small.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
+            {layout.banner3Products.map((item) => (
+              <ProductCard key={item.id} item={item} onProductClick={onProductClick} />
+            ))}
           </div>
         </div>
 
         {/* BRAND BANNER 4: DREAMERS */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src={banner4}
+            src={layout.banner4}
             alt="Dreamers Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -192,11 +171,13 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
           </div>
         </div>
 
-        {/* Carousel 4: Dreamers */}
+        {/* CAROUSEL 4: BANNER 4 PRODUCTS */}
         <div className="w-full bg-white py-4 px-4 md:px-8 mb-12">
           <h3 className="text-xl md:text-2xl font-sans font-medium mb-6 px-1">Shop Dreamers</h3>
           <div className="flex overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden gap-4 pb-4">
-            {stream1Small.map((item) => <ProductCard key={item.id} item={item} onProductClick={onProductClick} />)}
+            {layout.banner4Products.map((item) => (
+              <ProductCard key={item.id} item={item} onProductClick={onProductClick} />
+            ))}
           </div>
         </div>
 

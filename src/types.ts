@@ -44,3 +44,17 @@ export interface CartItem {
   selectedSize: string;
   quantity: number;
 }
+
+export interface CustomLayout {
+  heroBanner: string;
+  banner1: string;
+  banner2: string;
+  banner3: string;
+  banner4: string;
+
+  heroProducts: Product[];
+  banner1Products: Product[];
+  banner2Products: Product[];
+  banner3Products: Product[];
+  banner4Products: Product[];
+}

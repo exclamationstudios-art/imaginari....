@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Product, CartItem } from './types';
-import { PRODUCTS, BRANDS, ARTICLES } from './data';
+import { Product, CartItem, CustomLayout } from './types';
+import { PRODUCTS, BRANDS, ARTICLES, getDefaultCustomLayout } from './data';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import CategoryStrip from './components/CategoryStrip';
@@ -20,17 +20,17 @@ export default function App() {
   const [activeView, setActiveView] = useState<'home' | 'shop' | 'journal' | 'admin'>('home');
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
 
-  // Load products from localStorage or fall back to default PRODUCTS array
-  const [products, setProducts] = useState<Product[]>(() => {
-    const saved = localStorage.getItem('maginari_custom_products');
+  // Load custom layout configuration from localStorage or fall back to default
+  const [customLayout, setCustomLayout] = useState<CustomLayout>(() => {
+    const saved = localStorage.getItem('maginari_custom_layout');
     if (saved) {
       try {
         return JSON.parse(saved);
       } catch (e) {
-        console.error('Failed to parse maginari_custom_products from localStorage', e);
+        console.error('Failed to parse customLayout from localStorage', e);
       }
     }
-    return PRODUCTS;
+    return getDefaultCustomLayout();
   });
 
   // Filter bindings synchronized with ProductGrid
@@ -168,7 +168,7 @@ export default function App() {
 
   // Search filtering in-place
   const searchFilteredProducts = searchQuery
-    ? products.filter(
+    ? PRODUCTS.filter(
         (p) =>
           p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -179,10 +179,10 @@ export default function App() {
   if (activeView === 'admin') {
     return (
       <AssetManager
-        products={products}
-        onSaveProducts={(updatedProducts) => {
-          setProducts(updatedProducts);
-          localStorage.setItem('maginari_custom_products', JSON.stringify(updatedProducts));
+        layout={customLayout}
+        onSaveLayout={(updatedLayout) => {
+          setCustomLayout(updatedLayout);
+          localStorage.setItem('maginari_custom_layout', JSON.stringify(updatedLayout));
         }}
         onBack={() => setActiveView('home')}
       />
@@ -213,11 +213,18 @@ export default function App() {
         {/* VIEW A: Product Detail takes absolute priority if productId selected */}
         {selectedProductId ? (
           (() => {
-            const activeDetailProduct = products.find((p) => p.id === selectedProductId);
+            const allCustomProds = [
+              ...customLayout.heroProducts,
+              ...customLayout.banner1Products,
+              ...customLayout.banner2Products,
+              ...customLayout.banner3Products,
+              ...customLayout.banner4Products,
+            ];
+            const activeDetailProduct = allCustomProds.find((p) => p.id === selectedProductId) || PRODUCTS.find((p) => p.id === selectedProductId);
             return activeDetailProduct ? (
               <ProductDetailView
                 product={activeDetailProduct}
-                allProducts={products}
+                allProducts={PRODUCTS}
                 onBack={() => setSelectedProductId(null)}
                 onAddToBag={handleAddToBag}
                 onProductClick={handleProductSelect}
@@ -238,11 +245,12 @@ export default function App() {
                 {/* Hero section banner */}
                 <Hero
                   onShopClick={(category) => handleNavigate('shop', category || 'All Elements')}
+                  bannerImage={customLayout.heroBanner}
                 />
 
                 {/* This Week's Featured Drop */}
                 <FeaturedDrop
-                  products={products}
+                  layout={customLayout}
                   onProductClick={handleProductSelect}
                 />
               </>
@@ -250,7 +258,7 @@ export default function App() {
 
             {activeView === 'shop' && (
               <ProductGrid
-                products={products}
+                products={PRODUCTS}
                 onProductClick={handleProductSelect}
                 onQuickAdd={handleQuickAdd}
                 activeCategory={activeCategory}

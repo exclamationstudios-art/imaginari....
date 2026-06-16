@@ -1,9 +1,9 @@
-export default function Hero({ onShopClick }: { onShopClick: (category?: string) => void }) {
+export default function Hero({ onShopClick, bannerImage = '/mixed-model.png' }: { onShopClick: (category?: string) => void; bannerImage?: string }) {
   return (
     <section id="hero-banner" className="relative w-full min-h-[100svh] bg-stone-100 overflow-hidden">
       {/* Full bleed background image */}
       <img
-        src="/mixed-model.png"
+        src={bannerImage}
         alt="Mixed Models wearing COC Collection"
         className="absolute inset-0 w-full h-full object-cover object-top"
         draggable={false}

@@ -1,4 +1,4 @@
-import { Product, Brand, Article } from './types';
+import { Product, Brand, Article, CustomLayout } from './types';
 
 export const BRANDS: Brand[] = [
   {
@@ -339,3 +339,27 @@ export const INSTAGRAM_POSTS = [
   { id: 'ugc-5', user: '@city_uniforms_mag', image: '/models/photo_2026-06-15_15-25-38.jpg', location: 'Berlin Subway' },
   { id: 'ugc-6', user: '@skate_nudeproject', image: '/models/photo_2026-06-15_15-25-43.jpg', location: 'Madrid Plaza' }
 ];
+
+export const getDefaultCustomLayout = (): CustomLayout => {
+  const cloneProducts = (prefix: string): Product[] => {
+    return PRODUCTS.map((p, idx) => ({
+      ...p,
+      id: `${prefix}_prod_${idx + 1}`,
+      name: `${p.name}`,
+    }));
+  };
+
+  return {
+    heroBanner: '/models/mixed-model.png',
+    banner1: '/models/photo_2026-06-15_15-26-05.jpg',
+    banner2: '/models/photo_2026-06-15_15-26-10.jpg',
+    banner3: '/models/photo_2026-06-15_15-26-19.jpg',
+    banner4: '/models/photo_2026-06-15_15-26-23.jpg',
+    
+    heroProducts: cloneProducts('hero'),
+    banner1Products: cloneProducts('banner1'),
+    banner2Products: cloneProducts('banner2'),
+    banner3Products: cloneProducts('banner3'),
+    banner4Products: cloneProducts('banner4'),
+  };
+};
