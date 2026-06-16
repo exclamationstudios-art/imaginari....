@@ -96,11 +96,11 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     if (window.confirm('Reset all custom mappings to original theme configurations?')) {
       localStorage.removeItem('maginari_custom_layout');
       try {
-        await fetch('/api/custom-layout', {
+        await fetch('https://kvdb.io/maginari_global_layout_store_2026_06_16/layout', {
           method: 'DELETE',
         });
       } catch (err) {
-        console.error('Failed to reset layout on server:', err);
+        console.error('Failed to reset layout on cloud store:', err);
       }
       window.location.reload();
     }

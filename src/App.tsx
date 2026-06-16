@@ -165,12 +165,12 @@ export default function App() {
     return getDefaultCustomLayout();
   });
 
-  // Sync with global server-side storage on mount
+  // Sync with global cloud-side storage on mount
   useEffect(() => {
-    fetch('/api/custom-layout')
+    fetch('https://kvdb.io/maginari_global_layout_store_2026_06_16/layout')
       .then(res => {
         if (res.ok) return res.json();
-        throw new Error('Server layout fetch failed');
+        throw new Error('Cloud layout fetch failed');
       })
       .then(data => {
         if (data && Object.keys(data).length > 0) {
@@ -178,14 +178,14 @@ export default function App() {
           setCustomLayout(sanitized);
           localStorage.setItem('maginari_custom_layout', JSON.stringify(sanitized));
         } else {
-          // If server returns empty layout, it means it's clean defaults.
-          // Clear visitor local storage so client is synchronized with server.
+          // If cloud returns empty layout, it means it's clean defaults.
+          // Clear visitor local storage so client is synchronized with cloud.
           localStorage.removeItem('maginari_custom_layout');
           setCustomLayout(getDefaultCustomLayout());
         }
       })
       .catch(err => {
-        console.warn('Backend server-side custom layout is not set or server offline:', err);
+        console.warn('Global cloud-side custom layout is not set or offline:', err);
       });
   }, []);
 
@@ -341,7 +341,7 @@ export default function App() {
           localStorage.setItem('maginari_custom_layout', JSON.stringify(updatedLayout));
           
           try {
-            await fetch('/api/custom-layout', {
+            await fetch('https://kvdb.io/maginari_global_layout_store_2026_06_16/layout', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -349,7 +349,7 @@ export default function App() {
               body: JSON.stringify(updatedLayout),
             });
           } catch (err) {
-            console.error('Failed to save layout to server-side store:', err);
+            console.error('Failed to save layout to global cloud store:', err);
           }
         }}
         onBack={() => setActiveView('home')}
