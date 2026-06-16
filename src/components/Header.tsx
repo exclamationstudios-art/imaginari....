@@ -120,11 +120,11 @@ export default function Header({
               )}
             </button>
 
-            {/* Menu (All Screen Sizes) */}
+            {/* Menu (Mobile Only) */}
             <button
               id="menu-button"
               onClick={onOpenMenu}
-              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70 ml-1"
+              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70 ml-1 md:hidden"
               aria-label="Menu"
             >
               <Menu className="w-6 h-6 stroke-[2]" />
