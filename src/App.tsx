@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Product, CartItem, CustomLayout } from './types';
+import { Product, CartItem, CustomLayout, UserProfile, OrderRecord } from './types';
 import { PRODUCTS, BRANDS, ARTICLES, getDefaultCustomLayout } from './data';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -13,12 +13,124 @@ import CultureBlock from './components/CultureBlock';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import AssetManager from './components/AssetManager';
+import ProfileDrawer from './components/ProfileDrawer';
+import MenuDrawer from './components/MenuDrawer';
 import { Search, X, Sparkles, ShoppingBag, Eye, Heart, ArrowUp } from 'lucide-react';
+
+const defaultProfile: UserProfile = {
+  name: 'Julian Vane',
+  email: 'julian@vane.studio',
+  avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+  tier: 'Black Label Member',
+  memberId: 'MGR-77109',
+  points: 4250,
+  orders: [
+    {
+      id: 'MGR-109482',
+      date: '2026-05-15',
+      total: 129.98,
+      itemsCount: 2,
+      status: 'Cleared',
+      items: [
+        {
+          productName: 'Green COC Crop T-Shirt',
+          brand: 'MAGINARI',
+          quantity: 1,
+          price: 64.99,
+          size: 'M',
+          colour: 'Sage Green',
+          image: '/shirts/GREEN OFFICIAL COC CROP T SHIRT.jpg'
+        },
+        {
+          productName: 'White COC Crop T-Shirt',
+          brand: 'MAGINARI',
+          quantity: 1,
+          price: 64.99,
+          size: 'M',
+          colour: 'Chalk White',
+          image: '/shirts/white coc crop t shirt.jpg'
+        }
+      ]
+    }
+  ]
+};
 
 export default function App() {
   // Navigation View Tab: 'home' | 'shop' | 'journal' | 'admin'
   const [activeView, setActiveView] = useState<'home' | 'shop' | 'journal' | 'admin'>('home');
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
+
+  // Profile and Menu Drawer States
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(() => {
+    const saved = localStorage.getItem('maginari_user_profile');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to parse userProfile from localStorage', e);
+      }
+    }
+    return defaultProfile;
+  });
+
+  useEffect(() => {
+    if (userProfile) {
+      localStorage.setItem('maginari_user_profile', JSON.stringify(userProfile));
+    } else {
+      localStorage.removeItem('maginari_user_profile');
+    }
+  }, [userProfile]);
+
+  const handleLogin = (email: string, name: string) => {
+    const newProfile: UserProfile = {
+      name: name || email.split('@')[0],
+      email: email,
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+      tier: 'Black Label Member',
+      memberId: 'MGR-' + Math.floor(10000 + Math.random() * 90000),
+      points: 100,
+      orders: []
+    };
+    setUserProfile(newProfile);
+  };
+
+  const handleLogout = () => {
+    setUserProfile(null);
+  };
+
+  const handleUpdateProfile = (updated: Partial<UserProfile>) => {
+    setUserProfile(prev => {
+      if (!prev) return null;
+      return {
+        ...prev,
+        ...updated
+      };
+    });
+  };
+
+  const handleCheckoutComplete = (orderId: string, orderTotal: number, items: any[]) => {
+    setUserProfile(prev => {
+      if (!prev) return null;
+      
+      const newOrder: OrderRecord = {
+        id: orderId,
+        date: new Date().toISOString().split('T')[0],
+        total: orderTotal,
+        itemsCount: items.reduce((sum, item) => sum + item.quantity, 0),
+        status: 'Processing',
+        items: items
+      };
+
+      return {
+        ...prev,
+        points: prev.points + Math.floor(orderTotal * 10),
+        orders: [newOrder, ...prev.orders]
+      };
+    });
+  };
 
   // Load custom layout configuration from localStorage or fall back to default
   const [customLayout, setCustomLayout] = useState<CustomLayout>(() => {
@@ -205,6 +317,8 @@ export default function App() {
           handleNavigate('shop');
         }}
         isDarkTheme={activeView === 'home' && !selectedProductId}
+        onOpenProfile={() => setIsProfileOpen(true)}
+        onOpenMenu={() => setIsMenuOpen(true)}
       />
 
       {/* 2. Main Page Layout Router */}
@@ -304,6 +418,7 @@ export default function App() {
         onDecrement={handleCartDecrement}
         onRemove={handleCartRemove}
         onClearCart={handleClearCart}
+        onCheckoutComplete={handleCheckoutComplete}
       />
 
       {/* 6. Dynamic Real-time search modal backdrop overlay */}
@@ -420,6 +535,23 @@ export default function App() {
           <ArrowUp className="w-5 h-5 text-rose-300 stroke-[2.5]" />
         </button>
       )}
+
+      {/* 8. Slide-over user profile drawer */}
+      <ProfileDrawer
+        isOpen={isProfileOpen}
+        onClose={() => setIsProfileOpen(false)}
+        profile={userProfile}
+        onLogin={handleLogin}
+        onLogout={handleLogout}
+        onUpdateProfile={handleUpdateProfile}
+      />
+
+      {/* 9. Slide-over navigation menu drawer */}
+      <MenuDrawer
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+        onNavigate={handleNavigate}
+      />
 
     </div>
   );

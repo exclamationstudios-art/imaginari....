@@ -10,6 +10,7 @@ interface CartDrawerProps {
   onDecrement: (id: string) => void;
   onRemove: (id: string) => void;
   onClearCart: () => void;
+  onCheckoutComplete?: (orderId: string, orderTotal: number, items: any[]) => void;
 }
 
 export default function CartDrawer({
@@ -19,7 +20,8 @@ export default function CartDrawer({
   onIncrement,
   onDecrement,
   onRemove,
-  onClearCart
+  onClearCart,
+  onCheckoutComplete
 }: CartDrawerProps) {
   const [checkoutStep, setCheckoutStep] = useState<'cart' | 'shipping' | 'success'>('cart');
   const [name, setName] = useState('');
@@ -53,6 +55,21 @@ export default function CartDrawer({
     // Generate order ID
     const randomId = 'MGR-' + Math.floor(100000 + Math.random() * 900000);
     setOrderId(randomId);
+    
+    // Fire callback to sync with user profile order history
+    if (onCheckoutComplete) {
+      const orderItems = cart.map(item => ({
+        productName: item.product.name,
+        brand: item.product.brand,
+        quantity: item.quantity,
+        price: item.product.price,
+        size: item.selectedSize,
+        colour: item.selectedColour,
+        image: item.product.images[0]
+      }));
+      onCheckoutComplete(randomId, total, orderItems);
+    }
+
     setCheckoutStep('success');
   };
 
