@@ -10,6 +10,8 @@ interface HeaderProps {
   activeView: 'home' | 'shop' | 'journal';
   onFilterBrand: (brand: string) => void;
   isDarkTheme?: boolean;
+  onOpenProfile: () => void;
+  onOpenMenu: () => void;
 }
 
 export default function Header({
@@ -21,6 +23,8 @@ export default function Header({
   activeView,
   onFilterBrand,
   isDarkTheme = false,
+  onOpenProfile,
+  onOpenMenu,
 }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -76,21 +80,8 @@ export default function Header({
           </svg>
         </button>
 
-        {/* Right - Desktop Links & Action Icons */}
+        {/* Right - Action Icons & Menu */}
         <div id="nav-and-actions" className="flex items-center gap-6 md:gap-8">
-          
-          {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-6 font-sans font-medium text-sm">
-            {navLinks.map((link) => (
-              <button
-                key={link.label}
-                onClick={link.onClick}
-                className="bg-gradient-to-r from-[#B6861B] to-[#503B0C] bg-clip-text text-transparent hover:opacity-70 transition-opacity"
-              >
-                {link.label}
-              </button>
-            ))}
-          </nav>
 
           {/* Actions & Utilities */}
           <div id="nav-actions" className="flex items-center gap-4 md:gap-5 text-[#B6861B]">
@@ -107,7 +98,8 @@ export default function Header({
             {/* User Profile */}
             <button
               id="user-button"
-              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70 hidden sm:block"
+              onClick={onOpenProfile}
+              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70"
               aria-label="Profile"
             >
               <User className="w-5 h-5 stroke-[2]" />
@@ -128,10 +120,11 @@ export default function Header({
               )}
             </button>
 
-            {/* Hamburger Menu (Mobile Only) */}
+            {/* Menu (All Screen Sizes) */}
             <button
               id="menu-button"
-              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70 ml-1 md:hidden"
+              onClick={onOpenMenu}
+              className="p-1 cursor-pointer transition-all duration-200 hover:opacity-70 ml-1"
               aria-label="Menu"
             >
               <Menu className="w-6 h-6 stroke-[2]" />

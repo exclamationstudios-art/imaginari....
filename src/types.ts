@@ -58,3 +58,31 @@ export interface CustomLayout {
   banner3Products: Product[];
   banner4Products: Product[];
 }
+
+export interface OrderRecord {
+  id: string;
+  date: string;
+  total: number;
+  itemsCount: number;
+  status: string;
+  items: {
+    productName: string;
+    brand: string;
+    quantity: number;
+    price: number;
+    size: string;
+    colour: string;
+    image: string;
+  }[];
+}
+
+export interface UserProfile {
+  name: string;
+  email: string;
+  avatar: string;
+  tier: string;
+  memberId: string;
+  points: number;
+  orders: OrderRecord[];
+}
+
