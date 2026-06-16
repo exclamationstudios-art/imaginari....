@@ -3,9 +3,10 @@ import { Instagram, Twitter } from 'lucide-react';
 interface FooterProps {
   onBrandClick: () => void;
   onNavigate: (view: 'home' | 'shop' | 'journal') => void;
+  onAdminPortalClick: () => void;
 }
 
-export default function Footer({ onNavigate }: FooterProps) {
+export default function Footer({ onNavigate, onAdminPortalClick }: FooterProps) {
   const brandLinks = ['Maginari Journal', 'Our Story', 'Stores', 'Careers'];
   const supportLinks = ['Returns', 'Order Tracking', 'FAQ', 'Contact Us'];
   const boringLinks = ['Terms of Use', 'Privacy & Cookie Policy', 'Terms of Sale'];
@@ -105,6 +106,14 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-stone-800">
             <span>Country & Language</span>
             <span className="text-stone-400 cursor-pointer hover:text-stone-600">UK | GBP | English ▼</span>
+            <span className="text-stone-300 select-none">|</span>
+            <button 
+              onClick={onAdminPortalClick} 
+              className="text-stone-400 hover:text-black cursor-pointer font-bold tracking-widest text-[10px] uppercase transition-colors"
+              title="Configurator Portal"
+            >
+              Portal
+            </button>
           </div>
 
           <div className="flex items-center gap-4 text-stone-600">

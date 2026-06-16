@@ -63,7 +63,7 @@ export default function ProductDetailView({
     .slice(0, 3);
 
   // Product render helper
-  const ProductCard = ({ item }: { item: Product }) => (
+  const ProductCard = ({ item }: { item: Product; key?: string }) => (
     <div
       onClick={() => onProductClick(item.id)}
       className="relative flex-shrink-0 w-[65vw] sm:w-[45vw] md:w-[30vw] lg:w-[22vw] snap-center cursor-pointer group"

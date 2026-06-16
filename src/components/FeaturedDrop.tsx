@@ -33,6 +33,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ item, onProductClick }) => (
 );
 
 export default function FeaturedDrop({ products, onProductClick }: FeaturedDropProps) {
+  const banner1 = localStorage.getItem('maginari_banner1') || '/models/photo_2026-06-15_15-26-05.jpg';
+  const banner2 = localStorage.getItem('maginari_banner2') || '/models/photo_2026-06-15_15-26-10.jpg';
+  const banner3 = localStorage.getItem('maginari_banner3') || '/models/photo_2026-06-15_15-26-19.jpg';
+  const banner4 = localStorage.getItem('maginari_banner4') || '/models/photo_2026-06-15_15-26-23.jpg';
+
   // First stream (shirts and pants)
   const stream1Big = [
     products.find(p => p.id === 'green-coc-crop-tee'),
@@ -79,7 +84,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         {/* BRAND BANNER 1: COC */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src="/models/photo_2026-06-15_15-26-05.jpg"
+            src={banner1}
             alt="Coci Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -106,7 +111,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         {/* BRAND BANNER 2: EXCLAMATION STUDIO */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src="/models/photo_2026-06-15_15-26-10.jpg"
+            src={banner2}
             alt="Exclamation Studio Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -137,7 +142,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         {/* BRAND BANNER 3: 8TERNITY */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src="/models/photo_2026-06-15_15-26-19.jpg"
+            src={banner3}
             alt="8ternity Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -168,7 +173,7 @@ export default function FeaturedDrop({ products, onProductClick }: FeaturedDropP
         {/* BRAND BANNER 4: DREAMERS */}
         <div className="w-full h-[70vh] relative overflow-hidden select-none bg-stone-100 mb-6">
           <img
-            src="/models/photo_2026-06-15_15-26-23.jpg"
+            src={banner4}
             alt="Dreamers Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"

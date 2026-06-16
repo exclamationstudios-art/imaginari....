@@ -12,12 +12,26 @@ import JournalSection from './components/JournalSection';
 import CultureBlock from './components/CultureBlock';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
+import AssetManager from './components/AssetManager';
 import { Search, X, Sparkles, ShoppingBag, Eye, Heart, ArrowUp } from 'lucide-react';
 
 export default function App() {
-  // Navigation View Tab: 'home' | 'shop' | 'journal'
-  const [activeView, setActiveView] = useState<'home' | 'shop' | 'journal'>('home');
+  // Navigation View Tab: 'home' | 'shop' | 'journal' | 'admin'
+  const [activeView, setActiveView] = useState<'home' | 'shop' | 'journal' | 'admin'>('home');
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
+
+  // Load products from localStorage or fall back to default PRODUCTS array
+  const [products, setProducts] = useState<Product[]>(() => {
+    const saved = localStorage.getItem('maginari_custom_products');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.error('Failed to parse maginari_custom_products from localStorage', e);
+      }
+    }
+    return PRODUCTS;
+  });
 
   // Filter bindings synchronized with ProductGrid
   const [activeCategory, setActiveCategory] = useState<string>('All Elements');
@@ -154,13 +168,26 @@ export default function App() {
 
   // Search filtering in-place
   const searchFilteredProducts = searchQuery
-    ? PRODUCTS.filter(
+    ? products.filter(
         (p) =>
           p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.category.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
+
+  if (activeView === 'admin') {
+    return (
+      <AssetManager
+        products={products}
+        onSaveProducts={(updatedProducts) => {
+          setProducts(updatedProducts);
+          localStorage.setItem('maginari_custom_products', JSON.stringify(updatedProducts));
+        }}
+        onBack={() => setActiveView('home')}
+      />
+    );
+  }
 
   return (
     <div id="maginari-root" className="min-h-screen bg-stone-100 flex flex-col justify-between">
@@ -186,11 +213,11 @@ export default function App() {
         {/* VIEW A: Product Detail takes absolute priority if productId selected */}
         {selectedProductId ? (
           (() => {
-            const activeDetailProduct = PRODUCTS.find((p) => p.id === selectedProductId);
+            const activeDetailProduct = products.find((p) => p.id === selectedProductId);
             return activeDetailProduct ? (
               <ProductDetailView
                 product={activeDetailProduct}
-                allProducts={PRODUCTS}
+                allProducts={products}
                 onBack={() => setSelectedProductId(null)}
                 onAddToBag={handleAddToBag}
                 onProductClick={handleProductSelect}
@@ -215,7 +242,7 @@ export default function App() {
 
                 {/* This Week's Featured Drop */}
                 <FeaturedDrop
-                  products={PRODUCTS}
+                  products={products}
                   onProductClick={handleProductSelect}
                 />
               </>
@@ -223,7 +250,7 @@ export default function App() {
 
             {activeView === 'shop' && (
               <ProductGrid
-                products={PRODUCTS}
+                products={products}
                 onProductClick={handleProductSelect}
                 onQuickAdd={handleQuickAdd}
                 activeCategory={activeCategory}
@@ -254,6 +281,10 @@ export default function App() {
           }, 100);
         }}
         onNavigate={handleNavigate}
+        onAdminPortalClick={() => {
+          setActiveView('admin');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
       />
 
       {/* 5. Sliding Shopping Bag Drawer layer */}
