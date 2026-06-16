@@ -17,6 +17,25 @@ import ProfileDrawer from './components/ProfileDrawer';
 import MenuDrawer from './components/MenuDrawer';
 import { Search, X, Sparkles, ShoppingBag, Eye, Heart, ArrowUp } from 'lucide-react';
 
+function sanitizeLayout(parsed: any): CustomLayout {
+  if (parsed.heroBanner && typeof parsed.heroBanner === 'string' && parsed.heroBanner.endsWith('.png')) {
+    parsed.heroBanner = parsed.heroBanner.replace(/\.png$/, '.jpg');
+  }
+  if (parsed.banner1 && typeof parsed.banner1 === 'string' && parsed.banner1.endsWith('.png')) {
+    parsed.banner1 = parsed.banner1.replace(/\.png$/, '.jpg');
+  }
+  if (parsed.banner2 && typeof parsed.banner2 === 'string' && parsed.banner2.endsWith('.png')) {
+    parsed.banner2 = parsed.banner2.replace(/\.png$/, '.jpg');
+  }
+  if (parsed.banner3 && typeof parsed.banner3 === 'string' && parsed.banner3.endsWith('.png')) {
+    parsed.banner3 = parsed.banner3.replace(/\.png$/, '.jpg');
+  }
+  if (parsed.banner4 && typeof parsed.banner4 === 'string' && parsed.banner4.endsWith('.png')) {
+    parsed.banner4 = parsed.banner4.replace(/\.png$/, '.jpg');
+  }
+  return parsed as CustomLayout;
+}
+
 const defaultProfile: UserProfile = {
   name: 'Julian Vane',
   email: 'julian@vane.studio',
@@ -138,29 +157,32 @@ export default function App() {
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        // Automatically migrate legacy .png image references to optimized .jpg versions
-        if (parsed.heroBanner && typeof parsed.heroBanner === 'string' && parsed.heroBanner.endsWith('.png')) {
-          parsed.heroBanner = parsed.heroBanner.replace(/\.png$/, '.jpg');
-        }
-        if (parsed.banner1 && typeof parsed.banner1 === 'string' && parsed.banner1.endsWith('.png')) {
-          parsed.banner1 = parsed.banner1.replace(/\.png$/, '.jpg');
-        }
-        if (parsed.banner2 && typeof parsed.banner2 === 'string' && parsed.banner2.endsWith('.png')) {
-          parsed.banner2 = parsed.banner2.replace(/\.png$/, '.jpg');
-        }
-        if (parsed.banner3 && typeof parsed.banner3 === 'string' && parsed.banner3.endsWith('.png')) {
-          parsed.banner3 = parsed.banner3.replace(/\.png$/, '.jpg');
-        }
-        if (parsed.banner4 && typeof parsed.banner4 === 'string' && parsed.banner4.endsWith('.png')) {
-          parsed.banner4 = parsed.banner4.replace(/\.png$/, '.jpg');
-        }
-        return parsed;
+        return sanitizeLayout(parsed);
       } catch (e) {
         console.error('Failed to parse customLayout from localStorage', e);
       }
     }
     return getDefaultCustomLayout();
   });
+
+  // Sync with global server-side storage on mount
+  useEffect(() => {
+    fetch('/api/custom-layout')
+      .then(res => {
+        if (res.ok) return res.json();
+        throw new Error('Server layout fetch failed');
+      })
+      .then(data => {
+        if (data && Object.keys(data).length > 0) {
+          const sanitized = sanitizeLayout(data);
+          setCustomLayout(sanitized);
+          localStorage.setItem('maginari_custom_layout', JSON.stringify(sanitized));
+        }
+      })
+      .catch(err => {
+        console.warn('Backend server-side custom layout is not set or server offline:', err);
+      });
+  }, []);
 
   // Filter bindings synchronized with ProductGrid
   const [activeCategory, setActiveCategory] = useState<string>('All Elements');
@@ -309,9 +331,21 @@ export default function App() {
     return (
       <AssetManager
         layout={customLayout}
-        onSaveLayout={(updatedLayout) => {
+        onSaveLayout={async (updatedLayout) => {
           setCustomLayout(updatedLayout);
           localStorage.setItem('maginari_custom_layout', JSON.stringify(updatedLayout));
+          
+          try {
+            await fetch('/api/custom-layout', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(updatedLayout),
+            });
+          } catch (err) {
+            console.error('Failed to save layout to server-side store:', err);
+          }
         }}
         onBack={() => setActiveView('home')}
       />
