@@ -1,4 +1,4 @@
-export default function Hero({ onShopClick, bannerImage = '/mixed-model.png' }: { onShopClick: (category?: string) => void; bannerImage?: string }) {
+export default function Hero({ onShopClick, bannerImage = '/mixed-model.jpg' }: { onShopClick: (category?: string) => void; bannerImage?: string }) {
   return (
     <section id="hero-banner" className="relative w-full min-h-[100svh] bg-stone-100 overflow-hidden">
       {/* Full bleed background image */}
@@ -7,6 +7,7 @@ export default function Hero({ onShopClick, bannerImage = '/mixed-model.png' }: 
         alt="Mixed Models wearing COC Collection"
         className="absolute inset-0 w-full h-full object-cover object-top"
         draggable={false}
+        fetchPriority="high"
       />
       
       {/* Subtle gradient overlay to ensure text readability */}

@@ -24,9 +24,9 @@ const LOCAL_MODEL_PRESETS = [
   '/models/photo_2026-06-15_15-26-14.jpg',
   '/models/photo_2026-06-15_15-26-19.jpg',
   '/models/photo_2026-06-15_15-26-23.jpg',
-  '/models/mixed-model.png',
-  '/models/hero-model.png',
-  '/models/footer-model.png'
+  '/models/mixed-model.jpg',
+  '/models/hero-model.jpg',
+  '/models/footer-model.jpg'
 ];
 
 const LOCAL_SHIRT_PRESETS = [

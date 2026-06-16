@@ -40,6 +40,8 @@ export default function JournalSection({ articles }: JournalSectionProps) {
                 alt={articles[0].title}
                 className="w-full h-full object-cover grayscale brightness-90 group-hover:scale-102 group-hover:grayscale-0 transition-all duration-750"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 
@@ -93,6 +95,8 @@ export default function JournalSection({ articles }: JournalSectionProps) {
                     alt={art.title}
                     className="w-full h-full object-cover grayscale group-hover:scale-103 group-hover:grayscale-0 transition-transform duration-500"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 
@@ -171,6 +175,8 @@ export default function JournalSection({ articles }: JournalSectionProps) {
                   alt={selectedArticle.title}
                   className="w-full h-full object-cover grayscale"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 

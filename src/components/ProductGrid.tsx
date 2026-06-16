@@ -281,6 +281,8 @@ export default function ProductGrid({
                           className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-102 transition-all duration-[600ms]"
                           onClick={() => onProductClick(p.id)}
                           referrerPolicy="no-referrer"
+                          loading="lazy"
+                          decoding="async"
                         />
                         {/* Secondary Hover Image */}
                         {p.images[1] && (
@@ -290,6 +292,8 @@ export default function ProductGrid({
                             className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 grayscale hover:scale-102 transition-all duration-500"
                             onClick={() => onProductClick(p.id)}
                             referrerPolicy="no-referrer"
+                            loading="lazy"
+                            decoding="async"
                           />
                         )}
 

@@ -137,7 +137,24 @@ export default function App() {
     const saved = localStorage.getItem('maginari_custom_layout');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        // Automatically migrate legacy .png image references to optimized .jpg versions
+        if (parsed.heroBanner && typeof parsed.heroBanner === 'string' && parsed.heroBanner.endsWith('.png')) {
+          parsed.heroBanner = parsed.heroBanner.replace(/\.png$/, '.jpg');
+        }
+        if (parsed.banner1 && typeof parsed.banner1 === 'string' && parsed.banner1.endsWith('.png')) {
+          parsed.banner1 = parsed.banner1.replace(/\.png$/, '.jpg');
+        }
+        if (parsed.banner2 && typeof parsed.banner2 === 'string' && parsed.banner2.endsWith('.png')) {
+          parsed.banner2 = parsed.banner2.replace(/\.png$/, '.jpg');
+        }
+        if (parsed.banner3 && typeof parsed.banner3 === 'string' && parsed.banner3.endsWith('.png')) {
+          parsed.banner3 = parsed.banner3.replace(/\.png$/, '.jpg');
+        }
+        if (parsed.banner4 && typeof parsed.banner4 === 'string' && parsed.banner4.endsWith('.png')) {
+          parsed.banner4 = parsed.banner4.replace(/\.png$/, '.jpg');
+        }
+        return parsed;
       } catch (e) {
         console.error('Failed to parse customLayout from localStorage', e);
       }

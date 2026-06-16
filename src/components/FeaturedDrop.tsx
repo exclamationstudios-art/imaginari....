@@ -22,6 +22,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ item, onProductClick }) => (
         alt={item.name}
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 mix-blend-multiply"
         referrerPolicy="no-referrer"
+        loading="lazy"
+        decoding="async"
       />
     </div>
     <div className="text-sm font-sans text-neutral-900 px-1">
@@ -54,6 +56,8 @@ export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropPro
             alt="Coci Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
           
@@ -90,6 +94,8 @@ export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropPro
             alt="Exclamation Studio Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
           
@@ -123,6 +129,8 @@ export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropPro
             alt="8ternity Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
           
@@ -156,6 +164,8 @@ export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropPro
             alt="Dreamers Campaign"
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
           

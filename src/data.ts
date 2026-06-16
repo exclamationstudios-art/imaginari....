@@ -350,7 +350,7 @@ export const getDefaultCustomLayout = (): CustomLayout => {
   };
 
   return {
-    heroBanner: '/models/mixed-model.png',
+    heroBanner: '/models/mixed-model.jpg',
     banner1: '/models/photo_2026-06-15_15-26-05.jpg',
     banner2: '/models/photo_2026-06-15_15-26-10.jpg',
     banner3: '/models/photo_2026-06-15_15-26-19.jpg',

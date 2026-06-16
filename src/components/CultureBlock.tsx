@@ -188,6 +188,8 @@ export default function CultureBlock() {
                     alt={`${post.user} creator`}
                     className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-103 group-hover:grayscale-0 transition-transform duration-500"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
+                    decoding="async"
                   />
                   {/* Subtle creator handles overlay tag */}
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-between p-4 text-white">
