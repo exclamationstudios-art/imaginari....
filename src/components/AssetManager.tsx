@@ -77,7 +77,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     const cleanPass = password.trim().toLowerCase();
-    if (cleanPass === 'exclamation' || cleanPass === 'maginari2026' || cleanPass === 'admin') {
+    if (cleanPass === 'alhajisoye') {
       localStorage.setItem('maginari_admin_auth', 'true');
       setIsAuthenticated(true);
       setAuthError(false);
