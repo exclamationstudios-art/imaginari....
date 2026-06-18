@@ -167,7 +167,13 @@ export default function App() {
 
   // Sync with global cloud-side storage on mount
   useEffect(() => {
-    fetch('https://kvdb.io/maginari_global_layout_store_2026_06_16/layout')
+    fetch('https://kvdb.io/maginari_global_layout_store_2026_06_16/layout', {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
+    })
       .then(res => {
         if (res.ok) return res.json();
         throw new Error('Cloud layout fetch failed');

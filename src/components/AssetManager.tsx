@@ -8,6 +8,51 @@ interface AssetManagerProps {
   onBack: () => void;
 }
 
+function compressImage(base64Str: string, maxWidth = 1600, maxHeight = 1600, quality = 0.75): Promise<string> {
+  return new Promise((resolve) => {
+    if (!base64Str.startsWith('data:image/')) {
+      resolve(base64Str);
+      return;
+    }
+
+    const img = new Image();
+    img.src = base64Str;
+    img.onload = () => {
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height) {
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+      } else {
+        if (height > maxHeight) {
+          width = Math.round((width * maxHeight) / height);
+          height = maxHeight;
+        }
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) {
+        resolve(base64Str);
+        return;
+      }
+
+      ctx.drawImage(img, 0, 0, width, height);
+      const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+      resolve(compressedBase64);
+    };
+    img.onerror = () => {
+      resolve(base64Str);
+    };
+  });
+}
+
 const LOCAL_MODEL_PRESETS = [
   '/models/photo_2026-06-15_15-24-56.jpg',
   '/models/photo_2026-06-15_15-25-23.jpg',
@@ -136,8 +181,10 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onloadend = () => {
-      setModalBannerImage(reader.result as string);
+    reader.onloadend = async () => {
+      const originalBase64 = reader.result as string;
+      const compressed = await compressImage(originalBase64);
+      setModalBannerImage(compressed);
     };
     reader.readAsDataURL(file);
   };
@@ -146,8 +193,10 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onloadend = () => {
-      setModalProdImage(reader.result as string);
+    reader.onloadend = async () => {
+      const originalBase64 = reader.result as string;
+      const compressed = await compressImage(originalBase64);
+      setModalProdImage(compressed);
     };
     reader.readAsDataURL(file);
   };
