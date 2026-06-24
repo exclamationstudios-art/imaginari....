@@ -644,7 +644,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                   <input 
                     type="file" 
                     accept="image/*" 
-                    className="hidden" 
+                    className="sr-only" 
                     onChange={handleModalBannerUpload}
                   />
                 </label>
@@ -722,7 +722,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                       <input 
                         type="file" 
                         accept="image/*" 
-                        className="hidden" 
+                        className="sr-only" 
                         onChange={handleModalProdUpload}
                       />
                     </label>

@@ -348,7 +348,7 @@ export default function ProfileDrawer({
                       ref={fileInputRef}
                       onChange={handleImageUpload}
                       accept="image/*"
-                      className="hidden"
+                      className="sr-only"
                     />
                   </div>
                 </div>
