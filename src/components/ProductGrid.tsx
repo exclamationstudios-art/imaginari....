@@ -70,11 +70,11 @@ export default function ProductGrid({
   };
 
   return (
-    <section id="shop-catalog" className="w-full bg-stone-100 py-16 border-b border-stone-200">
+    <section id="shop-catalog" className="w-full bg-stone-100 py-16">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Navigation Indicator & Header Area */}
-        <div className="border-b border-stone-250 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <span className="text-[10px] font-mono tracking-[0.3em] text-neutral-500 uppercase">PRODUCT MATRIX</span>
             <h1 className="text-3xl font-sans font-black tracking-tight text-black uppercase mt-1">
@@ -92,7 +92,7 @@ export default function ProductGrid({
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-stone-200 border-none py-1.5 px-3 uppercase text-black font-semibold focus:ring-1 focus:ring-black outline-none"
+                className="bg-stone-200 py-1.5 px-3 uppercase text-black font-semibold focus:ring-1 focus:ring-black outline-none"
               >
                 <option value="default">Default Archive</option>
                 <option value="price-low-high">Price: Low to High</option>
@@ -133,7 +133,7 @@ export default function ProductGrid({
             </div>
 
             {/* Selector: Gender */}
-            <div className="border-t border-stone-250 pt-4 space-y-2.5">
+            <div className="pt-4 space-y-2.5">
               <h3 className="text-[11px] font-mono tracking-widest text-neutral-500 uppercase">Sector Gender</h3>
               <div className="flex flex-wrap gap-1.5">
                 {GENDERS.map((g) => {
@@ -142,10 +142,10 @@ export default function ProductGrid({
                     <button
                       key={g}
                       onClick={() => onGenderChange(g)}
-                      className={`py-1.5 px-3 font-mono text-[10px] uppercase cursor-pointer border tracking-wider transition-all ${
+                      className={`py-1.5 px-3 font-mono text-[10px] uppercase cursor-pointer  tracking-wider transition-all ${
                         isActive
-                          ? 'bg-black text-white border-black font-bold'
-                          : 'bg-stone-100 hover:bg-stone-200 text-neutral-600 border-stone-250'
+                          ? 'bg-black text-white  font-bold'
+                          : 'bg-stone-100 hover:bg-stone-200 text-neutral-600 '
                       }`}
                     >
                       {g}
@@ -156,7 +156,7 @@ export default function ProductGrid({
             </div>
 
             {/* Selector: Category */}
-            <div className="border-t border-stone-250 pt-4 space-y-2">
+            <div className="pt-4 space-y-2">
               <h3 className="text-[11px] font-mono tracking-widest text-neutral-500 uppercase">Architectural Type</h3>
               <div className="flex flex-col space-y-1 text-xs font-mono">
                 {CATEGORIES.map((c) => {
@@ -179,7 +179,7 @@ export default function ProductGrid({
             </div>
 
             {/* Selector: Brand */}
-            <div className="border-t border-stone-250 pt-4 space-y-2">
+            <div className="pt-4 space-y-2">
               <h3 className="text-[11px] font-mono tracking-widest text-neutral-500 uppercase">Designer House</h3>
               <div className="flex flex-col space-y-1 text-xs font-mono">
                 {allBrands.map((b) => {
@@ -202,7 +202,7 @@ export default function ProductGrid({
             </div>
 
             {/* Selector: Sizes */}
-            <div className="border-t border-stone-250 pt-4 space-y-2.5">
+            <div className="pt-4 space-y-2.5">
               <h3 className="text-[11px] font-mono tracking-widest text-neutral-500 uppercase">Size Blueprint</h3>
               <div className="flex flex-wrap gap-1.5">
                 {allSizes.map((s) => {
@@ -211,10 +211,10 @@ export default function ProductGrid({
                     <button
                       key={s}
                       onClick={() => setSelectedSize(s)}
-                      className={`w-10 h-10 font-mono text-[10px] uppercase rounded-full flex items-center justify-center cursor-pointer border tracking-tight transition-all ${
+                      className={`w-10 h-10 font-mono text-[10px] uppercase rounded-full flex items-center justify-center cursor-pointer  tracking-tight transition-all ${
                         isActive
-                          ? 'bg-black text-white border-black font-bold'
-                          : 'bg-stone-100 hover:bg-stone-200 text-neutral-600 border-stone-250'
+                          ? 'bg-black text-white  font-bold'
+                          : 'bg-stone-100 hover:bg-stone-200 text-neutral-600 '
                       }`}
                     >
                       {s}
@@ -225,7 +225,7 @@ export default function ProductGrid({
             </div>
 
             {/* Selector: Price Cap */}
-            <div className="border-t border-stone-250 pt-4 space-y-3 pb-4">
+            <div className="pt-4 space-y-3 pb-4">
               <div className="flex justify-between text-[11px] font-mono tracking-widest text-neutral-500 uppercase">
                 <span>Maximum Price</span>
                 <span className="text-black font-bold">£{maxPrice}</span>
@@ -250,7 +250,7 @@ export default function ProductGrid({
           {/* 2. Product Matrix Cards (Active shop-list) */}
           <div className="lg:col-span-3">
             {filteredProducts.length === 0 ? (
-              <div className="text-center py-24 bg-stone-50 border border-stone-200">
+              <div className="text-center py-24 bg-stone-50">
                 <span className="text-[10px] font-mono text-stone-400 tracking-widest">ERROR: NO_MATCHES_FOUND</span>
                 <p className="text-sm font-sans font-bold text-neutral-800 uppercase mt-4">
                   No fashion elements match your search criteria.
@@ -269,11 +269,11 @@ export default function ProductGrid({
                   return (
                     <div
                       key={p.id}
-                      className="group bg-stone-50 border border-stone-200 hover:border-neutral-900 p-4 transition-all duration-350 flex flex-col justify-between"
+                      className="group bg-stone-50 hover:border-neutral-900 p-4 transition-all duration-350 flex flex-col justify-between"
                       id={`p-${p.id}`}
                     >
                       {/* Product Card Image Container */}
-                      <div className="relative aspect-4/5 overflow-hidden bg-stone-100 border border-stone-200 mb-4 cursor-pointer">
+                      <div className="relative aspect-4/5 overflow-hidden bg-stone-100 mb-4 cursor-pointer">
                         {/* Primary Image */}
                         <img
                           src={p.images[0]}
@@ -309,7 +309,7 @@ export default function ProductGrid({
                               e.stopPropagation();
                               onToggleLike(p.id);
                             }}
-                            className="bg-stone-50/95 text-neutral-800 hover:text-black hover:bg-white p-2 border border-stone-200 cursor-pointer focus:outline-none flex items-center justify-center transition-colors"
+                            className="bg-stone-50/95 text-neutral-800 hover:text-black hover:bg-white p-2 cursor-pointer focus:outline-none flex items-center justify-center transition-colors"
                             aria-label="Add to wishlist"
                           >
                             <svg
@@ -326,7 +326,7 @@ export default function ProductGrid({
 
                         {/* Hover Overlay: QUICK ADD BLANKET */}
                         <div className="absolute inset-x-0 bottom-0 bg-neutral-900/95 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-350 ease-out flex flex-col justify-end space-y-2.5 z-20 select-none">
-                          <span className="text-[9px] font-mono text-stone-300 tracking-[0.25em] uppercase text-center block pb-1 border-b border-neutral-850">
+                          <span className="text-[9px] font-mono text-stone-300 tracking-[0.25em] uppercase text-center block pb-1">
                             QUICK ADD ELEMENT
                           </span>
                           <div className="flex flex-wrap justify-center gap-1.5">
@@ -337,7 +337,7 @@ export default function ProductGrid({
                                   e.stopPropagation();
                                   onQuickAdd(p, sz, p.colours[0].name);
                                 }}
-                                className="bg-neutral-800 hover:bg-stone-100 hover:text-neutral-950 text-stone-200 text-[9px] font-mono font-bold py-1.5 px-2.5 uppercase transition-colors duration-200 cursor-pointer border border-neutral-800"
+                                className="bg-neutral-800 hover:bg-stone-100 hover:text-neutral-950 text-stone-200 text-[9px] font-mono font-bold py-1.5 px-2.5 uppercase transition-colors duration-200 cursor-pointer"
                               >
                                 {sz}
                               </button>
@@ -365,11 +365,11 @@ export default function ProductGrid({
                         </div>
 
                         {/* Colour Indicators */}
-                        <div className="flex items-center gap-1.5 pt-2 border-t border-stone-200 mt-2">
+                        <div className="flex items-center gap-1.5 pt-2 mt-2">
                           {p.colours.map((col) => (
                             <span
                               key={col.name}
-                              className="w-2.5 h-2.5 rounded-full border border-stone-200"
+                              className="w-2.5 h-2.5 rounded-full"
                               style={{ backgroundColor: col.hex }}
                               title={col.name}
                             />
@@ -394,7 +394,7 @@ export default function ProductGrid({
             
             {/* Upper Navigation and Header */}
             <div>
-              <div className="flex items-center justify-between border-b border-stone-200 pb-4 mb-6">
+              <div className="flex items-center justify-between pb-4 mb-6">
                 <h2 className="text-sm font-sans font-black uppercase text-black">Filters</h2>
                 <button
                   onClick={() => setMobileFiltersOpen(false)}
@@ -412,10 +412,10 @@ export default function ProductGrid({
                     <button
                       key={g}
                       onClick={() => onGenderChange(g)}
-                      className={`py-1.5 px-3 font-mono text-[9px] uppercase cursor-pointer border tracking-wider transition-all ${
+                      className={`py-1.5 px-3 font-mono text-[9px] uppercase cursor-pointer  tracking-wider transition-all ${
                         activeGender === g
-                          ? 'bg-black text-white border-black font-bold'
-                          : 'bg-stone-200 text-neutral-600 border-none'
+                          ? 'bg-black text-white  font-bold'
+                          : 'bg-stone-200 text-neutral-600 '
                       }`}
                     >
                       {g}
@@ -468,8 +468,8 @@ export default function ProductGrid({
                     <button
                       key={s}
                       onClick={() => setSelectedSize(s)}
-                      className={`w-9 h-9 font-mono text-[9px] uppercase rounded-full flex items-center justify-center cursor-pointer border tracking-tight transition-all ${
-                        selectedSize === s ? 'bg-black text-white border-black' : 'bg-stone-200 text-neutral-600 border-none'
+                      className={`w-9 h-9 font-mono text-[9px] uppercase rounded-full flex items-center justify-center cursor-pointer  tracking-tight transition-all ${
+                        selectedSize === s ? 'bg-black text-white ' : 'bg-stone-200 text-neutral-600 '
                       }`}
                     >
                       {s}
@@ -498,7 +498,7 @@ export default function ProductGrid({
             </div>
 
             {/* Bottom Actions */}
-            <div className="border-t border-stone-250 pt-4 mt-8 space-y-2">
+            <div className="pt-4 mt-8 space-y-2">
               <button
                 onClick={() => setMobileFiltersOpen(false)}
                 className="w-full bg-black text-white font-mono text-xs uppercase tracking-widest py-3.5 font-bold cursor-pointer"
@@ -510,7 +510,7 @@ export default function ProductGrid({
                   handleResetFilters();
                   setMobileFiltersOpen(false);
                 }}
-                className="w-full border border-stone-300 text-stone-600 font-mono text-xs uppercase tracking-widest py-3.5 bg-transparent cursor-pointer"
+                className="w-full text-stone-600 font-mono text-xs uppercase tracking-widest py-3.5 bg-transparent cursor-pointer"
               >
                 Reset All
               </button>

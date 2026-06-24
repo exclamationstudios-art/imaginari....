@@ -221,7 +221,7 @@ export function Maginariproductpage() {
     border-radius: 6px;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: border-color 0.2s;
+    transition:  0.2s;
     overflow: hidden;
     display: flex;
     align-items: center;

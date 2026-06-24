@@ -17,7 +17,7 @@ const CATEGORY_ITEMS = [
 
 export default function CategoryStrip({ onCategorySelect, activeCategory }: CategoryStripProps) {
   return (
-    <section id="category-strip" className="w-full bg-stone-100 py-8 border-b border-stone-200 select-none">
+    <section id="category-strip" className="w-full bg-stone-100 py-8 select-none">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
 
         {/* Compact header */}

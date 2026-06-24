@@ -284,7 +284,7 @@ nav {
   strokeWidth: 1.5;
 }
 
-/* Dashed border — coming soon, exact from page 1 */
+/* Dashed  — coming soon, exact from page 1 */
 .bc-dashed {
   position: absolute;
   inset: 8px;
@@ -744,7 +744,7 @@ footer {
     </div>
   </div>
 
-  {/*  COMING SOON — dashed border exact from page 1  */}
+  {/*  COMING SOON — dashed  exact from page 1  */}
   <div className="brand-card">
     <div className="bc-img-wrap" data-style="opacity:0.4;">
       <div className="bc-img-inner bg-coming">

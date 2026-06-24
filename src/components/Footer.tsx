@@ -12,7 +12,7 @@ export default function Footer({ onNavigate, onAdminPortalClick }: FooterProps) 
   const boringLinks = ['Terms of Use', 'Privacy & Cookie Policy', 'Terms of Sale'];
 
   return (
-    <footer id="maginari-footer" className="bg-white text-stone-900 font-sans pt-16 border-t border-stone-200 select-none overflow-hidden flex flex-col">
+    <footer id="maginari-footer" className="bg-white text-stone-900 font-sans pt-16 select-none overflow-hidden flex flex-col">
       <div className="w-full px-6 md:px-12 flex flex-col">
         
         {/* TOP SECTION: Grid */}
@@ -25,7 +25,7 @@ export default function Footer({ onNavigate, onAdminPortalClick }: FooterProps) 
             
             <div className="flex flex-col gap-6 max-w-sm">
               {/* Input */}
-              <div className="flex items-center border-b border-stone-300 pb-2">
+              <div className="flex items-center pb-2">
                 <input 
                   type="email" 
                   placeholder="user@gmail.com" 
@@ -40,19 +40,19 @@ export default function Footer({ onNavigate, onAdminPortalClick }: FooterProps) 
               <div className="flex items-center gap-4 lg:gap-6 text-sm text-stone-600 flex-nowrap whitespace-nowrap overflow-x-auto [scrollbar-width:none]">
                 <span className="text-xs text-black">Select your preferences:</span>
                 <label className="flex items-center gap-2 cursor-pointer group">
-                  <div className="w-3 h-3 rounded-full border border-stone-400 flex items-center justify-center group-hover:border-stone-800">
+                  <div className="w-3 h-3 rounded-full flex items-center justify-center group-hover:border-stone-800">
                     <div className="w-1.5 h-1.5 rounded-full bg-black hidden" />
                   </div>
                   Man
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer group">
-                  <div className="w-3 h-3 rounded-full border border-stone-400 flex items-center justify-center group-hover:border-stone-800">
+                  <div className="w-3 h-3 rounded-full flex items-center justify-center group-hover:border-stone-800">
                     <div className="w-1.5 h-1.5 rounded-full bg-black hidden" />
                   </div>
                   Woman
                 </label>
                 <label className="flex items-center gap-2 cursor-pointer group">
-                  <div className="w-3 h-3 rounded-full border border-black flex items-center justify-center">
+                  <div className="w-3 h-3 rounded-full flex items-center justify-center">
                     <div className="w-1.5 h-1.5 rounded-full bg-black" />
                   </div>
                   Both
@@ -61,7 +61,7 @@ export default function Footer({ onNavigate, onAdminPortalClick }: FooterProps) 
 
               {/* Checkbox */}
               <label className="flex items-start gap-3 cursor-pointer mt-2 group">
-                <div className="w-3 h-3 border border-stone-400 mt-1 shrink-0 group-hover:border-stone-800 flex items-center justify-center" />
+                <div className="w-3 h-3 mt-1 shrink-0 group-hover:border-stone-800 flex items-center justify-center" />
                 <span className="text-[11px] leading-tight text-stone-500">
                   I agree to receive content from Maginari via email and have read and accept the <a href="#" className="underline hover:text-black">Privacy Policy</a>
                 </span>
@@ -102,7 +102,7 @@ export default function Footer({ onNavigate, onAdminPortalClick }: FooterProps) 
         </div>
 
         {/* MIDDLE UTILITY BAR */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full pb-8 gap-6 border-b border-stone-200">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full pb-8 gap-6">
           <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-stone-800">
             <span>Country & Language</span>
             <span className="text-stone-400 cursor-pointer hover:text-stone-600">UK | GBP | English ▼</span>

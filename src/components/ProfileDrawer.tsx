@@ -132,7 +132,7 @@ export default function ProfileDrawer({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-stone-250 pb-4 mb-4 select-none">
+        <div className="flex items-center justify-between pb-4 mb-4 select-none">
           <h2 className="text-sm font-sans font-black uppercase text-black flex items-center gap-2">
             <User className="w-5 h-5 text-black" />
             <span>Account Clearance</span>
@@ -153,7 +153,7 @@ export default function ProfileDrawer({
             /* --- LOGGED OUT STATE --- */
             <div className="flex-grow flex flex-col justify-center py-6">
               <div className="text-center mb-8">
-                <div className="w-12 h-12 bg-stone-200 border border-stone-300 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-stone-200 rounded-full flex items-center justify-center mx-auto mb-3">
                   <User className="w-6 h-6 text-stone-500" />
                 </div>
                 <h3 className="text-xs font-mono font-bold text-black uppercase tracking-widest">
@@ -175,7 +175,7 @@ export default function ProfileDrawer({
                       placeholder="JULIAN VANE"
                       value={nameInput}
                       onChange={(e) => setNameInput(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-300 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
+                      className="w-full bg-stone-50 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
                     />
                   </div>
                 )}
@@ -190,7 +190,7 @@ export default function ProfileDrawer({
                       placeholder="CREATOR@MAGINARI.COM"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-300 p-2.5 pl-10 outline-none focus:border-black uppercase rounded-none text-black"
+                      className="w-full bg-stone-50 p-2.5 pl-10 outline-none focus:border-black uppercase rounded-none text-black"
                     />
                   </div>
                 </div>
@@ -205,7 +205,7 @@ export default function ProfileDrawer({
                       placeholder="••••••••"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-300 p-2.5 pl-10 outline-none focus:border-black rounded-none text-black"
+                      className="w-full bg-stone-50 p-2.5 pl-10 outline-none focus:border-black rounded-none text-black"
                     />
                   </div>
                 </div>
@@ -217,7 +217,7 @@ export default function ProfileDrawer({
                   {isSignUp ? 'CREATE ARCHIVE DECK' : 'VALIDATE CLEARANCE'}
                 </button>
 
-                <div className="text-center pt-4 border-t border-stone-200">
+                <div className="text-center pt-4">
                   <button
                     type="button"
                     onClick={() => setIsSignUp(!isSignUp)}
@@ -227,7 +227,7 @@ export default function ProfileDrawer({
                   </button>
                 </div>
 
-                <div className="p-3 bg-stone-200 border border-stone-300 text-[9px] text-stone-500 leading-normal uppercase text-center mt-6">
+                <div className="p-3 bg-stone-200 text-[9px] text-stone-500 leading-normal uppercase text-center mt-6">
                   <span>Fast Access Node: Login with <span className="font-bold text-black font-sans text-[10px]">guest@maginari.com</span> / any code.</span>
                 </div>
 
@@ -238,10 +238,10 @@ export default function ProfileDrawer({
             <div className="space-y-6 py-2">
               
               {/* Profile Card & Avatar */}
-              <div className="bg-stone-200/50 border border-stone-200 p-4 relative flex items-center gap-4 group">
+              <div className="bg-stone-200/50 p-4 relative flex items-center gap-4 group">
                 
                 {/* Avatar Image container with Hover Overlay */}
-                <div className="relative w-18 h-18 rounded-full overflow-hidden bg-stone-300 border border-stone-400 flex-none group">
+                <div className="relative w-18 h-18 rounded-full overflow-hidden bg-stone-300 flex-none group">
                   <img
                     src={profile.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'}
                     alt={profile.name}
@@ -265,13 +265,13 @@ export default function ProfileDrawer({
                         type="text"
                         value={editName}
                         onChange={(e) => setEditName(e.target.value)}
-                        className="bg-white border border-stone-300 p-1 w-full text-black uppercase font-bold text-xs"
+                        className="bg-white p-1 w-full text-black uppercase font-bold text-xs"
                       />
                       <input
                         type="email"
                         value={editEmail}
                         onChange={(e) => setEditEmail(e.target.value)}
-                        className="bg-white border border-stone-300 p-1 w-full text-black"
+                        className="bg-white p-1 w-full text-black"
                       />
                     </div>
                   ) : (
@@ -281,7 +281,7 @@ export default function ProfileDrawer({
                         <CheckCircle2 className="w-3.5 h-3.5 text-stone-500 fill-stone-100" />
                       </h3>
                       <span className="text-[10px] font-mono text-stone-500 block truncate mt-0.5">{profile.email}</span>
-                      <span className="text-[9px] font-mono text-[#B6861B] bg-[#B6861B]/10 border border-[#B6861B]/20 py-0.5 px-2 font-semibold tracking-widest inline-block uppercase mt-1.5">
+                      <span className="text-[9px] font-mono text-[#B6861B] bg-[#B6861B]/10 border-[#B6861B]/20 py-0.5 px-2 font-semibold tracking-widest inline-block uppercase mt-1.5">
                         ID: {profile.memberId}
                       </span>
                     </div>
@@ -313,7 +313,7 @@ export default function ProfileDrawer({
 
               {/* Predefined Avatar Selector Panel */}
               {showAvatarPresets && (
-                <div className="p-4 bg-stone-200 border border-stone-300 space-y-3 animate-fadeIn">
+                <div className="p-4 bg-stone-200 space-y-3 animate-fadeIn">
                   <div className="flex justify-between items-center select-none">
                     <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-black">SELECT NEW AVATAR PRESET</span>
                     <button 
@@ -329,7 +329,7 @@ export default function ProfileDrawer({
                       <button
                         key={idx}
                         onClick={() => selectAvatarPreset(preset)}
-                        className="w-12 h-12 rounded-full overflow-hidden border-2 border-stone-350 hover:border-black cursor-pointer active:scale-95 transition-all"
+                        className="w-12 h-12 rounded-full overflow-hidden hover:border-black cursor-pointer active:scale-95 transition-all"
                       >
                         <img src={preset} className="w-full h-full object-cover grayscale" alt="preset" />
                       </button>
@@ -338,7 +338,7 @@ export default function ProfileDrawer({
                     {/* Custom File Upload button */}
                     <button
                       onClick={() => fileInputRef.current?.click()}
-                      className="w-12 h-12 rounded-full border-2 border-dashed border-stone-400 hover:border-black flex items-center justify-center text-stone-500 hover:text-black transition-all cursor-pointer bg-stone-100"
+                      className="w-12 h-12 rounded-full hover:border-black flex items-center justify-center text-stone-500 hover:text-black transition-all cursor-pointer bg-stone-100"
                       title="Upload Custom Image File"
                     >
                       <Camera className="w-5 h-5" />
@@ -355,7 +355,7 @@ export default function ProfileDrawer({
               )}
 
               {/* Membership Tier & Points Progress */}
-              <div className="bg-neutral-950 text-white p-5 border border-neutral-900 shadow-md flex flex-col gap-4 relative overflow-hidden select-none">
+              <div className="bg-neutral-950 text-white p-5 shadow-md flex flex-col gap-4 relative overflow-hidden select-none">
                 <div className="absolute right-0 top-0 opacity-15 translate-x-4 -translate-y-4 text-[130px] font-sans font-black pointer-events-none select-none tracking-tighter text-stone-600">
                   M
                 </div>
@@ -394,13 +394,13 @@ export default function ProfileDrawer({
 
               {/* Order History */}
               <div className="space-y-3 font-mono">
-                <h4 className="text-[10px] font-bold tracking-widest uppercase border-b border-stone-250 pb-2 text-black flex items-center gap-1.5 select-none">
+                <h4 className="text-[10px] font-bold tracking-widest uppercase pb-2 text-black flex items-center gap-1.5 select-none">
                   <History className="w-4 h-4 text-stone-600" />
                   <span>ELEMENTS ARCHIVE TRANSITS ({profile.orders.length})</span>
                 </h4>
 
                 {profile.orders.length === 0 ? (
-                  <div className="p-8 text-center text-stone-400 border border-dashed border-stone-300 text-[10px] uppercase select-none">
+                  <div className="p-8 text-center text-stone-400 text-[10px] uppercase select-none">
                     NO HISTORICAL TRANSITS RECORDED
                   </div>
                 ) : (
@@ -410,7 +410,7 @@ export default function ProfileDrawer({
                       return (
                         <div 
                           key={order.id}
-                          className="bg-stone-200 border border-stone-300 transition-colors"
+                          className="bg-stone-200 transition-colors"
                         >
                           {/* Order Header Summary */}
                           <div 
@@ -425,10 +425,10 @@ export default function ProfileDrawer({
                             <div className="flex items-center gap-4 text-right">
                               <div className="space-y-0.5">
                                 <span className="text-xs font-bold text-black block">£{order.total.toFixed(2)}</span>
-                                <span className={`text-[8px] font-bold uppercase tracking-wider inline-block px-1.5 py-0.2 rounded-none border ${
+                                <span className={`text-[8px] font-bold uppercase tracking-wider inline-block px-1.5 py-0.2 rounded-none  ${
                                   order.status === 'Processing' 
-                                    ? 'bg-amber-100 text-amber-700 border-amber-300' 
-                                    : 'bg-emerald-100 text-emerald-700 border-emerald-300'
+                                    ? 'bg-amber-100 text-amber-700 ' 
+                                    : 'bg-emerald-100 text-emerald-700 '
                                 }`}>
                                   {order.status}
                                 </span>
@@ -439,10 +439,10 @@ export default function ProfileDrawer({
 
                           {/* Expanded Order Items Detail */}
                           {isExpanded && (
-                            <div className="p-3 border-t border-stone-300 bg-stone-50 text-[10px] space-y-2 select-none">
+                            <div className="p-3 bg-stone-50 text-[10px] space-y-2 select-none">
                               {order.items.map((item, idx) => (
-                                <div key={idx} className="flex gap-3 pb-2 border-b border-stone-200 last:border-b-0 last:pb-0">
-                                  <div className="w-10 h-12 bg-stone-200 border border-stone-250 flex-none overflow-hidden">
+                                <div key={idx} className="flex gap-3 pb-2 last:border-b-0 last:pb-0">
+                                  <div className="w-10 h-12 bg-stone-200 flex-none overflow-hidden">
                                     <img src={item.image} className="w-full h-full object-cover grayscale" alt="item" />
                                   </div>
                                   <div className="flex-grow min-w-0">
@@ -475,10 +475,10 @@ export default function ProfileDrawer({
 
         {/* Footer Actions */}
         {profile && (
-          <div className="border-t border-stone-250 pt-4 mt-4 select-none">
+          <div className="pt-4 mt-4 select-none">
             <button
               onClick={onLogout}
-              className="w-full border border-stone-300 text-neutral-500 hover:text-black hover:border-black py-3 bg-transparent uppercase font-mono text-xs tracking-widest flex items-center justify-center gap-2 cursor-pointer transition-colors"
+              className="w-full text-neutral-500 hover:text-black hover:border-black py-3 bg-transparent uppercase font-mono text-xs tracking-widest flex items-center justify-center gap-2 cursor-pointer transition-colors"
             >
               <LogOut className="w-4 h-4" /> TERMINATE SESSION
             </button>

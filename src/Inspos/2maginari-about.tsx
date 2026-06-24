@@ -222,7 +222,7 @@ nav {
   font-weight: 400;
 }
 
-/* Pull quote — Playfair with olive left border */
+/* Pull quote — Playfair with olive left  */
 .pull-quote {
   margin: 32px 0;
   padding-left: 20px;

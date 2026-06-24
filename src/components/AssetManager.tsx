@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Upload, CheckCircle, Database, Eye, Lock, RefreshCw } from 'lucide-react';
 import { Product, CustomLayout } from '../types';
+import { supabase } from '../services/supabaseClient';
 
 interface AssetManagerProps {
   layout: CustomLayout;
@@ -92,6 +93,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   });
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   // Local working state representing changes inside visual preview
   const [workingLayout, setWorkingLayout] = useState<CustomLayout>(() => ({ ...layout }));
@@ -119,15 +121,45 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     setTimeout(() => setStatusMessage(null), 3000);
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const cleanPass = password.trim().toLowerCase();
-    if (cleanPass === 'alhajisoye') {
-      localStorage.setItem('maginari_admin_auth', 'true');
-      setIsAuthenticated(true);
-      setAuthError(false);
-    } else {
-      setAuthError(true);
+    
+    setIsLoggingIn(true);
+    setAuthError(false);
+
+    try {
+      // Query the access_codes table for the entered code
+      const { data, error } = await supabase
+        .from('access_codes')
+        .select('code')
+        .eq('code', cleanPass)
+        .eq('is_active', true)
+        .maybeSingle();
+
+      if (error) {
+        throw error;
+      }
+
+      if (data) {
+        // Access code is valid!
+        localStorage.setItem('maginari_admin_auth', 'true');
+        setIsAuthenticated(true);
+      } else {
+        // Code not found or inactive
+        setAuthError(true);
+      }
+    } catch (err) {
+      console.error('Failed to authenticate access code with database:', err);
+      // Fallback: allow the default local key if DB is offline/unconfigured
+      if (cleanPass === 'alhajisoye') {
+        localStorage.setItem('maginari_admin_auth', 'true');
+        setIsAuthenticated(true);
+      } else {
+        setAuthError(true);
+      }
+    } finally {
+      setIsLoggingIn(false);
     }
   };
 
@@ -141,11 +173,13 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     if (window.confirm('Reset all custom mappings to original theme configurations?')) {
       localStorage.removeItem('maginari_custom_layout');
       try {
-        await fetch('https://kvdb.io/maginari_global_layout_store_2026_06_16/layout', {
-          method: 'DELETE',
-        });
+        const { error } = await supabase
+          .from('layouts')
+          .delete()
+          .eq('id', 'active');
+        if (error) throw error;
       } catch (err) {
-        console.error('Failed to reset layout on cloud store:', err);
+        console.error('Failed to reset layout in Supabase database:', err);
       }
       window.location.reload();
     }
@@ -235,7 +269,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-neutral-950 text-stone-100 font-mono flex items-center justify-center p-4">
-        <div className="max-w-md w-full border border-neutral-800 bg-neutral-900/40 p-8 md:p-10 text-center space-y-8 animate-fadeIn">
+        <div className="max-w-md w-full bg-neutral-900/40 p-8 md:p-10 text-center space-y-8 animate-fadeIn">
           <div className="space-y-2 select-none">
             <span className="text-[9px] text-rose-300 tracking-[0.35em] uppercase block">// SECURE GATEWAY</span>
             <h1 className="text-2xl font-sans font-black tracking-widest text-white uppercase">
@@ -256,8 +290,8 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                 placeholder="ACCESS_KEY"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`w-full bg-neutral-950 border ${
-                  authError ? 'border-red-500' : 'border-neutral-800 focus:border-white'
+                className={`w-full bg-neutral-950  ${
+                  authError ? '' : ' focus:border-white'
                 } p-3 text-center text-xs uppercase tracking-widest outline-none text-white font-mono placeholder-neutral-700 transition-colors`}
                 autoFocus
               />
@@ -270,9 +304,12 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
 
             <button
               type="submit"
-              className="w-full bg-white hover:bg-neutral-200 text-black py-3.5 text-xs font-bold uppercase tracking-widest cursor-pointer transition-colors"
+              disabled={isLoggingIn}
+              className={`w-full py-3.5 text-xs font-bold uppercase tracking-widest cursor-pointer transition-colors ${
+                isLoggingIn ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed' : 'bg-white hover:bg-neutral-200 text-black'
+              }`}
             >
-              Request Authorization
+              {isLoggingIn ? 'Verifying Code...' : 'Request Authorization'}
             </button>
           </form>
 
@@ -298,7 +335,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   }) => (
     <div
       onClick={onClick}
-      className="relative flex-shrink-0 w-[60vw] sm:w-[40vw] md:w-[26vw] lg:w-[18vw] cursor-pointer group border border-neutral-800 bg-neutral-950 p-2 hover:border-rose-300 transition-all duration-300 select-none"
+      className="relative flex-shrink-0 w-[60vw] sm:w-[40vw] md:w-[26vw] lg:w-[18vw] cursor-pointer group bg-neutral-950 p-2 hover:border-rose-300 transition-all duration-300 select-none"
     >
       <div className="aspect-[4/5] bg-neutral-900 overflow-hidden mb-2 relative">
         <img
@@ -308,11 +345,11 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-black/65 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 z-10">
-          <span className="text-[9px] tracking-widest text-rose-300 uppercase font-bold border border-rose-300/40 px-3 py-1.5 bg-black/90">
+          <span className="text-[9px] tracking-widest text-rose-300 uppercase font-bold border-rose-300/40 px-3 py-1.5 bg-black/90">
             Edit Details
           </span>
         </div>
-        <div className="absolute top-1.5 left-1.5 bg-black/80 px-2 py-0.5 text-[8px] text-stone-300 font-mono tracking-wider border border-neutral-800">
+        <div className="absolute top-1.5 left-1.5 bg-black/80 px-2 py-0.5 text-[8px] text-stone-300 font-mono tracking-wider">
           EDITABLE SLOT
         </div>
       </div>
@@ -339,7 +376,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   }) => (
     <div 
       onClick={onClick}
-      className="w-full h-[55vh] relative overflow-hidden select-none bg-neutral-900 border border-neutral-800 hover:border-rose-300 transition-colors duration-300 cursor-pointer group mb-6"
+      className="w-full h-[55vh] relative overflow-hidden select-none bg-neutral-900 hover:border-rose-300 transition-colors duration-300 cursor-pointer group mb-6"
     >
       <img
         src={src}
@@ -350,7 +387,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
       
       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 z-20">
-        <span className="text-xs tracking-widest text-rose-300 uppercase font-bold border-2 border-rose-300 px-5 py-2.5 bg-black/90">
+        <span className="text-xs tracking-widest text-rose-300 uppercase font-bold px-5 py-2.5 bg-black/90">
           Edit Campaign Banner
         </span>
       </div>
@@ -367,7 +404,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
           {title}
         </h2>
       </div>
-      <div className="absolute top-4 right-4 bg-black/80 px-3 py-1 text-[9px] text-stone-300 font-mono tracking-widest border border-neutral-800">
+      <div className="absolute top-4 right-4 bg-black/80 px-3 py-1 text-[9px] text-stone-300 font-mono tracking-widest">
         EDITABLE BANNER SLOT
       </div>
     </div>
@@ -376,7 +413,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   return (
     <div className="min-h-screen bg-neutral-950 text-stone-100 font-mono pb-24">
       {/* Sticky Header Configurator Bar */}
-      <header className="border-b border-neutral-800 bg-neutral-900/60 sticky top-0 z-40 backdrop-blur-md">
+      <header className="bg-neutral-900/60 sticky top-0 z-40 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
           <button 
             onClick={onBack}
@@ -393,13 +430,13 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
           <div className="flex gap-2">
             <button 
               onClick={handleLogout}
-              className="border border-neutral-800 hover:border-neutral-500 px-3.5 py-1.5 text-[9px] uppercase tracking-widest cursor-pointer transition-colors"
+              className="hover:border-neutral-500 px-3.5 py-1.5 text-[9px] uppercase tracking-widest cursor-pointer transition-colors"
             >
               Lock
             </button>
             <button 
               onClick={handleResetToDefaults}
-              className="border border-neutral-800 hover:border-red-500 hover:text-red-400 px-3.5 py-1.5 text-[9px] uppercase tracking-widest cursor-pointer transition-colors"
+              className="hover:border-red-500 hover:text-red-400 px-3.5 py-1.5 text-[9px] uppercase tracking-widest cursor-pointer transition-colors"
             >
               Reset
             </button>
@@ -416,13 +453,13 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
       {/* Intro Bar & Alerts */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8">
         {statusMessage && (
-          <div className="mb-6 p-4 bg-neutral-900 border border-rose-300 text-rose-300 text-xs flex items-center gap-2 animate-fadeIn">
+          <div className="mb-6 p-4 bg-neutral-900 text-rose-300 text-xs flex items-center gap-2 animate-fadeIn">
             <CheckCircle className="w-4 h-4 text-rose-300" />
             <span>{statusMessage}</span>
           </div>
         )}
 
-        <div className="bg-neutral-900/40 border border-neutral-800 p-5 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="bg-neutral-900/40 p-5 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="space-y-1">
             <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
               <Database className="w-4 h-4 text-rose-300" /> Live Replica Canvas (Visual Mode)
@@ -434,12 +471,12 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
         </div>
 
         {/* 1:1 HOMEPAGE REPLICA EDITOR CANVAS */}
-        <div className="border border-neutral-800 bg-neutral-950 p-4 md:p-8 space-y-12">
+        <div className="bg-neutral-950 p-4 md:p-8 space-y-12">
           
           {/* MOCKUP HERO SECTION */}
           <div 
             onClick={() => openEditBannerModal('heroBanner', workingLayout.heroBanner, 'Hero Background')}
-            className="w-full h-[65vh] relative overflow-hidden select-none bg-neutral-900 border border-neutral-800 hover:border-rose-300 transition-colors duration-300 cursor-pointer group"
+            className="w-full h-[65vh] relative overflow-hidden select-none bg-neutral-900 hover:border-rose-300 transition-colors duration-300 cursor-pointer group"
           >
             <img
               src={workingLayout.heroBanner}
@@ -449,7 +486,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 z-20">
-              <span className="text-xs tracking-widest text-rose-300 uppercase font-bold border-2 border-rose-300 px-5 py-2.5 bg-black/90">
+              <span className="text-xs tracking-widest text-rose-300 uppercase font-bold px-5 py-2.5 bg-black/90">
                 Edit Hero Banner Background
               </span>
             </div>
@@ -459,7 +496,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                 Main Character Energy
               </h1>
             </div>
-            <div className="absolute top-4 right-4 bg-black/80 px-3 py-1 text-[9px] text-stone-300 font-mono tracking-widest border border-neutral-800">
+            <div className="absolute top-4 right-4 bg-black/80 px-3 py-1 text-[9px] text-stone-300 font-mono tracking-widest">
               EDITABLE HERO BANNER
             </div>
           </div>
@@ -585,14 +622,14 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
           
           {/* BANNER EDIT MODAL */}
           {activeEditItem.type === 'banner' && (
-            <div className="bg-neutral-900 border border-neutral-800 w-full max-w-xl p-6 md:p-8 space-y-6 text-stone-200">
+            <div className="bg-neutral-900 w-full max-w-xl p-6 md:p-8 space-y-6 text-stone-200">
               <div>
                 <span className="text-[9px] text-rose-300 tracking-[0.2em] uppercase font-mono block">CAMPAGN SETTINGS</span>
                 <h3 className="text-base font-bold text-white uppercase tracking-wider">{activeEditItem.title}</h3>
               </div>
 
               {/* Preview */}
-              <div className="aspect-[21/9] w-full bg-neutral-950 border border-neutral-800 overflow-hidden relative">
+              <div className="aspect-[21/9] w-full bg-neutral-950 overflow-hidden relative">
                 <img 
                   src={modalBannerImage} 
                   alt="Banner preview" 
@@ -602,7 +639,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
 
               {/* Controls */}
               <div className="space-y-4">
-                <label className="w-full bg-neutral-950 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-500 py-3 px-4 text-[9px] uppercase tracking-widest text-center cursor-pointer transition-colors flex items-center justify-center gap-2">
+                <label className="w-full bg-neutral-950 hover:bg-neutral-800 hover:border-neutral-500 py-3 px-4 text-[9px] uppercase tracking-widest text-center cursor-pointer transition-colors flex items-center justify-center gap-2">
                   <Upload className="w-3.5 h-3.5" /> Upload File Image
                   <input 
                     type="file" 
@@ -614,13 +651,13 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
 
                 <div>
                   <span className="text-[9px] text-neutral-500 tracking-wider uppercase block mb-2">Or Select Preset Model:</span>
-                  <div className="grid grid-cols-6 gap-2 max-h-32 overflow-y-auto p-1 border border-neutral-800/60 bg-neutral-950">
+                  <div className="grid grid-cols-6 gap-2 max-h-32 overflow-y-auto p-1 border-neutral-800/60 bg-neutral-950">
                     {LOCAL_MODEL_PRESETS.map((src, idx) => (
                       <button
                         key={idx}
                         onClick={() => setModalBannerImage(src)}
-                        className={`aspect-square border overflow-hidden transition-all ${
-                          modalBannerImage === src ? 'border-rose-300 scale-95' : 'border-neutral-800 hover:border-neutral-500'
+                        className={`aspect-square  overflow-hidden transition-all ${
+                          modalBannerImage === src ? ' scale-95' : ' hover:border-neutral-500'
                         }`}
                       >
                         <img src={src} alt="preset" className="w-full h-full object-cover" />
@@ -631,10 +668,10 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3 pt-4 border-t border-neutral-800">
+              <div className="flex gap-3 pt-4">
                 <button 
                   onClick={() => setActiveEditItem(null)}
-                  className="flex-1 border border-neutral-800 hover:border-neutral-600 text-stone-300 hover:text-white py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-colors"
+                  className="flex-1 hover:border-neutral-600 text-stone-300 hover:text-white py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-colors"
                 >
                   Cancel
                 </button>
@@ -650,7 +687,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
 
           {/* PRODUCT EDIT MODAL */}
           {activeEditItem.type === 'product' && (
-            <div className="bg-neutral-900 border border-neutral-800 w-full max-w-xl p-6 md:p-8 space-y-6 text-stone-200">
+            <div className="bg-neutral-900 w-full max-w-xl p-6 md:p-8 space-y-6 text-stone-200">
               <div>
                 <span className="text-[9px] text-rose-300 tracking-[0.2em] uppercase font-mono block">COLLECTIBLE SPECIFICATIONS</span>
                 <h3 className="text-base font-bold text-white uppercase tracking-wider">Configure Product Slot</h3>
@@ -665,7 +702,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                       type="text"
                       value={modalProdName}
                       onChange={(e) => setModalProdName(e.target.value)}
-                      className="w-full bg-neutral-950 border border-neutral-800 focus:border-white p-2.5 text-xs text-white uppercase tracking-wider outline-none"
+                      className="w-full bg-neutral-950 focus:border-white p-2.5 text-xs text-white uppercase tracking-wider outline-none"
                     />
                   </div>
                   <div className="space-y-1.5">
@@ -675,12 +712,12 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                       step="0.01"
                       value={modalProdPrice}
                       onChange={(e) => setModalProdPrice(parseFloat(e.target.value) || 0)}
-                      className="w-full bg-neutral-950 border border-neutral-800 focus:border-white p-2.5 text-xs text-white tracking-wider outline-none"
+                      className="w-full bg-neutral-950 focus:border-white p-2.5 text-xs text-white tracking-wider outline-none"
                     />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-[9px] text-neutral-500 tracking-wider uppercase block">Image File:</label>
-                    <label className="w-full bg-neutral-950 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-500 py-3 px-3 text-[9px] uppercase tracking-widest text-center cursor-pointer transition-colors flex items-center justify-center gap-1.5">
+                    <label className="w-full bg-neutral-950 hover:bg-neutral-800 hover:border-neutral-500 py-3 px-3 text-[9px] uppercase tracking-widest text-center cursor-pointer transition-colors flex items-center justify-center gap-1.5">
                       <Upload className="w-3.5 h-3.5" /> Upload File
                       <input 
                         type="file" 
@@ -695,7 +732,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                 {/* Right Preview */}
                 <div className="w-36 flex-shrink-0 flex flex-col items-center">
                   <span className="text-[9px] text-neutral-500 tracking-wider uppercase block mb-1.5">Image Preview</span>
-                  <div className="aspect-[4/5] w-full bg-neutral-950 border border-neutral-800 overflow-hidden relative">
+                  <div className="aspect-[4/5] w-full bg-neutral-950 overflow-hidden relative">
                     <img 
                       src={modalProdImage} 
                       alt="Product preview" 
@@ -708,13 +745,13 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
               {/* Shirt Presets */}
               <div>
                 <span className="text-[9px] text-neutral-500 tracking-wider uppercase block mb-2">Or Select Product Preset:</span>
-                <div className="grid grid-cols-8 gap-2 p-1 border border-neutral-800/60 bg-neutral-950">
+                <div className="grid grid-cols-8 gap-2 p-1 border-neutral-800/60 bg-neutral-950">
                   {LOCAL_SHIRT_PRESETS.map((src, idx) => (
                     <button
                       key={idx}
                       onClick={() => setModalProdImage(src)}
-                      className={`aspect-square border overflow-hidden transition-all ${
-                        modalProdImage === src ? 'border-rose-300 scale-95' : 'border-neutral-800 hover:border-neutral-500'
+                      className={`aspect-square  overflow-hidden transition-all ${
+                        modalProdImage === src ? ' scale-95' : ' hover:border-neutral-500'
                       }`}
                     >
                       <img src={src} alt="preset" className="w-full h-full object-cover" />
@@ -724,10 +761,10 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3 pt-4 border-t border-neutral-800">
+              <div className="flex gap-3 pt-4">
                 <button 
                   onClick={() => setActiveEditItem(null)}
-                  className="flex-1 border border-neutral-800 hover:border-neutral-600 text-stone-300 hover:text-white py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-colors"
+                  className="flex-1 hover:border-neutral-600 text-stone-300 hover:text-white py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-colors"
                 >
                   Cancel
                 </button>

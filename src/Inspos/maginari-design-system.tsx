@@ -1181,7 +1181,7 @@ body {
   <section className="section" id="states">
     <div className="section-eyebrow">10 — Components</div>
     <div className="section-title">Interaction States</div>
-    <div className="section-desc">All interactive elements have these four states. Sold out is always visible — never hidden. Coming soon uses the dashed border treatment.</div>
+    <div className="section-desc">All interactive elements have these four states. Sold out is always visible — never hidden. Coming soon uses the dashed  treatment.</div>
 
     <div className="state-row">
       <div className="state-tag state-default">Default</div>

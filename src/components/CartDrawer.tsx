@@ -84,7 +84,7 @@ export default function CartDrawer({
       <div className="w-full max-w-md h-full bg-stone-100 flex flex-col justify-between p-6 shadow-2xl relative overflow-hidden">
         
         {/* Draw Header */}
-        <div className="flex items-center justify-between border-b border-stone-250 pb-4 mb-4 select-none">
+        <div className="flex items-center justify-between pb-4 mb-4 select-none">
           <h2 className="text-sm font-sans font-black uppercase text-black flex items-center gap-2">
             <ShoppingBag className="w-5 h-5 text-black" />
             <span>Shopping Bag</span>
@@ -122,11 +122,11 @@ export default function CartDrawer({
               <div className="flex-1 space-y-4 pr-1 overflow-y-auto scrollbar-thin scrollbar-thumb-stone-300">
                 {/* Free shipping banner helper */}
                 {missingForFreeShipping > 0 ? (
-                  <div className="p-3 bg-stone-200 border border-stone-300 text-[10px] font-mono text-neutral-600 uppercase text-center tracking-wider">
-                    Add <span className="font-bold text-black font-sans text-xs">£{missingForFreeShipping}</span> more of items for <span className="font-bold text-black pb-0.5 border-b border-black">FREE SHIPPING</span>
+                  <div className="p-3 bg-stone-200 text-[10px] font-mono text-neutral-600 uppercase text-center tracking-wider">
+                    Add <span className="font-bold text-black font-sans text-xs">£{missingForFreeShipping}</span> more of items for <span className="font-bold text-black pb-0.5">FREE SHIPPING</span>
                   </div>
                 ) : (
-                  <div className="p-3 bg-neutral-950 text-rose-300 border border-neutral-900 text-[10px] font-mono uppercase text-center tracking-[0.15em] flex items-center justify-center gap-1.5 animate-pulse">
+                  <div className="p-3 bg-neutral-950 text-rose-300 text-[10px] font-mono uppercase text-center tracking-[0.15em] flex items-center justify-center gap-1.5 animate-pulse">
                     <Sparkles className="w-3.5 h-3.5 animate-bounce" />
                     COMPLIMENTARY SHIPPING SECURED
                   </div>
@@ -136,10 +136,10 @@ export default function CartDrawer({
                 {cart.map((item) => (
                   <div
                     key={item.id}
-                    className="flex gap-4 p-2 bg-stone-200/50 border border-stone-200 hover:border-stone-300 relative group transition-colors"
+                    className="flex gap-4 p-2 bg-stone-200/50 hover:border-stone-300 relative group transition-colors"
                   >
                     {/* Item Image */}
-                    <div className="w-20 h-24 overflow-hidden bg-stone-300 flex-none border border-stone-250">
+                    <div className="w-20 h-24 overflow-hidden bg-stone-300 flex-none">
                       <img
                         src={item.product.images[0]}
                         alt={item.product.name}
@@ -151,7 +151,7 @@ export default function CartDrawer({
                     {/* Meta & Increment Controls */}
                     <div className="flex-1 flex flex-col justify-between">
                       <div>
-                        <div className="flex justify-between items-start text-[9px] font-mono text-neutral-450 uppercase pb-1 border-b border-stone-150">
+                        <div className="flex justify-between items-start text-[9px] font-mono text-neutral-450 uppercase pb-1">
                           <span>{item.product.brand}</span>
                           <span>£{item.product.price} each</span>
                         </div>
@@ -166,7 +166,7 @@ export default function CartDrawer({
 
                       {/* Quantity Toggles */}
                       <div className="flex justify-between items-center mt-2">
-                        <div className="flex items-center border border-stone-350 bg-stone-50 text-xs font-mono">
+                        <div className="flex items-center bg-stone-50 text-xs font-mono">
                           <button
                             onClick={() => onDecrement(item.id)}
                             className="p-1 hover:bg-stone-250 cursor-pointer"
@@ -198,8 +198,8 @@ export default function CartDrawer({
 
             {/* Bottom Total Block */}
             {cart.length > 0 && (
-              <div className="border-t border-stone-300 pt-4 space-y-3.5 mt-4 text-xs font-mono select-none">
-                <div className="space-y-1 bg-stone-200/50 p-3 border border-stone-200 uppercase">
+              <div className="pt-4 space-y-3.5 mt-4 text-xs font-mono select-none">
+                <div className="space-y-1 bg-stone-200/50 p-3 uppercase">
                   <div className="flex justify-between">
                     <span>Subtotal Archive</span>
                     <span className="text-black font-bold text-sm">£{subtotal}</span>
@@ -208,7 +208,7 @@ export default function CartDrawer({
                     <span>Shipping Transit</span>
                     <span>{shippingCost === 0 ? 'FREE' : `£${shippingCost}`}</span>
                   </div>
-                  <div className="flex justify-between text-black font-black border-t border-stone-300 pt-2 text-sm">
+                  <div className="flex justify-between text-black font-black pt-2 text-sm">
                     <span>Total Bill</span>
                     <span className="text-rose-950 font-mono text-base font-bold">£{total}</span>
                   </div>
@@ -234,7 +234,7 @@ export default function CartDrawer({
           <form onSubmit={handleCompleteOrder} className="flex-1 flex flex-col justify-between overflow-y-auto">
             <div className="space-y-4">
               <span className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase block">AUTHENTICATION DEPLOYMENT</span>
-              <h3 className="text-md font-sans font-black uppercase text-black border-b border-stone-250 pb-2">
+              <h3 className="text-md font-sans font-black uppercase text-black pb-2">
                 SHIPPING & CLEARANCE NODE
               </h3>
 
@@ -249,7 +249,7 @@ export default function CartDrawer({
                     placeholder="SAMS SUDEEN"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-stone-50 border border-stone-300 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
+                    className="w-full bg-stone-50 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
                   />
                 </div>
 
@@ -262,7 +262,7 @@ export default function CartDrawer({
                     placeholder="CODENAME APARTMENTS 4B"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    className="w-full bg-stone-50 border border-stone-300 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
+                    className="w-full bg-stone-50 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
                   />
                 </div>
 
@@ -275,7 +275,7 @@ export default function CartDrawer({
                       placeholder="LONDON"
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-300 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
+                      className="w-full bg-stone-50 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
                     />
                   </div>
                   <div className="space-y-1">
@@ -286,7 +286,7 @@ export default function CartDrawer({
                       placeholder="E1 6QL"
                       value={postalCode}
                       onChange={(e) => setPostalCode(e.target.value)}
-                      className="w-full bg-stone-50 border border-stone-300 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
+                      className="w-full bg-stone-50 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
                     />
                   </div>
                 </div>
@@ -301,7 +301,7 @@ export default function CartDrawer({
                     maxLength={19}
                     value={card}
                     onChange={(e) => setCard(e.target.value)}
-                    className="w-full bg-stone-50 border border-stone-300 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
+                    className="w-full bg-stone-50 p-2.5 outline-none focus:border-black uppercase rounded-none text-black"
                   />
                 </div>
 
@@ -309,7 +309,7 @@ export default function CartDrawer({
             </div>
 
             {/* Simulated actions checkout summary */}
-            <div className="pt-4 mt-8 border-t border-stone-300 space-y-2.5">
+            <div className="pt-4 mt-8 space-y-2.5">
               <div className="flex justify-between font-mono text-xs uppercase text-zinc-500 px-1">
                 <span>Total Amount of Elements:</span>
                 <span className="text-black font-bold">£{total}</span>
@@ -323,7 +323,7 @@ export default function CartDrawer({
               <button
                 type="button"
                 onClick={() => setCheckoutStep('cart')}
-                className="w-full border border-stone-300 text-stone-500 font-mono text-xs uppercase tracking-widest py-3 bg-transparent cursor-pointer hover:text-black hover:border-black transition"
+                className="w-full text-stone-500 font-mono text-xs uppercase tracking-widest py-3 bg-transparent cursor-pointer hover:text-black hover:border-black transition"
               >
                 Back to Shopping Bag
               </button>
@@ -333,7 +333,7 @@ export default function CartDrawer({
 
         {checkoutStep === 'success' && (
           <div className="flex-1 flex flex-col items-center justify-center text-center space-y-6">
-            <div className="w-16 h-16 rounded-full bg-neutral-950 text-rose-300 flex items-center justify-center border border-neutral-900 shadow-lg animate-bounce">
+            <div className="w-16 h-16 rounded-full bg-neutral-950 text-rose-300 flex items-center justify-center shadow-lg animate-bounce">
               <CheckCircle className="w-10 h-10 text-rose-300 stroke-[1.5]" />
             </div>
 
@@ -344,7 +344,7 @@ export default function CartDrawer({
               <h3 className="text-xl font-sans font-black uppercase text-black leading-none">
                 ORDER LODGED SAFELY!
               </h3>
-              <p className="font-mono text-xs font-bold text-rose-950 uppercase select-all bg-stone-200 border border-stone-305 p-2 py-1.5 rounded-none">
+              <p className="font-mono text-xs font-bold text-rose-950 uppercase select-all bg-stone-200 p-2 py-1.5 rounded-none">
                 ID: {orderId}
               </p>
               <p className="text-stone-500 text-[11px] font-mono leading-relaxed max-w-xs mx-auto uppercase">

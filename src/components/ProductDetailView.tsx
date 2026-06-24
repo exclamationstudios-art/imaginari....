@@ -171,7 +171,7 @@ export default function ProductDetailView({
                 {/* Virtual Try On icon button */}
                 <button
                   onClick={() => setTryOnModalOpen(true)}
-                  className="w-10 h-10 bg-white hover:bg-stone-50 border border-stone-200 text-black rounded-full flex items-center justify-center transition-colors hover:border-black cursor-pointer"
+                  className="w-10 h-10 bg-white hover:bg-stone-50 text-black rounded-full flex items-center justify-center transition-colors hover:border-black cursor-pointer"
                   title="Virtual Try On"
                 >
                   <Shirt className="w-5 h-5 text-neutral-800 stroke-[1.5]" />
@@ -195,7 +195,7 @@ export default function ProductDetailView({
                       className={`h-12 text-sm font-medium rounded-lg flex items-center justify-center transition-all ${
                         isSelected
                           ? 'bg-black text-white'
-                          : 'bg-white border border-stone-200 hover:border-black'
+                          : 'bg-white   hover:border-black'
                       }`}
                     >
                       {sz}
@@ -216,7 +216,7 @@ export default function ProductDetailView({
                 </button>
                 <button
                   onClick={() => onToggleLike(product.id)}
-                  className="w-14 h-14 flex-shrink-0 bg-white hover:bg-stone-50 border border-stone-200 text-black rounded-full flex items-center justify-center transition-colors"
+                  className="w-14 h-14 flex-shrink-0 bg-white hover:bg-stone-50 text-black rounded-full flex items-center justify-center transition-colors"
                   title="Add to Closet"
                 >
                   <Heart className={`w-5 h-5 ${isLiked ? 'fill-black' : ''}`} />
@@ -238,10 +238,10 @@ export default function ProductDetailView({
             </div>
 
             {/* Accordions */}
-            <div className="border-t border-stone-200">
+            <div className="">
               
               {/* Accordion: Details */}
-              <div className="border-b border-stone-200">
+              <div className="">
                 <button
                   onClick={() => toggleAccordion('details')}
                   className="w-full flex justify-between items-center py-5 text-lg font-medium text-left transition-colors hover:text-neutral-600"
@@ -261,7 +261,7 @@ export default function ProductDetailView({
               </div>
 
               {/* Accordion: Fit */}
-              <div className="border-b border-stone-200">
+              <div className="">
                 <button
                   onClick={() => toggleAccordion('fit')}
                   className="w-full flex justify-between items-center py-5 text-lg font-medium text-left transition-colors hover:text-neutral-600"
@@ -277,7 +277,7 @@ export default function ProductDetailView({
               </div>
 
               {/* Accordion: Delivery & Returns */}
-              <div className="border-b border-stone-200">
+              <div className="">
                 <button
                   onClick={() => toggleAccordion('delivery')}
                   className="w-full flex justify-between items-center py-5 text-lg font-medium text-left transition-colors hover:text-neutral-600"

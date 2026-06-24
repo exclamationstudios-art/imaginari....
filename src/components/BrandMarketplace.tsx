@@ -8,7 +8,7 @@ interface BrandMarketplaceProps {
 
 export default function BrandMarketplace({ brands, onBrandSelect }: BrandMarketplaceProps) {
   return (
-    <section id="brand-marketplace" className="w-full bg-stone-100 py-24 border-b border-stone-200">
+    <section id="brand-marketplace" className="w-full bg-stone-100 py-24">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Title Block */}
@@ -27,7 +27,7 @@ export default function BrandMarketplace({ brands, onBrandSelect }: BrandMarketp
           {brands.map((brand) => (
             <div
               key={brand.id}
-              className="group relative flex flex-col justify-between bg-neutral-950 border border-neutral-900 p-6 hover:border-stone-400 transition-all duration-[450ms] h-[485px] overflow-hidden"
+              className="group relative flex flex-col justify-between bg-neutral-950 p-6 hover:border-stone-400 transition-all duration-[450ms] h-[485px] overflow-hidden"
             >
               {/* Brand Mood Image background with soft overlay */}
               <div className="absolute inset-0 select-none overflow-hidden pb-18 z-0">
@@ -45,14 +45,14 @@ export default function BrandMarketplace({ brands, onBrandSelect }: BrandMarketp
                 <span className="text-[10px] font-mono tracking-[0.25em] text-stone-250">
                   // {brand.id.toUpperCase()}
                 </span>
-                <span className="text-[8px] font-mono border border-white/20 bg-black/50 px-2 py-1 uppercase tracking-widest backdrop-blur-sm">
+                <span className="text-[8px] font-mono border-white/20 bg-black/50 px-2 py-1 uppercase tracking-widest backdrop-blur-sm">
                   Active
                 </span>
               </div>
 
               {/* Lower Section (Content Card Area) */}
-              <div className="relative z-10 bg-neutral-950/90 border border-neutral-800 p-6 mt-auto shadow-lg group-hover:bg-neutral-900/95 transition-colors duration-350">
-                <div className="flex items-center justify-between border-b border-neutral-800 pb-2.5 mb-2.5">
+              <div className="relative z-10 bg-neutral-950/90 p-6 mt-auto shadow-lg group-hover:bg-neutral-900/95 transition-colors duration-350">
+                <div className="flex items-center justify-between pb-2.5 mb-2.5">
                   <h3 className="text-xs font-mono tracking-[0.2em] font-black text-white uppercase">
                     {brand.name}
                   </h3>
@@ -81,7 +81,7 @@ export default function BrandMarketplace({ brands, onBrandSelect }: BrandMarketp
         </div>
 
         {/* Scandinavian/Street philosophy split line and quote */}
-        <div className="mt-16 border-t border-stone-250 pt-8 flex flex-col md:flex-row gap-8 justify-between text-neutral-400 font-mono text-[10px] uppercase tracking-widest select-none pointer-events-none">
+        <div className="mt-16 pt-8 flex flex-col md:flex-row gap-8 justify-between text-neutral-400 font-mono text-[10px] uppercase tracking-widest select-none pointer-events-none">
           <span>COALITION SYSTEM DIRECTORY [S01]</span>
           <span className="text-right">“AARHUS RESTRAINT / BARCELONA ATTITUDE”</span>
         </div>

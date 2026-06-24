@@ -53,7 +53,7 @@ nav {
   justify-content: space-between;
   padding: 20px 40px;
   background: transparent;
-  transition: background 0.4s, border-bottom 0.4s;
+  transition: background 0.4s,  0.4s;
 }
 
 nav.scrolled {

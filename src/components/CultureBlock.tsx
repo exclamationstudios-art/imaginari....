@@ -18,7 +18,7 @@ export default function CultureBlock() {
   };
 
   return (
-    <section id="community-culture" className="w-full bg-stone-150 py-24 border-b border-stone-200">
+    <section id="community-culture" className="w-full bg-stone-150 py-24">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         
         {/* Culture block header */}
@@ -42,10 +42,10 @@ export default function CultureBlock() {
           <div className="lg:col-span-5 space-y-8">
             
             {/* Interactive Audio Player widget */}
-            <div className="bg-neutral-950 text-stone-100 border border-neutral-800 p-6 md:p-8 rounded-none flex flex-col justify-between h-96 relative overflow-hidden group">
+            <div className="bg-neutral-950 text-stone-100 p-6 md:p-8 rounded-none flex flex-col justify-between h-96 relative overflow-hidden group">
               
               {/* Disc rotate anim overlay */}
-              <div className="absolute -right-24 -top-24 w-60 h-60 border-2 border-neutral-855 rounded-full flex items-center justify-center opacity-15">
+              <div className="absolute -right-24 -top-24 w-60 h-60 rounded-full flex items-center justify-center opacity-15">
                 <Disc className={`w-32 h-32 text-white ${isPlaying ? 'animate-spin-slow' : ''}`} />
               </div>
 
@@ -55,7 +55,7 @@ export default function CultureBlock() {
                   <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
                   MAGINARI FM / ONLINE BROADCOAST
                 </span>
-                <span className="text-[8px] font-mono border border-neutral-800 px-2 py-0.5 tracking-wider">
+                <span className="text-[8px] font-mono px-2 py-0.5 tracking-wider">
                   S01 SECTOR_FREQ
                 </span>
               </div>
@@ -90,7 +90,7 @@ export default function CultureBlock() {
               </div>
 
               {/* Playback HUD controls panel */}
-              <div className="relative z-10 pt-6 mt-auto border-t border-neutral-900 flex items-center justify-between gap-6">
+              <div className="relative z-10 pt-6 mt-auto flex items-center justify-between gap-6">
                 
                 {/* Left - Skip / Play */}
                 <div className="flex items-center gap-4">
@@ -130,8 +130,8 @@ export default function CultureBlock() {
             </div>
 
             {/* Upcoming Cultural Pop-ups & events list */}
-            <div className="bg-stone-100 border border-stone-250 p-6 md:p-8 shadow-xs space-y-5">
-              <div className="flex items-center justify-between border-b border-stone-250 pb-3">
+            <div className="bg-stone-100 p-6 md:p-8 shadow-xs space-y-5">
+              <div className="flex items-center justify-between pb-3">
                 <h3 className="text-xs font-mono font-black uppercase text-black flex items-center gap-2">
                   <CalendarRange className="w-4.5 h-4.5" /> Pop-Up & Culture Log
                 </h3>
@@ -181,7 +181,7 @@ export default function CultureBlock() {
               {INSTAGRAM_POSTS.map((post) => (
                 <div
                   key={post.id}
-                  className="group relative aspect-square overflow-hidden bg-stone-200 border border-stone-250 shadow-xs"
+                  className="group relative aspect-square overflow-hidden bg-stone-200 shadow-xs"
                 >
                   <img
                     src={post.image}
@@ -208,7 +208,7 @@ export default function CultureBlock() {
               ))}
             </div>
 
-            <div className="bg-stone-200/50 p-4 border border-stone-250 text-center text-xs font-mono text-neutral-600 uppercase select-all">
+            <div className="bg-stone-200/50 p-4 text-center text-xs font-mono text-neutral-600 uppercase select-all">
               TAG US TO BE ARCHIVED: <span className="font-bold text-black font-sans tracking-wide">#MAGINARIUNIFORM</span>
             </div>
 

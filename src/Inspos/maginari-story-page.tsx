@@ -588,7 +588,7 @@ nav {
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition:  0.25s;
 }
 
 .story-card-large:hover { border-color: var(--border-medium); }
@@ -695,7 +695,7 @@ nav {
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  transition: border-color 0.25s, transform 0.25s;
+  transition:  0.25s, transform 0.25s;
 }
 
 .story-card-tall:hover { border-color: var(--border-medium); transform: translateY(-4px); }

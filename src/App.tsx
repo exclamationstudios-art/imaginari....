@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Product, CartItem, CustomLayout, UserProfile, OrderRecord } from './types';
 import { PRODUCTS, BRANDS, ARTICLES, getDefaultCustomLayout } from './data';
+import { supabase } from './services/supabaseClient';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import CategoryStrip from './components/CategoryStrip';
@@ -165,34 +166,45 @@ export default function App() {
     return getDefaultCustomLayout();
   });
 
-  // Sync with global cloud-side storage on mount
+  // Sync with global Supabase database on mount
   useEffect(() => {
-    fetch('https://kvdb.io/maginari_global_layout_store_2026_06_16/layout', {
-      cache: 'no-store',
-      headers: {
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
-      }
-    })
-      .then(res => {
-        if (res.ok) return res.json();
-        throw new Error('Cloud layout fetch failed');
-      })
-      .then(data => {
-        if (data && Object.keys(data).length > 0) {
-          const sanitized = sanitizeLayout(data);
+    const fetchLayout = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('layouts')
+          .select('*')
+          .eq('id', 'active')
+          .single();
+
+        if (error) {
+          // If the record doesn't exist, we fall back to defaults or local storage
+          return;
+        }
+
+        if (data) {
+          // Map snake_case columns back to camelCase properties of CustomLayout
+          const camelLayout: CustomLayout = {
+            heroBanner: data.hero_banner,
+            banner1: data.banner1,
+            banner2: data.banner2,
+            banner3: data.banner3,
+            banner4: data.banner4,
+            heroProducts: data.hero_products || [],
+            banner1Products: data.banner1_products || [],
+            banner2Products: data.banner2_products || [],
+            banner3Products: data.banner3_products || [],
+            banner4Products: data.banner4_products || []
+          };
+          const sanitized = sanitizeLayout(camelLayout);
           setCustomLayout(sanitized);
           localStorage.setItem('maginari_custom_layout', JSON.stringify(sanitized));
-        } else {
-          // If cloud returns empty layout, it means it's clean defaults.
-          // Clear visitor local storage so client is synchronized with cloud.
-          localStorage.removeItem('maginari_custom_layout');
-          setCustomLayout(getDefaultCustomLayout());
         }
-      })
-      .catch(err => {
-        console.warn('Global cloud-side custom layout is not set or offline:', err);
-      });
+      } catch (err) {
+        console.warn('Supabase global custom layout is not set or offline. Using local layout.', err);
+      }
+    };
+
+    fetchLayout();
   }, []);
 
   // Filter bindings synchronized with ProductGrid
@@ -347,15 +359,23 @@ export default function App() {
           localStorage.setItem('maginari_custom_layout', JSON.stringify(updatedLayout));
           
           try {
-            await fetch('https://kvdb.io/maginari_global_layout_store_2026_06_16/layout', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(updatedLayout),
+            const { error } = await supabase.from('layouts').upsert({
+              id: 'active',
+              hero_banner: updatedLayout.heroBanner,
+              banner1: updatedLayout.banner1,
+              banner2: updatedLayout.banner2,
+              banner3: updatedLayout.banner3,
+              banner4: updatedLayout.banner4,
+              hero_products: updatedLayout.heroProducts,
+              banner1_products: updatedLayout.banner1Products,
+              banner2_products: updatedLayout.banner2Products,
+              banner3_products: updatedLayout.banner3Products,
+              banner4_products: updatedLayout.banner4Products,
+              updated_at: new Date().toISOString()
             });
+            if (error) throw error;
           } catch (err) {
-            console.error('Failed to save layout to global cloud store:', err);
+            console.error('Failed to save layout to Supabase:', err);
           }
         }}
         onBack={() => setActiveView('home')}
@@ -488,17 +508,17 @@ export default function App() {
         <div id="search-dialog-mask" className="fixed inset-0 bg-neutral-950/85 backdrop-blur-sm z-50 flex flex-col animate-fadeIn">
           
           {/* Upper Search Bar Panel */}
-          <div className="bg-stone-100 border-b border-stone-250 py-8 px-4 md:px-8">
+          <div className="bg-stone-100 py-8 px-4 md:px-8">
             <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
               
-              <div className="flex-1 flex items-center gap-3 bg-stone-200 border border-stone-300 p-2.5 px-4 focus-within:border-black transition-colors">
+              <div className="flex-1 flex items-center gap-3 bg-stone-200 p-2.5 px-4 focus-within:border-black transition-colors">
                 <Search className="w-5 h-5 text-neutral-500 flex-none" />
                 <input
                   type="text"
                   placeholder="SEARCH THE MAGINARI ARCHIVE..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="bg-transparent flex-grow outline-none border-none text-xs font-mono uppercase tracking-widest text-black placeholder-neutral-550"
+                  className="bg-transparent flex-grow outline-none text-xs font-mono uppercase tracking-widest text-black placeholder-neutral-550"
                   autoFocus
                 />
                 {searchQuery && (
@@ -538,9 +558,9 @@ export default function App() {
                       <div
                         key={p.id}
                         onClick={() => handleProductSelect(p.id)}
-                        className="flex gap-4 p-3 bg-stone-100 hover:bg-white border border-stone-200 hover:border-black cursor-pointer transition-all"
+                        className="flex gap-4 p-3 bg-stone-100 hover:bg-white hover:border-black cursor-pointer transition-all"
                       >
-                        <div className="w-14 h-18 bg-stone-200 border border-stone-250 flex-none overflow-hidden">
+                        <div className="w-14 h-18 bg-stone-200 flex-none overflow-hidden">
                           <img
                             src={p.images[0]}
                             alt={p.name}
@@ -570,14 +590,14 @@ export default function App() {
                     <button
                       key={term}
                       onClick={() => setSearchQuery(term)}
-                      className="bg-neutral-900 border border-neutral-800 hover:border-stone-400 text-stone-300 hover:text-white font-mono text-[10px] uppercase py-2.5 px-5 tracking-widest rounded-none cursor-pointer transition-colors"
+                      className="bg-neutral-900 hover:border-stone-400 text-stone-300 hover:text-white font-mono text-[10px] uppercase py-2.5 px-5 tracking-widest rounded-none cursor-pointer transition-colors"
                     >
                       {term}
                     </button>
                   ))}
                 </div>
 
-                <div className="pt-8 border-t border-neutral-900 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <div className="pt-8 text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
                   Quick key access. Complete model lists filtered in real-time.
                 </div>
               </div>

@@ -130,7 +130,7 @@ export default function VirtualTryOnModal({ product, onClose }: VirtualTryOnModa
           </div>
 
           {/* Right Side: Info Panel */}
-          <div className="w-full md:w-[320px] lg:w-[380px] p-8 flex flex-col bg-white border-l border-stone-200">
+          <div className="w-full md:w-[320px] lg:w-[380px] p-8 flex flex-col bg-white">
             <div className="mb-6">
               <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-green-600 mb-4">
                 <Check size={14} />

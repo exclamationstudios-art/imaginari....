@@ -66,7 +66,7 @@ export default function MenuDrawer({ isOpen, onClose, onNavigate }: MenuDrawerPr
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-stone-250 pb-6 select-none">
+        <div className="flex items-center justify-between pb-6 select-none">
           <span className="text-[10px] font-mono tracking-[0.25em] text-stone-500 uppercase">
             ARCHIVE MENU
           </span>
@@ -101,7 +101,7 @@ export default function MenuDrawer({ isOpen, onClose, onNavigate }: MenuDrawerPr
         </nav>
 
         {/* Footer info & Socials */}
-        <div className="border-t border-stone-250 pt-6 space-y-6 select-none">
+        <div className="pt-6 space-y-6 select-none">
           <div className="space-y-2">
             <span className="text-[9px] font-mono text-stone-400 tracking-wider uppercase block">
               TAGLINE
