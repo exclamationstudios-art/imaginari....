@@ -226,6 +226,40 @@ export default function App() {
   // Scroll to Top indicator button
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // Countdown timer for July 1st Private Sale
+  const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
+  
+  useEffect(() => {
+    // Assuming July 1st, 2026 00:00:00
+    const targetDate = new Date('2026-07-01T00:00:00Z').getTime();
+    
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      
+      if (distance <= 0) {
+        setTimeLeft({ days: '00', hours: '00', minutes: '00', seconds: '00' });
+        return;
+      }
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      setTimeLeft({
+        days: days.toString().padStart(2, '0'),
+        hours: hours.toString().padStart(2, '0'),
+        minutes: minutes.toString().padStart(2, '0'),
+        seconds: seconds.toString().padStart(2, '0')
+      });
+    };
+    
+    updateCountdown();
+    const intervalId = setInterval(updateCountdown, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   // Monitor scroll for Top Arrow visibility
   useEffect(() => {
     const handleScroll = () => {
@@ -386,6 +420,12 @@ export default function App() {
   return (
     <div id="maginari-root" className="min-h-screen bg-stone-100 flex flex-col justify-between">
       
+      {/* 0. Top Announcement Banner */}
+      <div className="bg-[#fae8d4] text-[#4a2c2a] w-full py-2 flex justify-center items-center text-[12px] md:text-sm font-sans tracking-tight">
+        <span>Private Sale starts in</span> 
+        <span className="font-semibold ml-2 tracking-widest">{timeLeft.days} days : {timeLeft.hours} hours : {timeLeft.minutes} min : {timeLeft.seconds} sec</span>
+      </div>
+
       {/* 1. Header (Sticky navigation, announce and actions) */}
       <Header
         onNavigate={handleNavigate}
