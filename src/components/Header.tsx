@@ -52,7 +52,7 @@ export default function Header({
   return (
     <header 
       id="main-navigation" 
-      className="fixed top-0 left-0 w-full bg-transparent z-50 transition-all duration-350 select-none h-16 md:h-20"
+      className="fixed top-[40px] left-0 w-full bg-transparent z-50 transition-all duration-350 select-none h-16 md:h-20"
     >
       <div className="w-full px-4 md:px-8 h-full flex items-center justify-between">
         

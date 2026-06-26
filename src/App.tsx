@@ -418,12 +418,12 @@ export default function App() {
   }
 
   return (
-    <div id="maginari-root" className="min-h-screen bg-stone-100 flex flex-col justify-between">
+    <div id="maginari-root" className="min-h-screen bg-stone-100 flex flex-col justify-between pt-[40px]">
       
       {/* 0. Top Announcement Banner */}
-      <div className="bg-[#fae8d4] text-[#4a2c2a] w-full py-2 flex justify-center items-center text-[12px] md:text-sm font-sans tracking-tight">
-        <span>Private Sale starts in</span> 
-        <span className="font-semibold ml-2 tracking-widest">{timeLeft.days} days : {timeLeft.hours} hours : {timeLeft.minutes} min : {timeLeft.seconds} sec</span>
+      <div className="fixed top-0 left-0 z-[60] bg-[#fcead8] text-[#42200b] w-full h-[40px] flex justify-center items-center text-[13px] font-sans tracking-[0.03em]">
+        <span className="opacity-90">Private Sale starts in</span> 
+        <span className="ml-3 font-medium tracking-[0.05em]">{timeLeft.days} days : {timeLeft.hours} hours : {timeLeft.minutes} min : {timeLeft.seconds} sec</span>
       </div>
 
       {/* 1. Header (Sticky navigation, announce and actions) */}
