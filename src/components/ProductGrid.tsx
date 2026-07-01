@@ -278,7 +278,9 @@ export default function ProductGrid({
                         <img
                           src={p.images[0]}
                           alt={p.name}
-                          className="w-full h-full object-cover grayscale brightness-95 group-hover:scale-102 transition-all duration-[600ms]"
+                          className={`w-full h-full object-cover grayscale brightness-95 group-hover:scale-102 transition-all duration-[600ms] ${
+                            (p.status === 'sold_out' || p.status === 'coming_soon') ? 'opacity-40' : ''
+                          }`}
                           onClick={() => onProductClick(p.id)}
                           referrerPolicy="no-referrer"
                           loading="lazy"
@@ -298,7 +300,7 @@ export default function ProductGrid({
                         )}
                         
                         {(p.status === 'sold_out' || p.status === 'coming_soon') && (
-                          <div className="absolute bottom-0 left-0 bg-black text-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest z-10">
+                          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-widest z-10 whitespace-nowrap">
                             {p.status === 'sold_out' ? 'Sold Out' : 'Coming Soon'}
                           </div>
                         )}

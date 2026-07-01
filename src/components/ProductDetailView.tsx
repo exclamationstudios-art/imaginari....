@@ -112,11 +112,13 @@ export default function ProductDetailView({
                   <img
                     src={img}
                     alt={`${product.name} editorial view ${idx + 1}`}
-                    className="w-full h-full object-cover object-center mix-blend-multiply"
+                    className={`w-full h-full object-cover object-center mix-blend-multiply ${
+                      idx === 0 && (product.status === 'sold_out' || product.status === 'coming_soon') ? 'opacity-40' : ''
+                    }`}
                     referrerPolicy="no-referrer"
                   />
                   {idx === 0 && (product.status === 'sold_out' || product.status === 'coming_soon') && (
-                    <div className="absolute bottom-0 left-0 bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-widest z-10 rounded-tr-lg">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-widest z-10 whitespace-nowrap">
                       {product.status === 'sold_out' ? 'Sold Out' : 'Coming Soon'}
                     </div>
                   )}
