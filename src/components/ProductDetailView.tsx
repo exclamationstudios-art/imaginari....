@@ -36,6 +36,47 @@ export default function ProductDetailView({
     }
   }, [product]);
 
+  useEffect(() => {
+    if (!product) return;
+
+    const jsonLd = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": product.name,
+      "image": product.images,
+      "description": product.details?.join(' ') || product.name,
+      "brand": {
+        "@type": "Brand",
+        "name": product.brand || "Maginari"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": window.location.href,
+        "priceCurrency": "GBP",
+        "price": product.price,
+        "availability": (product.status === 'sold_out' || product.status === 'coming_soon') 
+          ? "https://schema.org/OutOfStock" 
+          : "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'product-json-ld';
+    script.text = JSON.stringify(jsonLd);
+    
+    const existing = document.getElementById('product-json-ld');
+    if (existing) document.head.removeChild(existing);
+    
+    document.head.appendChild(script);
+
+    return () => {
+      const existing = document.getElementById('product-json-ld');
+      if (existing) document.head.removeChild(existing);
+    };
+  }, [product]);
+
   const handleAddToBagClick = () => {
     if (!selectedSize) {
       alert('Please select a size');

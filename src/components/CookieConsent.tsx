@@ -32,7 +32,7 @@ export default function CookieConsent() {
 
   return (
     <div 
-      className={`fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:w-[400px] bg-white/95 backdrop-blur-xl border border-neutral-200 shadow-2xl z-[100] p-6 rounded-2xl font-sans transition-all duration-500 ease-out transform ${
+      className={`fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 md:w-[400px] bg-white/60 backdrop-blur-3xl border border-neutral-200/50 shadow-2xl z-[100] p-6 rounded-2xl font-sans transition-all duration-500 ease-out transform ${
         animateIn ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
       }`}
     >
