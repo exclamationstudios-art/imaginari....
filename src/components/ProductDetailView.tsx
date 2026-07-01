@@ -107,7 +107,7 @@ export default function ProductDetailView({
               {product.images.map((img, idx) => (
                 <div
                   key={idx}
-                  className="w-[calc(100%-28px)] min-w-[calc(100%-28px)] lg:w-full lg:min-w-0 aspect-square lg:aspect-[4/5] bg-[#f6f6f6] rounded-2xl snap-start shrink-0 flex items-center justify-center overflow-hidden"
+                  className="w-[calc(100%-28px)] min-w-[calc(100%-28px)] lg:w-full lg:min-w-0 aspect-square lg:aspect-[4/5] bg-[#f6f6f6] rounded-2xl snap-start shrink-0 flex items-center justify-center overflow-hidden relative"
                 >
                   <img
                     src={img}
@@ -115,6 +115,11 @@ export default function ProductDetailView({
                     className="w-full h-full object-cover object-center mix-blend-multiply"
                     referrerPolicy="no-referrer"
                   />
+                  {idx === 0 && (product.status === 'sold_out' || product.status === 'coming_soon') && (
+                    <div className="absolute bottom-0 left-0 bg-black text-white px-4 py-2 text-xs font-bold uppercase tracking-widest z-10 rounded-tr-lg">
+                      {product.status === 'sold_out' ? 'Sold Out' : 'Coming Soon'}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
