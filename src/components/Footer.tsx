@@ -1,4 +1,5 @@
-import { Instagram, Twitter } from 'lucide-react';
+import { useState } from 'react';
+import { Instagram, Twitter, Check } from 'lucide-react';
 
 interface FooterProps {
   onBrandClick: () => void;
@@ -7,6 +8,17 @@ interface FooterProps {
 }
 
 export default function Footer({ onNavigate, onAdminPortalClick }: FooterProps) {
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setIsSubscribed(true);
+      // Here you would typically send the email to your backend
+    }
+  };
+
   const brandLinks = ['Maginari Journal', 'Our Story', 'Stores', 'Careers'];
   const supportLinks = ['Returns', 'Order Tracking', 'FAQ', 'Contact Us'];
   const boringLinks = ['Terms of Use', 'Privacy & Cookie Policy', 'Terms of Sale'];
@@ -24,48 +36,60 @@ export default function Footer({ onNavigate, onAdminPortalClick }: FooterProps) 
             <p className="text-sm text-stone-600 mb-8">Sign up to our emails and get 10% off</p>
             
             <div className="flex flex-col gap-6 max-w-sm">
-              {/* Input */}
-              <div className="flex items-center pb-2">
-                <input 
-                  type="email" 
-                  placeholder="user@gmail.com" 
-                  className="w-full bg-transparent outline-none text-sm placeholder:text-stone-400"
-                />
-                <button className="text-xs font-bold uppercase tracking-widest hover:text-stone-500 transition-colors ml-4 shrink-0 text-black">
-                  Subscribe
-                </button>
-              </div>
+              {isSubscribed ? (
+                <div className="flex items-center gap-3 text-stone-800 bg-stone-100 py-3 px-4 rounded-md">
+                  <Check className="w-5 h-5 text-green-600" />
+                  <span className="text-sm font-medium">Thanks for subscribing! Check your inbox.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="flex flex-col gap-6">
+                  {/* Input */}
+                  <div className="flex items-center pb-2 border-b border-stone-200 focus-within:border-stone-500 transition-colors">
+                    <input 
+                      type="email" 
+                      placeholder="user@gmail.com" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      className="w-full bg-transparent outline-none text-sm placeholder:text-stone-400"
+                    />
+                    <button type="submit" className="text-xs font-bold uppercase tracking-widest hover:text-stone-500 transition-colors ml-4 shrink-0 text-black">
+                      Subscribe
+                    </button>
+                  </div>
 
-              {/* Preferences */}
-              <div className="flex items-center gap-4 lg:gap-6 text-sm text-stone-600 flex-nowrap whitespace-nowrap overflow-x-auto [scrollbar-width:none]">
-                <span className="text-xs text-black">Select your preferences:</span>
-                <label className="flex items-center gap-2 cursor-pointer group">
-                  <div className="w-3 h-3 rounded-full flex items-center justify-center group-hover:border-stone-800">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black hidden" />
+                  {/* Preferences */}
+                  <div className="flex items-center gap-4 lg:gap-6 text-sm text-stone-600 flex-nowrap whitespace-nowrap overflow-x-auto [scrollbar-width:none]">
+                    <span className="text-xs text-black">Select your preferences:</span>
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <div className="w-3 h-3 rounded-full flex items-center justify-center group-hover:border-stone-800 border border-stone-300">
+                        <div className="w-1.5 h-1.5 rounded-full bg-black hidden" />
+                      </div>
+                      Man
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <div className="w-3 h-3 rounded-full flex items-center justify-center group-hover:border-stone-800 border border-stone-300">
+                        <div className="w-1.5 h-1.5 rounded-full bg-black hidden" />
+                      </div>
+                      Woman
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                      <div className="w-3 h-3 rounded-full flex items-center justify-center border border-stone-800">
+                        <div className="w-1.5 h-1.5 rounded-full bg-black" />
+                      </div>
+                      Both
+                    </label>
                   </div>
-                  Man
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer group">
-                  <div className="w-3 h-3 rounded-full flex items-center justify-center group-hover:border-stone-800">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black hidden" />
-                  </div>
-                  Woman
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer group">
-                  <div className="w-3 h-3 rounded-full flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black" />
-                  </div>
-                  Both
-                </label>
-              </div>
 
-              {/* Checkbox */}
-              <label className="flex items-start gap-3 cursor-pointer mt-2 group">
-                <div className="w-3 h-3 mt-1 shrink-0 group-hover:border-stone-800 flex items-center justify-center" />
-                <span className="text-[11px] leading-tight text-stone-500">
-                  I agree to receive content from Maginari via email and have read and accept the <a href="#" className="underline hover:text-black">Privacy Policy</a>
-                </span>
-              </label>
+                  {/* Checkbox */}
+                  <label className="flex items-start gap-3 cursor-pointer mt-2 group">
+                    <input type="checkbox" required className="mt-1 w-3 h-3 accent-black" />
+                    <span className="text-[11px] leading-tight text-stone-500">
+                      I agree to receive content from Maginari via email and have read and accept the <a href="#" className="underline hover:text-black">Privacy Policy</a>
+                    </span>
+                  </label>
+                </form>
+              )}
             </div>
           </div>
 
