@@ -16,6 +16,7 @@ import CartDrawer from './components/CartDrawer';
 import AssetManager from './components/AssetManager';
 import ProfileDrawer from './components/ProfileDrawer';
 import MenuDrawer from './components/MenuDrawer';
+import CookieConsent from './components/CookieConsent';
 import { Search, X, Sparkles, ShoppingBag, Eye, Heart, ArrowUp } from 'lucide-react';
 
 function sanitizeLayout(parsed: any): CustomLayout {
@@ -674,6 +675,9 @@ export default function App() {
         onClose={() => setIsMenuOpen(false)}
         onNavigate={handleNavigate}
       />
+
+      {/* 10. Cookie Consent Banner */}
+      <CookieConsent />
 
     </div>
   );
