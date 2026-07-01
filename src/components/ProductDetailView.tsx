@@ -215,15 +215,6 @@ export default function ProductDetailView({
                     );
                   })}
                 </div>
-
-                {/* Virtual Try On icon button */}
-                <button
-                  onClick={() => setTryOnModalOpen(true)}
-                  className="w-10 h-10 bg-white hover:bg-stone-50 text-black rounded-full flex items-center justify-center transition-colors hover:border-black cursor-pointer"
-                  title="Virtual Try On"
-                >
-                  <Shirt className="w-5 h-5 text-neutral-800 stroke-[1.5]" />
-                </button>
               </div>
             </div>
 
@@ -255,6 +246,13 @@ export default function ProductDetailView({
 
             {/* Actions: Buy Now, Add to Closet */}
             <div className="flex flex-col gap-3 mb-10">
+              <button
+                onClick={() => setTryOnModalOpen(true)}
+                className="w-full bg-white hover:bg-stone-50 text-black border border-black rounded-full flex items-center justify-center gap-2 text-base font-medium py-4 transition-colors relative uppercase cursor-pointer"
+              >
+                <Shirt className="w-5 h-5 text-neutral-800 stroke-[1.5]" />
+                Virtual Try On
+              </button>
               <div className="flex items-center gap-3 w-full">
                 <button
                   onClick={handleAddToBagClick}

@@ -231,8 +231,8 @@ export default function App() {
   const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
   
   useEffect(() => {
-    // Assuming July 1st, 2026 00:00:00
-    const targetDate = new Date('2026-07-01T00:00:00Z').getTime();
+    // 7 Days Sale ends on July 9th
+    const targetDate = new Date('2026-07-09T00:00:00Z').getTime();
     
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -423,7 +423,7 @@ export default function App() {
       
       {/* 0. Top Announcement Banner */}
       <div className="fixed top-0 left-0 z-[60] bg-[#fcead8] text-[#42200b] w-full h-[40px] flex justify-center items-center text-[13px] font-sans tracking-[0.03em]">
-        <span className="opacity-90">Private Sale starts in</span> 
+        <span className="opacity-90">7 Days Sale Now Open - Ends in</span> 
         <span className="ml-3 font-medium tracking-[0.05em]">{timeLeft.days} days : {timeLeft.hours} hours : {timeLeft.minutes} min : {timeLeft.seconds} sec</span>
       </div>
 

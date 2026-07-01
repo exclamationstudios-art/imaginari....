@@ -36,7 +36,7 @@ export default function MenuDrawer({ isOpen, onClose, onNavigate }: MenuDrawerPr
     },
     { 
       label: 'Brands', 
-      desc: 'Rains, Tekla, Heliot Emil & Maginari',
+      desc: 'Exclamation Studio, Crown of Clay, Favela, Dreamers',
       onClick: () => {
         onNavigate('home');
         onClose();
@@ -102,14 +102,7 @@ export default function MenuDrawer({ isOpen, onClose, onNavigate }: MenuDrawerPr
 
         {/* Footer info & Socials */}
         <div className="pt-6 space-y-6 select-none">
-          <div className="space-y-2">
-            <span className="text-[9px] font-mono text-stone-400 tracking-wider uppercase block">
-              TAGLINE
-            </span>
-            <p className="text-[10px] font-mono text-stone-600 uppercase leading-relaxed">
-              MAGINARI // OUT OF ORDER SINCE DAY ONE. COPENHAGEN - MADRID UTILITY CO-EXISTENCE.
-            </p>
-          </div>
+          {/* Tagline removed as requested */}
 
           <div className="flex items-center justify-between pt-2">
             <div className="flex items-center gap-4 text-stone-600">
