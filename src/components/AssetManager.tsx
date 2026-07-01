@@ -116,6 +116,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   const [modalProdName, setModalProdName] = useState('');
   const [modalProdPrice, setModalProdPrice] = useState(0);
   const [modalProdImage, setModalProdImage] = useState('');
+  const [modalProdBackImage, setModalProdBackImage] = useState('');
   const [modalProdStatus, setModalProdStatus] = useState<'available' | 'sold_out' | 'coming_soon'>('available');
 
   const showFeedback = (msg: string) => {
@@ -209,7 +210,8 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     setActiveEditItem({ type: 'product', section, index, title: prod.name });
     setModalProdName(prod.name);
     setModalProdPrice(prod.price);
-    setModalProdImage(prod.images[0]);
+    setModalProdImage(prod.images[0] || '');
+    setModalProdBackImage(prod.images[1] || '');
     setModalProdStatus(prod.status || 'available');
   };
 
@@ -234,6 +236,18 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
       const originalBase64 = reader.result as string;
       const compressed = await compressImage(originalBase64);
       setModalProdImage(compressed);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleModalProdBackUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      const originalBase64 = reader.result as string;
+      const compressed = await compressImage(originalBase64);
+      setModalProdBackImage(compressed);
     };
     reader.readAsDataURL(file);
   };
@@ -264,14 +278,21 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     setIsApplying(true);
     try {
       const publicUrl = await uploadBase64ToS3(modalProdImage, `product-${section}-${index}.jpg`);
+      const publicBackUrl = modalProdBackImage ? await uploadBase64ToS3(modalProdBackImage, `product-${section}-${index}-back.jpg`) : '';
+
       setWorkingLayout(prev => {
         const updatedSection = [...prev[section]];
+        const newImages = [publicUrl];
+        if (publicBackUrl) newImages.push(publicBackUrl);
+        const restImages = updatedSection[index].images.slice(2);
+        newImages.push(...restImages);
+
         updatedSection[index] = {
           ...updatedSection[index],
           name: modalProdName,
           price: Number(modalProdPrice) || 0,
           status: modalProdStatus,
-          images: [publicUrl, ...updatedSection[index].images.slice(1)]
+          images: newImages
         };
         return {
           ...prev,
@@ -736,17 +757,31 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                       className="w-full bg-neutral-950 focus:border-white p-2.5 text-xs text-white tracking-wider outline-none"
                     />
                   </div>
-                  <div className="space-y-1.5">
-                    <label className="text-[9px] text-neutral-500 tracking-wider uppercase block">Image File:</label>
-                    <label className="w-full bg-neutral-950 hover:bg-neutral-800 hover:border-neutral-500 py-3 px-3 text-[9px] uppercase tracking-widest text-center cursor-pointer transition-colors flex items-center justify-center gap-1.5">
-                      <Upload className="w-3.5 h-3.5" /> Upload File
-                      <input 
-                        type="file" 
-                        accept="image/*" 
-                        className="sr-only" 
-                        onChange={handleModalProdUpload}
-                      />
-                    </label>
+                  <div className="flex gap-2">
+                    <div className="space-y-1.5 flex-1">
+                      <label className="text-[9px] text-neutral-500 tracking-wider uppercase block">Front Image:</label>
+                      <label className="w-full bg-neutral-950 hover:bg-neutral-800 hover:border-neutral-500 py-3 px-3 text-[9px] uppercase tracking-widest text-center cursor-pointer transition-colors flex items-center justify-center gap-1.5">
+                        <Upload className="w-3.5 h-3.5" /> Front
+                        <input 
+                          type="file" 
+                          accept="image/*" 
+                          className="sr-only" 
+                          onChange={handleModalProdUpload}
+                        />
+                      </label>
+                    </div>
+                    <div className="space-y-1.5 flex-1">
+                      <label className="text-[9px] text-neutral-500 tracking-wider uppercase block">Back Image:</label>
+                      <label className="w-full bg-neutral-950 hover:bg-neutral-800 hover:border-neutral-500 py-3 px-3 text-[9px] uppercase tracking-widest text-center cursor-pointer transition-colors flex items-center justify-center gap-1.5">
+                        <Upload className="w-3.5 h-3.5" /> Back
+                        <input 
+                          type="file" 
+                          accept="image/*" 
+                          className="sr-only" 
+                          onChange={handleModalProdBackUpload}
+                        />
+                      </label>
+                    </div>
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-[9px] text-neutral-500 tracking-wider uppercase block">Availability Status:</label>
@@ -763,14 +798,25 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                 </div>
 
                 {/* Right Preview */}
-                <div className="w-36 flex-shrink-0 flex flex-col items-center">
+                <div className="flex gap-2 flex-shrink-0 flex-col items-center">
                   <span className="text-[9px] text-neutral-500 tracking-wider uppercase block mb-1.5">Image Preview</span>
-                  <div className="aspect-[4/5] w-full bg-neutral-950 overflow-hidden relative">
-                    <img 
-                      src={modalProdImage} 
-                      alt="Product preview" 
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="flex gap-2">
+                    <div className="aspect-[4/5] w-24 bg-neutral-950 overflow-hidden relative">
+                      <img 
+                        src={modalProdImage} 
+                        alt="Product front preview" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {modalProdBackImage && (
+                      <div className="aspect-[4/5] w-24 bg-neutral-950 overflow-hidden relative">
+                        <img 
+                          src={modalProdBackImage} 
+                          alt="Product back preview" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
