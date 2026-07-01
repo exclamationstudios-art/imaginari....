@@ -1,0 +1,18 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://maginari.com/collections/{collection-slug}#collection",
+  "name": "{Collection Title} by {Creative Director}",
+  "description": "{1-2 sentence canonical-voice description of the collection.}",
+  "url": "https://maginari.com/collections/{collection-slug}",
+  "image": "https://maginari.com/assets/collections/{collection-slug}.jpg",
+  "isPartOf": { "@id": "https://maginari.com/#website" },
+  "about": { "@id": "https://maginari.com/#maginari" },
+  "creator": { "@id": "https://maginari.com/creative-directors/{director-slug}#person" },
+  "publisher": { "@id": "https://maginari.com/#maginari" },
+  "hasPart": [
+    { "@id": "https://maginari.com/pieces/{piece-slug-1}#piece" },
+    { "@id": "https://maginari.com/pieces/{piece-slug-2}#piece" }
+  ],
+  "isRelatedTo": { "@id": "https://maginari.com/exhibitions/{exhibition-slug}#exhibition" }
+}

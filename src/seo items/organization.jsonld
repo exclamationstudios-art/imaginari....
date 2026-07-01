@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://maginari.com/#exclamation-studios",
+      "name": "Exclamation Studios",
+      "alternateName": "Exclamation",
+      "description": "Exclamation Studios is an international-standard creative agency founded in Lagos, Nigeria, operating globally. It is the creator and publisher of MAGINARI.",
+      "url": "https://exclamationstudios.com",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Lagos, Nigeria",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lagos",
+          "addressCountry": "NG"
+        }
+      },
+      "areaServed": "Worldwide",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/REPLACE_WITH_EXCLAMATION_QID",
+        "https://www.linkedin.com/company/exclamation-studios",
+        "https://www.instagram.com/exclamationstudios"
+      ]
+    },
+    {
+      "@type": ["Organization", "Brand"],
+      "@id": "https://maginari.com/#maginari",
+      "name": "MAGINARI",
+      "description": "MAGINARI is a curated digital exhibition platform for exclusive fashion, presenting collections by leading and emerging creative directors as cultural exhibitions rather than retail. Created by Exclamation Studios, it elevates fashion from commerce into cultural exhibition, where audiences discover, experience, collect, and participate in fashion culture. It is distinct from the fictional 'maginari' of fantasy literature and unrelated musical works of the same name.",
+      "slogan": "The world's curated digital exhibition platform for exclusive fashion culture.",
+      "url": "https://maginari.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://maginari.com/assets/maginari-logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://maginari.com/assets/maginari-og.jpg",
+      "parentOrganization": { "@id": "https://maginari.com/#exclamation-studios" },
+      "founder": { "@id": "https://maginari.com/#exclamation-studios" },
+      "knowsAbout": [
+        "curated fashion exhibitions",
+        "fashion culture",
+        "collectible fashion",
+        "creative direction",
+        "emerging designers",
+        "digital fashion exhibitions",
+        "luxury fashion discovery"
+      ],
+      "sameAs": [
+        "https://www.wikidata.org/wiki/REPLACE_WITH_MAGINARI_QID",
+        "https://www.instagram.com/maginari",
+        "https://www.linkedin.com/company/maginari",
+        "https://x.com/maginari",
+        "https://www.youtube.com/@maginari",
+        "https://www.tiktok.com/@maginari",
+        "https://www.pinterest.com/maginari"
+      ]
+    }
+  ]
+}

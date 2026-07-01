@@ -116,6 +116,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   const [modalProdName, setModalProdName] = useState('');
   const [modalProdPrice, setModalProdPrice] = useState(0);
   const [modalProdImage, setModalProdImage] = useState('');
+  const [modalProdStatus, setModalProdStatus] = useState<'available' | 'sold_out' | 'coming_soon'>('available');
 
   const showFeedback = (msg: string) => {
     setStatusMessage(msg);
@@ -209,6 +210,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     setModalProdName(prod.name);
     setModalProdPrice(prod.price);
     setModalProdImage(prod.images[0]);
+    setModalProdStatus(prod.status || 'available');
   };
 
   // Upload actions inside modals
@@ -268,6 +270,7 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
           ...updatedSection[index],
           name: modalProdName,
           price: Number(modalProdPrice) || 0,
+          status: modalProdStatus,
           images: [publicUrl, ...updatedSection[index].images.slice(1)]
         };
         return {
@@ -744,6 +747,18 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                         onChange={handleModalProdUpload}
                       />
                     </label>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[9px] text-neutral-500 tracking-wider uppercase block">Availability Status:</label>
+                    <select
+                      value={modalProdStatus}
+                      onChange={(e) => setModalProdStatus(e.target.value as any)}
+                      className="w-full bg-neutral-950 focus:border-white p-2.5 text-xs text-white uppercase tracking-wider outline-none appearance-none cursor-pointer"
+                    >
+                      <option value="available">Available</option>
+                      <option value="sold_out">Sold Out</option>
+                      <option value="coming_soon">Coming Soon</option>
+                    </select>
                   </div>
                 </div>
 

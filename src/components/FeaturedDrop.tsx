@@ -25,6 +25,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ item, onProductClick }) => (
         loading="lazy"
         decoding="async"
       />
+      {(item.status === 'sold_out' || item.status === 'coming_soon') && (
+        <div className="absolute bottom-0 left-0 bg-black text-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest z-10">
+          {item.status === 'sold_out' ? 'Sold Out' : 'Coming Soon'}
+        </div>
+      )}
     </div>
     <div className="text-sm font-sans text-neutral-900 px-1">
       <div className="font-semibold truncate">{item.name}</div>

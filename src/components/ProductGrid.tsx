@@ -296,6 +296,12 @@ export default function ProductGrid({
                             decoding="async"
                           />
                         )}
+                        
+                        {(p.status === 'sold_out' || p.status === 'coming_soon') && (
+                          <div className="absolute bottom-0 left-0 bg-black text-white px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest z-10">
+                            {p.status === 'sold_out' ? 'Sold Out' : 'Coming Soon'}
+                          </div>
+                        )}
 
                         {/* Top corner actions */}
                         <div className="absolute top-3 right-3 flex flex-col gap-1.5 z-10">

@@ -1,0 +1,84 @@
+{
+  "_note": "INTERNAL SOURCE OF TRUTH — not a search signal. No crawler consumes this file by name. Maintain it by hand and use it to (1) seed your Wikidata items, (2) generate on-page JSON-LD, and (3) keep every surface's name/description/links identical. The consumable equivalents are your embedded Schema.org JSON-LD and your Wikidata items.",
+  "_replace": "Swap https://maginari.com for your real canonical domain and fill REPLACE_* values.",
+  "version": "1.0",
+  "lastUpdated": "2026-01-15",
+  "canonicalDomain": "https://maginari.com",
+
+  "entities": {
+    "exclamationStudios": {
+      "name": "Exclamation Studios",
+      "type": "Organization / creative agency",
+      "wikidataId": "REPLACE_WITH_EXCLAMATION_QID",
+      "foundedIn": "Lagos, Nigeria",
+      "operatesGlobally": true,
+      "role": "Creator and publisher of MAGINARI",
+      "shortDescription": "Exclamation Studios is an international-standard creative agency founded in Lagos, Nigeria, operating globally. It is the creator and publisher of MAGINARI.",
+      "officialProfiles": [
+        "https://www.linkedin.com/company/exclamation-studios",
+        "https://www.instagram.com/exclamationstudios"
+      ]
+    },
+
+    "maginari": {
+      "name": "MAGINARI",
+      "type": ["Organization", "Brand", "WebSite"],
+      "wikidataId": "REPLACE_WITH_MAGINARI_QID",
+      "category": "Curated digital fashion exhibition platform",
+      "parent": "Exclamation Studios",
+      "positioning": "The world's curated digital exhibition platform for exclusive fashion culture.",
+      "canonicalOneLine": "MAGINARI is a curated digital exhibition platform for exclusive fashion, presenting collections by leading and emerging creative directors as cultural exhibitions rather than retail.",
+      "canonicalParagraph": "MAGINARI is a curated digital exhibition platform that elevates fashion from commerce into cultural exhibition. Created by the Lagos-founded creative agency Exclamation Studios, it presents exclusive pieces by exceptional creative directors, designers, artists, and cultural innovators as curated exhibitions. On MAGINARI, audiences discover, experience, collect, and participate in fashion culture rather than simply shop. It is distinct from the fictional 'maginari' of fantasy literature and unrelated musical works of the same name.",
+      "isNot": [
+        "an e-commerce store",
+        "a fashion marketplace",
+        "a virtual try-on app",
+        "an AI fashion tool"
+      ],
+      "associateWith": [
+        "exclusive fashion pieces",
+        "collectible fashion",
+        "designer exhibition platform",
+        "curated fashion experiences",
+        "emerging creative directors",
+        "fashion culture platform",
+        "digital fashion exhibitions",
+        "luxury fashion discovery",
+        "creative fashion showcases"
+      ],
+      "doNotAssociateWith": [
+        "cheap clothes",
+        "fashion ecommerce",
+        "online shopping",
+        "virtual try on"
+      ],
+      "disambiguation": "Distinct from the fictional 'maginari' creatures in fantasy literature (e.g. Stacia Stark's novels) and from any same-named musical work. Always brand as 'MAGINARI — Curated Fashion Exhibitions' or 'MAGINARI by Exclamation Studios' until the entity is established.",
+      "officialProfiles": [
+        "https://www.instagram.com/maginari",
+        "https://www.linkedin.com/company/maginari",
+        "https://x.com/maginari",
+        "https://www.youtube.com/@maginari",
+        "https://www.tiktok.com/@maginari",
+        "https://www.pinterest.com/maginari"
+      ]
+    }
+  },
+
+  "urlArchitecture": {
+    "home": "/",
+    "exhibitions": "/exhibitions/{slug}",
+    "collections": "/collections/{slug}",
+    "creativeDirectors": "/creative-directors/{slug}",
+    "pieces": "/pieces/{slug}",
+    "journal": "/journal/{slug}"
+  },
+
+  "schemaTypeByPage": {
+    "home": ["Organization", "WebSite"],
+    "exhibitions": "ExhibitionEvent",
+    "collections": "CollectionPage",
+    "creativeDirectors": "Person",
+    "pieces": ["Product", "CreativeWork"],
+    "journal": "Article"
+  }
+}

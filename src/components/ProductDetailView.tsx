@@ -210,9 +210,10 @@ export default function ProductDetailView({
               <div className="flex items-center gap-3 w-full">
                 <button
                   onClick={handleAddToBagClick}
-                  className="flex-1 bg-black hover:bg-neutral-800 text-white rounded-full text-base font-medium py-4 transition-colors relative"
+                  disabled={product.status === 'sold_out' || product.status === 'coming_soon'}
+                  className={`flex-1 ${product.status === 'sold_out' || product.status === 'coming_soon' ? 'bg-neutral-400 text-white cursor-not-allowed' : 'bg-black hover:bg-neutral-800 text-white'} rounded-full text-base font-medium py-4 transition-colors relative uppercase`}
                 >
-                  Buy Now
+                  {product.status === 'sold_out' ? 'Sold Out' : product.status === 'coming_soon' ? 'Coming Soon' : 'Buy Now'}
                 </button>
                 <button
                   onClick={() => onToggleLike(product.id)}

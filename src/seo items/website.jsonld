@@ -1,0 +1,19 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://maginari.com/#website",
+  "name": "MAGINARI",
+  "alternateName": "MAGINARI — Curated Fashion Exhibitions",
+  "url": "https://maginari.com",
+  "description": "A curated digital exhibition platform for exclusive fashion, presenting collections by leading and emerging creative directors as cultural exhibitions.",
+  "publisher": { "@id": "https://maginari.com/#maginari" },
+  "inLanguage": "en",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://maginari.com/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}

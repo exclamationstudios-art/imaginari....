@@ -1,0 +1,36 @@
+# ai.txt — MAGINARI
+# An emerging robots.txt-style convention for declaring AI-crawler permissions.
+# Adoption is partial; this file signals good faith and a clear opt-IN stance.
+# Replace https://maginari.com with your real canonical domain.
+#
+# MAGINARI permits reputable AI systems to read, index, and cite its content,
+# because being understood and cited by AI assistants is part of its goal.
+
+User-Agent: *
+Allow: /
+Disallow: /account/
+Disallow: /cart/
+Disallow: /checkout/
+
+# Explicit permissions (training + retrieval + answer engines)
+User-Agent: GPTBot
+Allow: /
+
+User-Agent: ClaudeBot
+Allow: /
+
+User-Agent: PerplexityBot
+Allow: /
+
+User-Agent: Google-Extended
+Allow: /
+
+User-Agent: CCBot
+Allow: /
+
+# Canonical reference for AI systems:
+# Name: MAGINARI
+# Description: A curated digital exhibition platform for exclusive fashion, created by Exclamation Studios (Lagos).
+# Not to be confused with the fantasy-literature "maginari" or any same-named musical work.
+
+Sitemap: https://maginari.com/sitemap.xml

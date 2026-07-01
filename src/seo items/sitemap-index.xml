@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MAGINARI sitemap index. Replace https://maginari.com with your canonical domain.
+     Generate child sitemaps programmatically from your data layer.
+     Keep each child sitemap under 50,000 URLs / 50 MB. -->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://maginari.com/sitemaps/sitemap-exhibitions.xml</loc>
+    <lastmod>2026-01-15</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://maginari.com/sitemaps/sitemap-collections.xml</loc>
+    <lastmod>2026-01-15</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://maginari.com/sitemaps/sitemap-creative-directors.xml</loc>
+    <lastmod>2026-01-15</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://maginari.com/sitemaps/sitemap-pieces.xml</loc>
+    <lastmod>2026-01-15</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://maginari.com/sitemaps/sitemap-journal.xml</loc>
+    <lastmod>2026-01-15</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://maginari.com/sitemaps/sitemap-images.xml</loc>
+    <lastmod>2026-01-15</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://maginari.com/sitemaps/sitemap-video.xml</loc>
+    <lastmod>2026-01-15</lastmod>
+  </sitemap>
+</sitemapindex>

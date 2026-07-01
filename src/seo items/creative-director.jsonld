@@ -1,0 +1,19 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://maginari.com/creative-directors/{director-slug}#person",
+  "name": "{Creative Director Name}",
+  "jobTitle": "Creative Director",
+  "description": "{1-2 sentence bio framing the director's role in fashion culture.}",
+  "url": "https://maginari.com/creative-directors/{director-slug}",
+  "image": "https://maginari.com/assets/directors/{director-slug}.jpg",
+  "affiliation": { "@id": "https://maginari.com/#maginari" },
+  "knowsAbout": ["fashion design", "creative direction", "fashion culture"],
+  "sameAs": [
+    "https://www.instagram.com/{director-handle}",
+    "https://www.wikidata.org/wiki/REPLACE_WITH_DIRECTOR_QID_IF_NOTABLE"
+  ],
+  "subjectOf": [
+    { "@id": "https://maginari.com/collections/{collection-slug}#collection" }
+  ]
+}

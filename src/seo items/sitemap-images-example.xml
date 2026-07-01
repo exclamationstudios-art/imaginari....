@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Image sitemap. Critical for a visual platform: this is how exhibition imagery
+     enters Google Images. Add an <image:image> for every key image on a page.
+     Up to 1,000 images per page URL. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://maginari.com/collections/example-collection-one</loc>
+    <image:image>
+      <image:loc>https://maginari.com/assets/collections/example-collection-one-1.jpg</image:loc>
+      <image:title>Example Collection One — Look 1</image:title>
+      <image:caption>An exclusive piece from Example Collection One, presented as cultural exhibition on MAGINARI.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://maginari.com/assets/collections/example-collection-one-2.jpg</image:loc>
+      <image:title>Example Collection One — Look 2</image:title>
+      <image:caption>Detail of an exclusive piece on MAGINARI.</image:caption>
+    </image:image>
+  </url>
+</urlset>

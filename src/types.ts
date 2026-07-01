@@ -15,6 +15,7 @@ export interface Product {
   returns: string;
   isNew?: boolean;
   isDrop?: boolean;
+  status?: 'available' | 'sold_out' | 'coming_soon';
 }
 
 export interface Brand {
