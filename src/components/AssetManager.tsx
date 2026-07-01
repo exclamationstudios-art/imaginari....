@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, Upload, CheckCircle, Database, Eye, Lock, RefreshCw } from 'lucide-react';
 import { Product, CustomLayout } from '../types';
 import { supabase } from '../services/supabaseClient';
+import { uploadBase64ToS3 } from '../services/s3Uploader';
 
 interface AssetManagerProps {
   layout: CustomLayout;
@@ -235,34 +236,50 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     reader.readAsDataURL(file);
   };
 
-  const handleApplyBannerChanges = () => {
+  const [isApplying, setIsApplying] = useState(false);
+
+  const handleApplyBannerChanges = async () => {
     if (!activeEditItem || !activeEditItem.bannerKey) return;
-    setWorkingLayout(prev => ({
-      ...prev,
-      [activeEditItem.bannerKey!]: modalBannerImage
-    }));
-    setActiveEditItem(null);
-    showFeedback('Banner updated inside dashboard mockup!');
+    
+    setIsApplying(true);
+    try {
+      const publicUrl = await uploadBase64ToS3(modalBannerImage, `banner-${activeEditItem.bannerKey}.jpg`);
+      setWorkingLayout(prev => ({
+        ...prev,
+        [activeEditItem.bannerKey!]: publicUrl
+      }));
+      setActiveEditItem(null);
+      showFeedback('Banner updated inside dashboard mockup!');
+    } finally {
+      setIsApplying(false);
+    }
   };
 
-  const handleApplyProductChanges = () => {
+  const handleApplyProductChanges = async () => {
     if (!activeEditItem || activeEditItem.index === undefined || !activeEditItem.section) return;
     const { section, index } = activeEditItem;
-    setWorkingLayout(prev => {
-      const updatedSection = [...prev[section]];
-      updatedSection[index] = {
-        ...updatedSection[index],
-        name: modalProdName,
-        price: Number(modalProdPrice) || 0,
-        images: [modalProdImage, ...updatedSection[index].images.slice(1)]
-      };
-      return {
-        ...prev,
-        [section]: updatedSection
-      };
-    });
-    setActiveEditItem(null);
-    showFeedback('Product slot updated inside dashboard mockup!');
+    
+    setIsApplying(true);
+    try {
+      const publicUrl = await uploadBase64ToS3(modalProdImage, `product-${section}-${index}.jpg`);
+      setWorkingLayout(prev => {
+        const updatedSection = [...prev[section]];
+        updatedSection[index] = {
+          ...updatedSection[index],
+          name: modalProdName,
+          price: Number(modalProdPrice) || 0,
+          images: [publicUrl, ...updatedSection[index].images.slice(1)]
+        };
+        return {
+          ...prev,
+          [section]: updatedSection
+        };
+      });
+      setActiveEditItem(null);
+      showFeedback('Product slot updated inside dashboard mockup!');
+    } finally {
+      setIsApplying(false);
+    }
   };
 
   // Gateway Logon view
@@ -677,9 +694,10 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                 </button>
                 <button 
                   onClick={handleApplyBannerChanges}
-                  className="flex-1 bg-white hover:bg-neutral-200 text-black font-bold py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-colors"
+                  disabled={isApplying}
+                  className={`flex-1 font-bold py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-colors ${isApplying ? 'bg-neutral-600 text-neutral-400' : 'bg-white hover:bg-neutral-200 text-black'}`}
                 >
-                  Apply Changes
+                  {isApplying ? 'Uploading...' : 'Apply Changes'}
                 </button>
               </div>
             </div>
@@ -770,9 +788,10 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
                 </button>
                 <button 
                   onClick={handleApplyProductChanges}
-                  className="flex-1 bg-white hover:bg-neutral-200 text-black font-bold py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-colors"
+                  disabled={isApplying}
+                  className={`flex-1 font-bold py-3 text-[10px] uppercase tracking-widest cursor-pointer transition-colors ${isApplying ? 'bg-neutral-600 text-neutral-400' : 'bg-white hover:bg-neutral-200 text-black'}`}
                 >
-                  Apply Changes
+                  {isApplying ? 'Uploading...' : 'Apply Changes'}
                 </button>
               </div>
             </div>
