@@ -66,14 +66,6 @@ export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropPro
             <h2 className="text-white text-3xl md:text-5xl font-sans font-bold leading-tight mb-5">
               Crown of Clay<br/>Collection
             </h2>
-            <div className="flex gap-3">
-              <button className="bg-white hover:bg-stone-200 text-black font-sans font-semibold rounded-full px-6 py-2.5 transition-colors">
-                Shop
-              </button>
-              <button className="bg-black/80 backdrop-blur hover:bg-black text-white font-sans font-semibold rounded-full px-6 py-2.5 transition-colors">
-                Explore
-              </button>
-            </div>
           </div>
         </div>
 
@@ -104,11 +96,6 @@ export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropPro
             <h2 className="text-white text-3xl md:text-5xl font-sans font-bold leading-tight mb-5">
               Exclamation Studio Drops<br/>Volume 1
             </h2>
-            <div className="flex gap-3">
-              <button className="bg-white hover:bg-stone-200 text-black font-sans font-semibold rounded-full px-6 py-2.5 transition-colors">
-                Shop
-              </button>
-            </div>
           </div>
         </div>
 
@@ -139,11 +126,6 @@ export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropPro
             <h2 className="text-white text-3xl md:text-5xl font-sans font-bold leading-tight mb-5">
               8ternity Endless<br/>Summer
             </h2>
-            <div className="flex gap-3">
-              <button className="bg-white hover:bg-stone-200 text-black font-sans font-semibold rounded-full px-6 py-2.5 transition-colors">
-                Shop Collection
-              </button>
-            </div>
           </div>
         </div>
 
@@ -173,11 +155,6 @@ export default function FeaturedDrop({ layout, onProductClick }: FeaturedDropPro
             <h2 className="text-white text-3xl md:text-5xl font-sans font-bold leading-tight mb-5">
               Dreamers<br/>Essentials
             </h2>
-            <div className="flex gap-3">
-              <button className="bg-white hover:bg-stone-200 text-black font-sans font-semibold rounded-full px-6 py-2.5 transition-colors">
-                Shop Dreamers
-              </button>
-            </div>
           </div>
         </div>
 

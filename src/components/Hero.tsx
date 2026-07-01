@@ -21,7 +21,7 @@ export default function Hero({ onShopClick, bannerImage = '/mixed-model.jpg' }: 
         </h1>
         <button
           onClick={() => onShopClick()}
-          className="bg-white hover:bg-stone-200 text-black font-sans font-semibold rounded-full px-6 py-2.5 transition-colors"
+          className="bg-white hover:bg-stone-200 text-black font-sans font-semibold rounded-full w-40 md:w-48 py-3 transition-colors"
         >
           Shop
         </button>
