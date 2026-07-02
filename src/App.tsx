@@ -16,6 +16,7 @@ import CartDrawer from './components/CartDrawer';
 import AssetManager from './components/AssetManager';
 import ProfileDrawer from './components/ProfileDrawer';
 import MenuDrawer from './components/MenuDrawer';
+import VendorForm from './components/VendorForm';
 import CookieConsent from './components/CookieConsent';
 import { Search, X, Sparkles, ShoppingBag, Eye, Heart, ArrowUp } from 'lucide-react';
 
@@ -77,8 +78,14 @@ const defaultProfile: UserProfile = {
 };
 
 export default function App() {
-  // Navigation View Tab: 'home' | 'shop' | 'journal' | 'admin'
-  const [activeView, setActiveView] = useState<'home' | 'shop' | 'journal' | 'admin'>('home');
+  // Navigation View Tab: 'home' | 'shop' | 'journal' | 'admin' | 'vendor-form'
+  const [activeView, setActiveView] = useState<'home' | 'shop' | 'journal' | 'admin' | 'vendor-form'>('home');
+
+  useEffect(() => {
+    if (window.location.hostname.includes('vendorform')) {
+      setActiveView('vendor-form');
+    }
+  }, []);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
 
   // Profile and Menu Drawer States
@@ -384,6 +391,10 @@ export default function App() {
           p.category.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
+
+  if (activeView === 'vendor-form') {
+    return <VendorForm />;
+  }
 
   if (activeView === 'admin') {
     return (
