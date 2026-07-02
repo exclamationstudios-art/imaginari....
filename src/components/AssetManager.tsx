@@ -743,6 +743,9 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
 
         </div>
       </div>
+      ) : (
+        <VendorReportsTab />
+      )}
 
       {/* EDITING DIALOG POPUP MODALS */}
       {activeEditItem && (
