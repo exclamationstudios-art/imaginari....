@@ -35,7 +35,19 @@ export default function VendorForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate submission (would send to backend here)
+    
+    // Save to local storage for Admin Dashboard retrieval
+    const existing = localStorage.getItem('maginari_vendor_applications');
+    const apps = existing ? JSON.parse(existing) : [];
+    
+    apps.push({
+      id: `VND-${Date.now().toString().slice(-6)}`,
+      submittedAt: new Date().toISOString(),
+      ...formData
+    });
+    
+    localStorage.setItem('maginari_vendor_applications', JSON.stringify(apps));
+    
     nextStep();
   };
 
@@ -49,13 +61,33 @@ export default function VendorForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col items-center justify-center gap-6"
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 z-50 bg-neutral-950 text-white flex flex-col items-center justify-center gap-8"
           >
-            <div className="text-2xl font-bold tracking-tighter uppercase">Maginari</div>
-            <div className="flex flex-col items-center gap-2">
-              <Loader2 className="w-6 h-6 animate-spin text-stone-400" />
-              <span className="text-[10px] uppercase tracking-widest text-stone-500 font-mono">Initializing Vendor Portal</span>
-            </div>
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, filter: 'blur(10px)' }}
+              animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="text-4xl sm:text-5xl font-bold tracking-tighter uppercase text-rose-300"
+            >
+              Maginari
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="flex flex-col items-center gap-4"
+            >
+              <div className="w-16 h-[1px] bg-white/10 overflow-hidden">
+                <motion.div 
+                  initial={{ x: '-100%' }}
+                  animate={{ x: '100%' }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                  className="w-full h-full bg-rose-300 shadow-[0_0_8px_rgba(253,164,175,0.8)]"
+                />
+              </div>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-500 font-mono">Secure Vendor Portal</span>
+            </motion.div>
           </motion.div>
         )}
 

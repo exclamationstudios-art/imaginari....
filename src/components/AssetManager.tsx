@@ -99,6 +99,9 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
   // Local working state representing changes inside visual preview
   const [workingLayout, setWorkingLayout] = useState<CustomLayout>(() => ({ ...layout }));
   
+  // Dashboard Tabs
+  const [activeTab, setActiveTab] = useState<'visuals' | 'vendors'>('visuals');
+
   // Feedback alert states
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
@@ -451,6 +454,79 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
     </div>
   );
 
+  const VendorReportsTab = () => {
+    const [reports, setReports] = React.useState<any[]>([]);
+
+    React.useEffect(() => {
+      const data = localStorage.getItem('maginari_vendor_applications');
+      if (data) {
+        setReports(JSON.parse(data).reverse());
+      }
+    }, []);
+
+    if (reports.length === 0) {
+      return (
+        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8 flex flex-col items-center justify-center py-32 text-neutral-500">
+          <Database className="w-12 h-12 mb-4 opacity-50" />
+          <h3 className="text-xl uppercase font-bold tracking-widest text-white mb-2">No Applications Yet</h3>
+          <p className="text-xs uppercase tracking-widest">When vendors apply, their forms will appear here.</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8">
+        <div className="bg-neutral-900/40 p-5 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="space-y-1">
+            <h2 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+              <Database className="w-4 h-4 text-rose-300" /> Vendor Pipeline
+            </h2>
+            <p className="text-[10px] text-neutral-400 uppercase leading-relaxed">
+              Review incoming product applications and assess fulfillment capability.
+            </p>
+          </div>
+        </div>
+        
+        <div className="grid gap-6">
+          {reports.map((report) => (
+            <div key={report.id} className="bg-neutral-950 border border-neutral-900 p-6 flex flex-col md:flex-row gap-8 hover:border-rose-300 transition-colors">
+              <div className="min-w-[200px]">
+                <span className="text-[10px] uppercase text-rose-300 tracking-widest block mb-1">{report.id}</span>
+                <span className="text-xs text-neutral-500 uppercase tracking-widest block mb-4">
+                  {new Date(report.submittedAt).toLocaleDateString()}
+                </span>
+                <div className="inline-block px-3 py-1 bg-neutral-900 text-[10px] font-bold uppercase tracking-widest text-white mb-2">
+                  {report.exclusivity === 'exclusive' ? 'Platform Exclusive' : 'Actively Retailed'}
+                </div>
+              </div>
+              
+              <div className="flex-1 grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div>
+                  <span className="text-[10px] text-neutral-500 uppercase tracking-widest block mb-1">Volume</span>
+                  <span className="text-sm font-bold text-white">{report.volume}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] text-neutral-500 uppercase tracking-widest block mb-1">Target Price</span>
+                  <span className="text-sm font-bold text-white">{report.retailPrice}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] text-neutral-500 uppercase tracking-widest block mb-1">Margins</span>
+                  <span className="text-sm font-bold text-white">{report.margins}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] text-neutral-500 uppercase tracking-widest block mb-1">Fulfillment</span>
+                  <span className="text-sm font-bold text-white uppercase">
+                    {report.fulfillmentModel === 'pre-produced' ? 'Pre-Produced' : 'Pre-Order'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-neutral-950 text-stone-100 font-mono pb-24">
       {/* Sticky Header Configurator Bar */}
@@ -463,9 +539,19 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
             <ArrowLeft className="w-4 h-4" /> Exit Editor
           </button>
           
-          <div className="text-center select-none hidden sm:block">
-            <span className="text-[9px] text-rose-300 tracking-[0.3em] uppercase block">EXCLAMATION STUDIO PORTAL</span>
-            <span className="text-sm font-sans font-black tracking-widest text-white">COLLECTIBLE VISUAL CONFIGURATOR</span>
+          <div className="flex items-center gap-6 select-none hidden sm:flex">
+            <button 
+              onClick={() => setActiveTab('visuals')}
+              className={`text-xs font-bold uppercase tracking-widest transition-colors ${activeTab === 'visuals' ? 'text-white border-b-2 border-rose-300' : 'text-neutral-500 hover:text-white'}`}
+            >
+              Storefront Visuals
+            </button>
+            <button 
+              onClick={() => setActiveTab('vendors')}
+              className={`text-xs font-bold uppercase tracking-widest transition-colors ${activeTab === 'vendors' ? 'text-white border-b-2 border-rose-300' : 'text-neutral-500 hover:text-white'}`}
+            >
+              Vendor Reports
+            </button>
           </div>
 
           <div className="flex gap-2">
@@ -492,7 +578,8 @@ export default function AssetManager({ layout, onSaveLayout, onBack }: AssetMana
       </header>
 
       {/* Intro Bar & Alerts */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8">
+      {activeTab === 'visuals' ? (
+        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-8">
         {statusMessage && (
           <div className="mb-6 p-4 bg-neutral-900 text-rose-300 text-xs flex items-center gap-2 animate-fadeIn">
             <CheckCircle className="w-4 h-4 text-rose-300" />
